@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Shelter")
-public class Shelter {
+@Table (name = "User")
+public class User {
 
     @Id @GeneratedValue
     long id;
@@ -14,21 +14,29 @@ public class Shelter {
     String name;
 
     @Column
-    String location;
+    String address;
 
     @Column
     String number;
 
     @Column
-    int numberOfPets;
+    String preferences;
 
     @Column
     String email;
 
-    @OneToMany (cascade = CascadeType.ALL, mappedBy = "Shelter")
+    @Column
+    Boolean notifications;
+
+    @Column
+    Boolean isShelter;
+
+
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "Pet")
     private List<Pet> pets;
 
-    @OneToMany
+    @ManyToMany
     private List<Program> programs;
+
 
 }
