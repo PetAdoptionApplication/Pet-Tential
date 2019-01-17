@@ -9,7 +9,7 @@ public class Preferences {
     @Id @GeneratedValue
     private long id;
 
-    @Column
+    @Column 
     private String breed;
 
     @Column
