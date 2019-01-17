@@ -11,19 +11,19 @@ public class Shelter {
     long id;
 
     @Column
-    String name;
+    private String name;
 
     @Column
-    String location;
+    private String location;
 
     @Column
-    String number;
+    private String number;
 
     @Column
-    int numberOfPets;
+    private int numberOfPets;
 
     @Column
-    String email;
+    private String email;
 
     @OneToMany (cascade = CascadeType.ALL, mappedBy = "Shelter")
     private List<Pet> pets;
@@ -31,4 +31,55 @@ public class Shelter {
     @OneToMany
     private List<Program> programs;
 
+    public Shelter() {
+
+    }
+
+    public Shelter (String name, String location, String number, int numberOfPets, String email) {
+        this.name = name;
+        this.location = location;
+        this.number = number;
+        this.numberOfPets = numberOfPets;
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public int getNumberOfPets() {
+        return numberOfPets;
+    }
+
+    public void setNumberOfPets(int numberOfPets) {
+        this.numberOfPets = numberOfPets;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

@@ -1,4 +1,7 @@
 package com.codeup.pettential.repositories;
 
-public class PetRepository {
+import com.codeup.pettential.models.Pet;
+import org.springframework.data.repository.CrudRepository;
+
+public interface PetRepository extends CrudRepository<Pet, Long> {
 }
