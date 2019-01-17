@@ -1,7 +1,6 @@
 package com.codeup.pettential.models;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table (name = "Pet")
@@ -36,6 +35,6 @@ public class Pet {
     private Shelter shelter;
 
     @ManyToOne
-    @JoinColumn (name = "pets")
+    @JoinColumn (name = "user_id")
     private User user;
 }
