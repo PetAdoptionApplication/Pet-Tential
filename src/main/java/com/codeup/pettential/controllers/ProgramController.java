@@ -32,7 +32,7 @@ public class ProgramController {
 
     @GetMapping("adopter/programs")
     public String getPrograms(Model model) {
-        model.addAttribute("program", programDao.findAll());
+        model.addAttribute("programs", programDao.findAll());
         return "adopter/programs";
     }
 
