@@ -11,7 +11,7 @@
       <!--TODO: Pass all pets to this page-->
   <div class="row">
    <div class="col-md-4 col-lg-3">
-       <div class="card" th:each="pet ${pets}">
+       <div class="card" th:each="pet : ${pets}">
         <div class="card-body">
             <a th:href="'adopt/pet/' + ${pet.getId()}"><img th:src="${pet.getPicture()}" class="card-img-top" alt="Pet Image"/></a>
             <h3 class="card-title" th:text="${pet.getAge()}"></h3>
