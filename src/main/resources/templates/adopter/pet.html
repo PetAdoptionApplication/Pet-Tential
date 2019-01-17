@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head">
+<head th:replace = "partials :: head('Here are some pets available!')">
     <meta charset="UTF-8"/>
     <title>Indiv Post</title>
 </head>
 <body>
-<div th:replace="partials :: header"></div>
-<nav th:replace="partials :: navbar"></nav>
+<nav th:replace="partials :: navbar"/>
+<header th:replace="partials::header"/>
 <div class="container">
     <div class="row text-center" style="margin-bottom: 20px">
         <h2 th:text="${pet.getBreed()}" class="underline"/>
@@ -27,9 +27,10 @@
         <p th:text="${pet.getWeight()}" />
     </div>
     <div class="row text-center" style="margin-bottom: 50px">
-        <img th:src="${pet.getWeight()}" alt="Picture of Pet"/>
+        <img th:src="${pet.getPicture()}" alt="Picture of Pet"/>
     </div>
 </div>
-<div th:replace="partials :: footer"></div>
+<footer th:replace="partials::footer" />
+<div th:replace="partials::scripts" />
 </body>
 </html>
