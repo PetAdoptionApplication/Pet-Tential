@@ -21,6 +21,9 @@ public class Program {
     long id;
 
     @Column
+    private String name;
+
+    @Column
     private String type;
 
     @Column
@@ -43,7 +46,8 @@ public class Program {
 
     }
 
-    public Program (String type, String description, int length, int time, String breed) {
+    public Program (String name, String type, String description, int length, int time, String breed) {
+        this.name = name;
         this.type = type;
         this.description = description;
         this.length = length;
