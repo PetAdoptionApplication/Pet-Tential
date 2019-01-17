@@ -21,21 +21,73 @@ public class Program {
     long id;
 
     @Column
-    String type;
+    private String type;
 
     @Column
-    String description;
+    private String description;
 
     @Column
-    int length;
+    private int length;
 
     @Column
-    int time;
+    private int time;
 
     @Column
-    String breed;
+    private String breed;
 
     @ManyToOne
     @JoinColumn (name = "shelter_id")
     private Shelter shelter;
+
+    public Program() {
+
+    }
+
+    public Program (String type, String description, int length, int time, String breed) {
+        this.type = type;
+        this.description = description;
+        this.length = length;
+        this.time = time;
+        this.breed = breed;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public String getBreed() {
+        return breed;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
 }
