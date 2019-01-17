@@ -30,10 +30,10 @@ public class ProgramController {
         return "redirect:/landing";
     }
 
-    @GetMapping("shelter/program/{id}")
+    @GetMapping("adopter/program/{id}")
     public String getProgram(@PathVariable long id, Model model) {
         model.addAttribute("program", programDao.findOne(id));
-        return "shelter/program";
+        return "adopter/programs";
     }
 
 
