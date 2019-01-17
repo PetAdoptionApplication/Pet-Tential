@@ -30,10 +30,16 @@ public class ProgramController {
         return "redirect:/landing";
     }
 
-    @GetMapping("adopter/program/{id}")
-    public String getProgram(@PathVariable long id, Model model) {
-        model.addAttribute("program", programDao.findOne(id));
+    @GetMapping("adopter/programs")
+    public String getPrograms(Model model) {
+        model.addAttribute("programs", programDao.findAll());
         return "adopter/programs";
+    }
+
+    @GetMapping("adopter/program/{id}")
+    public String getAllPrograms(@PathVariable long id, Model model) {
+        model.addAttribute("program", programDao.findOne(id));
+        return "adopter/program";
     }
 
 
