@@ -25,7 +25,7 @@ public class Shelter {
     @Column
     String email;
 
-    @OneToMany (cascade = CascadeType.ALL, mappedBy = "Shelter")
+    @OneToMany
     private List<Pet> pets;
 
     @OneToMany
