@@ -19,10 +19,14 @@ public class ShelterController {
     }
 
     @GetMapping ("adopter/{id}")
-    public String findUser(@PathVariable Long id, Model model) {
+    public String findUser(@PathVariable long id, Model model) {
         model.addAttribute("user", userDao.findOne(id));
         return "shelter/user";
     }
 
-
+    @GetMapping("shelter/{id}")
+    public String findShelter(@PathVariable long id, Model model) {
+        model.addAttribute("shelter", shelterDao.findOne(id));
+        return "shelter/shelter";
+    }
 }

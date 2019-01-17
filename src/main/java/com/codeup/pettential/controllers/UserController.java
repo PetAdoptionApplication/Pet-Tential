@@ -1,6 +1,9 @@
 package com.codeup.pettential.controllers;
 
 import com.codeup.pettential.models.User;
+import com.codeup.pettential.repositories.ApplicationRepository;
+import com.codeup.pettential.repositories.ProgramRepository;
+import com.codeup.pettential.repositories.ShelterRepository;
 import com.codeup.pettential.repositories.Users;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -13,10 +16,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UserController {
     private Users users;
     private PasswordEncoder passwordEncoder;
+    private ShelterRepository shelterDao;
+    private ProgramRepository programDao;
+    private ApplicationRepository applicationDao;
 
-    public UserController(Users users, PasswordEncoder passwordEncoder) {
+    public UserController(Users users, PasswordEncoder passwordEncoder, ShelterRepository shelterDao, ProgramRepository programDao, ApplicationRepository applicationDao) {
         this.users = users;
         this.passwordEncoder = passwordEncoder;
+        this.shelterDao = shelterDao;
+        this.programDao = programDao;
+        this.applicationDao = applicationDao;
     }
 
     @GetMapping("/sign-up")
@@ -27,6 +36,9 @@ public class UserController {
 
     @GetMapping("/home")
     public String success(Model model){
+        model.addAttribute("shelter", shelterDao.findAll());
+        model.addAttribute("program", programDao.findAll());
+        model.addAttribute("application", applicationDao.findAll());
         return "landing";
     }
 
