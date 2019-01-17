@@ -8,11 +8,18 @@
 
 
 <form action="/preferences" method="post" th:object="${preference}" >
-
+    <label>Breed</label>
     <input type="text" th:field="*{breed}" />
+    <label>Age</label>
     <input type="text" th:field="*{age}" />
+    <label>Color</label>
     <input type="text" th:field="*{color}" />
-    <input type="text" th:field="*{sex}" />
+    <label>Sex</label>
+    <select th:field="*{sex}">
+        <option value="m">Male</option>
+        <option value="f">Female</option>
+    </select>
+    <label>Weight</label>
     <input type="text" th:field="*{weight}" />
 
     <input type="submit" />

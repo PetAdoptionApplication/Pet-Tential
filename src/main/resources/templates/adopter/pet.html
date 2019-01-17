@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head">
+    <meta charset="UTF-8"/>
+    <title>Indiv Post</title>
+</head>
+<body>
+<div th:replace="partials :: header"></div>
+<nav th:replace="partials :: navbar"></nav>
+<div class="container">
+    <div class="row text-center" style="margin-bottom: 20px">
+        <h2 th:text="${pet.getBreed()}" class="underline"/>
+    </div>
+    <div class="row text-center" style="margin-bottom: 20px">
+        <p th:text="${pet.getAge()}" />
+    </div>
+    <div class="row text-center" style="margin-bottom: 50px">
+        <p th:text="${pet.getColor()}" />
+    </div>
+    <div class="row text-center" style="margin-bottom: 50px">
+        <p th:text="${pet.getDescription()}" />
+    </div>
+    <div class="row text-center" style="margin-bottom: 50px">
+        <p th:text="${pet.getSex()}" />
+    </div>
+    <div class="row text-center" style="margin-bottom: 50px">
+        <p th:text="${pet.getWeight()}" />
+    </div>
+    <div class="row text-center" style="margin-bottom: 50px">
+        <img th:src="${pet.getWeight()}" alt="Picture of Pet"/>
+    </div>
+</div>
+<div th:replace="partials :: footer"></div>
+</body>
+</html>

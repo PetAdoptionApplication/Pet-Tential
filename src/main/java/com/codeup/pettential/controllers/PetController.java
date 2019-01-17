@@ -33,7 +33,7 @@ public class PetController {
     @GetMapping("adopter/pet/{id}")
     public String findPet(@PathVariable long id, Model model) {
         model.addAttribute("pet", petDao.findOne(id));
-        return "adopters/pet";
+        return "adopter/pet";
     }
 
 }
