@@ -14,21 +14,33 @@
 <nav th:replace="partials :: navbar"/>
 <header th:replace="partials::header"/>
 
-<input class="form-control" type="text" placeholder="Enter Pet Breed Here">
-<br>
-<br>
-<input class="form-control" type="text" placeholder="Enter Pet Age Here">
-<br>
-<br>
-<input class="form-control" type="text" placeholder="Enter Color of Pet">
-<br>
-<br>
-<input class="form-control" type="text" placeholder="Enter Weight of Pet">
-<br>
-<br>
-<button type="button" action="submit" class="btn btn-primary btn-lg">Submit</button>
 
-
+<form action="/create/pet" method="post" th:object="${pet}" >
+    <input class="form-control" type="text" placeholder="Enter Pet Breed Here" th:field="*{breed}"/>
+    <br/>
+    <br/>
+    <input class="form-control" type="text" placeholder="Enter Pet Age Here" th:field="*{age}"/>
+    <br/>
+    <br/>
+    <input class="form-control" type="text" placeholder="Enter Color of Pet" th:field="*{color}"/>
+    <br/>
+    <br/>
+    <input class="form-control" type="text" placeholder="Enter Weight of Pet" th:field="*{weight}"/>
+    <br/>
+    <br/>
+    <label>Description</label>
+    <textarea cols="30" rows="10" th:field="*{description}"></textarea>
+    <br/>
+    <br/>
+    <input class="form-control" type="text" placeholder="Enter link for pets pic" th:field="*{picture}"/>
+    <br/>
+    <br/>
+    <select th:field="*{sex}">
+        <option value="m">Male</option>
+        <option value="f">Female</option>
+    </select>
+    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+</form>
 
 
 <footer th:replace="partials::footer" />

@@ -3,8 +3,8 @@ package com.codeup.pettential.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Application")
-public class Application {
+@Table(name = "App")
+public class App {
     @Id
     @GeneratedValue
     private long id;

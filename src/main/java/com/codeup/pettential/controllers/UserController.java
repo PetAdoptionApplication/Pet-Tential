@@ -1,7 +1,7 @@
 package com.codeup.pettential.controllers;
 
 import com.codeup.pettential.models.User;
-import com.codeup.pettential.repositories.ApplicationRepository;
+import com.codeup.pettential.repositories.AppRepository;
 import com.codeup.pettential.repositories.ProgramRepository;
 import com.codeup.pettential.repositories.ShelterRepository;
 import com.codeup.pettential.repositories.Users;
@@ -18,14 +18,14 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
     private ShelterRepository shelterDao;
     private ProgramRepository programDao;
-    private ApplicationRepository applicationDao;
+    private AppRepository appDao;
 
-    public UserController(Users users, PasswordEncoder passwordEncoder, ShelterRepository shelterDao, ProgramRepository programDao, ApplicationRepository applicationDao) {
+    public UserController(Users users, PasswordEncoder passwordEncoder, ShelterRepository shelterDao, ProgramRepository programDao, AppRepository appDao) {
         this.users = users;
         this.passwordEncoder = passwordEncoder;
         this.shelterDao = shelterDao;
         this.programDao = programDao;
-        this.applicationDao = applicationDao;
+        this.appDao = appDao;
     }
 
     @GetMapping("/sign-up")
@@ -38,7 +38,7 @@ public class UserController {
     public String success(Model model){
         model.addAttribute("shelter", shelterDao.findAll());
         model.addAttribute("program", programDao.findAll());
-        model.addAttribute("application", applicationDao.findAll());
+        model.addAttribute("app", appDao.findAll());
         return "landing";
     }
 

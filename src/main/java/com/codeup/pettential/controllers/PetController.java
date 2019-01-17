@@ -21,7 +21,7 @@ public class PetController {
     @GetMapping("create/pet")
     public String createPet(Model model) {
         model.addAttribute("pet", new Pet());
-        return "create/pet";
+        return "pets";
     }
 
     @PostMapping("create/pet")
