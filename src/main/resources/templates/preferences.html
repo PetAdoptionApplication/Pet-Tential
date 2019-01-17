@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+
+
+<form action="/preferences" method="post" th:object="${preference}" >
+
+    <input type="text" th:field="*{breed}" />
+    <input type="text" th:field="*{age}" />
+    <input type="text" th:field="*{color}" />
+    <input type="text" th:field="*{sex}" />
+    <input type="text" th:field="*{weight}" />
+
+    <input type="submit" />
+</form>
+
+
+</body>
+</html>
