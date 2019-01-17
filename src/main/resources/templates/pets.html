@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "partials :: head('Here are some pets available!')">
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container" style="background-color: yellow">
+                <h1 class="display-4"><strong>Shelters Pets Page</strong></h1>
+            </div>
+        </div>
+    </div>
+</head>
+<body>
+
+<nav th:replace="partials :: navbar"/>
+<header th:replace="partials::header"/>
+
+<input class="form-control" type="text" placeholder="Enter Pet Breed Here">
+<br>
+<br>
+<input class="form-control" type="text" placeholder="Enter Pet Age Here">
+<br>
+<br>
+<input class="form-control" type="text" placeholder="Enter Color of Pet">
+<br>
+<br>
+<input class="form-control" type="text" placeholder="Enter Weight of Pet">
+<br>
+<br>
+<button type="button" action="submit" class="btn btn-primary btn-lg">Submit</button>
+
+
+
+
+<footer th:replace="partials::footer" />
+<div th:replace="partials::scripts" />
+
+</body>
+</html>
