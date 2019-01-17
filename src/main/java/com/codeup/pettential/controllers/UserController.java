@@ -25,9 +25,9 @@ public class UserController {
         return "sign-up";
     }
 
-    @GetMapping("/success")
+    @GetMapping("/home")
     public String success(Model model){
-        return "success";
+        return "landing";
     }
 
     @PostMapping("/sign-up")
