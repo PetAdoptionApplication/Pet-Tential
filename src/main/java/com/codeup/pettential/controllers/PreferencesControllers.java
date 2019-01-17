@@ -18,16 +18,16 @@ public class PreferencesControllers {
         this.preferencesDao = preferencesDao;
     }
 
-    @GetMapping ("/preferences")
+    @GetMapping ("adopter/preferences")
     public String createPreference(Model model) {
         model.addAttribute("preference", new Preferences());
-        return "preferences";
+        return "adopter/preferences";
     }
 
-    @PostMapping ("/preferences")
+    @PostMapping ("adopter/preferences")
     public String savePreferences(@ModelAttribute Preferences preferences) {
         preferencesDao.save(preferences);
-        return "redirect:/home";
+        return "redirect:adopter/home";
     }
 
 
