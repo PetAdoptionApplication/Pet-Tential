@@ -49,7 +49,7 @@ public class UserController {
         user.setPassword(hash);
         users.save(user);
         String returnValue = "";
-        if (user.getShelter()){
+        if (user.getIsShelter()){
             returnValue = "redirect:shelter/register";
         } else {
             returnValue = "redirect:login";
@@ -65,8 +65,8 @@ public class UserController {
     }
 
     @PostMapping("/shelter/register")
-    public String saveShelter (@ModelAttribute Shelter shelter){
-        shelterDao.save(shelter);
+    public String saveShelter (@ModelAttribute Shelter newShelter){
+        shelterDao.save(newShelter);
         return "redirect:/shelter/home";
     }
 }
