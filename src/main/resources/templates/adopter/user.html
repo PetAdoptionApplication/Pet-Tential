@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User View</title>
+</head>
+<body>
+
+<nav th:replace="partials :: navbar"/>
+
+<div class="row">
+    <header th:replace="partials :: header"/>
+</div>
+
+<div class="card text-center" style="width: 18rem;">
+    <h5 class="card-title"><strong>User Information</strong></h5>
+
+    <div class="card-body" method="GET" th:object="${user}">
+        <div class="card" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" th:field="*{name}>name</li>
+                <li class="list-group-item" th:field="*{email}>email</li>
+                <li class="list-group-item" th:field="*{address}>address</li>
+                <li class="list-group-item" th:field="*{number}>number</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<footer th:replace="partials :: footer"/>
+
+<div th:replace="partials :: scripts"/>
+</body>
+</html>

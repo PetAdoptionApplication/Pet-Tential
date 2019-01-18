@@ -132,11 +132,11 @@ public class User {
         this.notifications = notifications;
     }
 
-    public Boolean getShelter() {
+    public Boolean getIsShelter() {
         return isShelter;
     }
 
-    public void setShelter(Boolean shelter) {
+    public void setIsShelter(Boolean shelter) {
         isShelter = shelter;
     }
 
