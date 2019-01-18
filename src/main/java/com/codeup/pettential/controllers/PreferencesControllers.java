@@ -28,7 +28,8 @@ public class PreferencesControllers {
 
     @PostMapping ("/adopter/preferences")
     public String savePreferences(@ModelAttribute Preferences preferences) {
-        preferences.setOwner((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        preferences.setOwner(user);
         preferencesDao.save(preferences);
         return "redirect:/home";
     }

@@ -41,13 +41,11 @@ public class UserController {
         model.addAttribute("program", programDao.findAll());
         model.addAttribute("app", appDao.findAll());
 
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getDetails();
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        if (userDao.findOne(user.getId()).getIsShelter()) {
-            return "shelter/home";
-        } if (!userDao.findOne(user.getId()).getIsShelter()) {
-            return "adopter/home";
-        } else {
+        if (user.getIsShelter()) {
+            return "redirect:shelter/home";
+        }else {
             return "landing";
         }
     }
@@ -77,9 +75,5 @@ public class UserController {
     public String saveShelter (@ModelAttribute Shelter newShelter){
         shelterDao.save(newShelter);
         return "redirect:/shelter/home";
-    }
-
-    public static void main(String[] args) {
-        System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
     }
 }

@@ -1,7 +1,6 @@
 package com.codeup.pettential.repositories;
 
 import com.codeup.pettential.models.Pet;
-import com.codeup.pettential.models.Shelter;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

@@ -29,6 +29,10 @@
     <div class="row text-center" style="margin-bottom: 50px">
         <img th:src="${pet.getPicture()}" alt="Picture of Pet"/>
     </div>
+    <form action="/adopt/pet" method="post" >
+        <input type="hidden"/>
+        <input type="submit">
+    </form>
 </div>
 <footer th:replace="partials::footer" />
 <div th:replace="partials::scripts" />
