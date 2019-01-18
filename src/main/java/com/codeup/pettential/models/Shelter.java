@@ -43,6 +43,10 @@ public class Shelter {
         this.email = email;
     }
 
+    public long getId(){
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -81,5 +85,9 @@ public class Shelter {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Pet> getPets(){
+        return pets;
     }
 }
