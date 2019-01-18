@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace = "partials :: head('Here are some pets available!')">
+<head>
     <meta charset="UTF-8"/>
     <title>Indiv Post</title>
 </head>
@@ -9,29 +9,32 @@
 
 <div class="container">
     <div class="row text-center" style="margin-bottom: 20px">
-        <h2 th:text="${pet.getBreed()}" class="underline" />
+        <h2 th:text="${pet.name}" class="underline" />
     </div>
     <div class="row text-center" style="margin-bottom: 20px">
-        <p th:text="${pet.getAge()}" />
+        <h2 th:text="${pet.breed}" class="underline" />
+    </div>
+    <div class="row text-center" style="margin-bottom: 20px">
+        <p th:text="${pet.age}" />
     </div>
     <div class="row text-center" style="margin-bottom: 50px">
-        <p th:text="${pet.getColor()}" />
+        <p th:text="${pet.color}" />
     </div>
     <div class="row text-center" style="margin-bottom: 50px">
-        <p th:text="${pet.getDescription()}" />
+        <p th:text="${pet.description}" />
     </div>
     <div class="row text-center" style="margin-bottom: 50px">
-        <p th:text="${pet.getSex()}" />
+        <p th:text="${pet.sex}" />
     </div>
     <div class="row text-center" style="margin-bottom: 50px">
-        <p th:text="${pet.getWeight()}" />
+        <p th:text="${pet.weight}" />
     </div>
     <div class="row text-center" style="margin-bottom: 50px">
-        <img th:src="${pet.getPicture()}" alt="Picture of Pet"/>
+        <img th:src="${pet.picture}" alt="Picture of Pet"/>
     </div>
-    <form action="/adopt/pet" method="post" >
+    <form th:action="'/adopt/pet/' + ${pet.id}" method="post" >
         <input type="hidden"/>
-        <input type="submit">
+        <input type="submit"/>
     </form>
 </div>
 <footer th:replace="partials::footer" />
