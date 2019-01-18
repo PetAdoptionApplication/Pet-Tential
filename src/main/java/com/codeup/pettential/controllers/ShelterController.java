@@ -30,7 +30,8 @@ public class ShelterController {
         Shelter currentShelter = shelterDao.findOne(id);
         model.addAttribute("shelter", currentShelter);
         model.addAttribute("pets", currentShelter.getPets());
-        return "shelter/shelter";
+        model.addAttribute("programs", currentShelter.getPrograms());
+        return "shelter";
     }
 
     @GetMapping("shelter/home")

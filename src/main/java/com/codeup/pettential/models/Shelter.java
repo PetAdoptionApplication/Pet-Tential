@@ -31,6 +31,9 @@ public class Shelter {
     @OneToMany
     private List<Program> programs;
 
+    @OneToMany
+    private List<App> applicants;
+
     public Shelter() {
 
     }
@@ -89,5 +92,12 @@ public class Shelter {
 
     public List<Pet> getPets(){
         return pets;
+    }
+
+    public List<Program> getPrograms(){
+        return programs;
+    }
+    public List<App> getApplicants(){
+        return applicants;
     }
 }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials::head"/>
+<body>
+
+<nav th:replace="partials::navbar"/>
+<header th:replace="partials::header"/>
+
+<div class="container">
+
+   <div class="row">
+       <div class="col-md-4 offset-md-4">
+           <h3 th:text="${shelter.name}"></h3>
+           <h4 th:text="${shelter.location}"></h4>
+       </div>
+   </div>
+
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <h3> Pets Available </h3>
+            <div th:each="pet : ${pets}">
+                <div class="card">
+                    <div class="card-body">
+                        <h4><a th:href="'/adopter/pet/' + pet.id"> <span th:text="${pet.name}"></span> </a> </h4>
+                        <img th:src="${pet.picture}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+            <h3> Programs </h3>
+            <div th:each="program : ${programs}">
+                <div class="card">
+                    <div class="card-body">
+                        <h4><a th:href="'/adopter/program/' + program.id"> <span th:text="${program.name}"></span> </a> </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="partials::footer"/>
+<div th:replace="partials::scripts"/>
+
+</body>
+</html>
