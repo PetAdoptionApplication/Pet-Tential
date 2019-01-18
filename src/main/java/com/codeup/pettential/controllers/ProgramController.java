@@ -29,7 +29,7 @@ public class ProgramController {
         List<Shelter> sheleters = (List<Shelter>) shelterDao.findAll();
         model.addAttribute("program", new Program());
         model.addAttribute("shelters", sheleters);
-        return "createProgram";
+        return "shelter/createProgram";
     }
 
     @PostMapping("shelter/createProgram")
