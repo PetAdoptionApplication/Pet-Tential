@@ -18,7 +18,7 @@ public class PetController {
         this.petDao = petDao;
     }
 
-    @GetMapping("/create/pet")
+    @GetMapping("create/pets")
     public String createPet(Model model) {
         model.addAttribute("pet", new Pet());
         return "shelter/createpets";
