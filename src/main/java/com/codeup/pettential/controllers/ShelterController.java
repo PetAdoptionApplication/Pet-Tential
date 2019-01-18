@@ -1,5 +1,6 @@
 package com.codeup.pettential.controllers;
 
+import com.codeup.pettential.models.Shelter;
 import com.codeup.pettential.repositories.ShelterRepository;
 import com.codeup.pettential.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
@@ -26,8 +27,11 @@ public class ShelterController {
 
     @GetMapping("shelter/{id}")
     public String findShelter(@PathVariable long id, Model model) {
-        model.addAttribute("shelter", shelterDao.findOne(id));
-        return "shelter/shelter";
+        Shelter currentShelter = shelterDao.findOne(id);
+        model.addAttribute("shelter", currentShelter);
+        model.addAttribute("pets", currentShelter.getPets());
+        model.addAttribute("programs", currentShelter.getPrograms());
+        return "shelter";
     }
 
     @GetMapping("shelter/home")

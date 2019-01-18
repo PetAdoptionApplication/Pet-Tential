@@ -1,5 +1,7 @@
 package com.codeup.pettential.models;
 
+import com.codeup.pettential.repositories.PreferencesRepository;
+
 import javax.persistence.*;
 
 @Entity
@@ -31,12 +33,13 @@ public class Preferences {
 
     }
 
-    public Preferences(String breed, int age, String color, String sex, int weight) {
-        this.breed =breed;
+    public Preferences(String breed, int age, String color, String sex, int weight, User owner) {
+        this.breed = breed;
         this.age = age;
         this.color = color;
         this.sex = sex;
         this.weight = weight;
+        this.owner = owner;
     }
 
     public long getId() {
@@ -85,5 +88,13 @@ public class Preferences {
 
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 }
