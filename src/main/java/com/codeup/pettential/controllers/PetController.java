@@ -7,6 +7,7 @@ import com.codeup.pettential.repositories.PetRepository;
 import com.codeup.pettential.repositories.PreferencesRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,13 @@ public class PetController {
     public String createPet(Model model) {
         model.addAttribute("pet", new Pet());
         return "shelter/pets";
+    }
+
+    @PostMapping("create/pet")
+    public String savePet(@ModelAttribute Pet pet, @RequestParam(name = "sex") String sex) {
+        pet.setSex(sex);
+        petDao.save(pet);
+        return "redirect:/home";
     }
 
     @PostMapping("/create/pet")
