@@ -21,13 +21,13 @@ public class PetController {
     @GetMapping("create/pet")
     public String createPet(Model model) {
         model.addAttribute("pet", new Pet());
-        return "pets";
+        return "shelter/pets";
     }
 
     @PostMapping("create/pet")
     public String savePet(@ModelAttribute Pet pet) {
         petDao.save(pet);
-        return "redirect:/home";
+        return "redirect:shelter/home";
     }
 
     @GetMapping("adopter/pet/{id}")
