@@ -57,10 +57,13 @@ public class SearchController {
         List<Pet> petByName = petDao.findAllByName(search);
         List<Pet> pets = new ArrayList<>();
         List<Program> programs = new ArrayList<>();
+        List<Shelter> shelters = new ArrayList<>();
         List<Program> programByName = programDao.findAllByName(search);
         List<Program> programByType = programDao.findAllByType(search);
         List<Program> programByTime = programDao.findAllByTime(search);
         List<Program> programByPetType = programDao.findAllByPetType(search);
+        List<Shelter> shelterByName = shelterDao.findAllByName(search);
+        List<Shelter> shelterByLocation = shelterDao.findAllByLocation(search);
         pets.addAll(petByBreed);
         pets.addAll(petByColor);
         pets.addAll(petByName);
@@ -68,6 +71,8 @@ public class SearchController {
         programs.addAll(programByType);
         programs.addAll(programByTime);
         programs.addAll(programByPetType);
+        shelters.addAll(shelterByLocation);
+        shelters.addAll(shelterByName);
         if (isNumeric(search)){
             int searchNumber = Integer.parseInt(search);
             List<Pet> petByAge = petDao.findAllByAge(searchNumber);
@@ -79,6 +84,7 @@ public class SearchController {
         }
         model.addAttribute("pets", pets);
         model.addAttribute("programs", programs);
+        model.addAttribute("shelters", shelters);
         return "search";
     }
 }

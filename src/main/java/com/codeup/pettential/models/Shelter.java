@@ -90,6 +90,9 @@ public class Shelter {
         this.email = email;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
     public List<Pet> getPets(){
         return pets;
     }

@@ -6,10 +6,7 @@ import com.codeup.pettential.repositories.ProgramRepository;
 import com.codeup.pettential.repositories.ShelterRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,7 +30,9 @@ public class ProgramController {
     }
 
     @PostMapping("shelter/createProgram")
-    public String saveProgram(@ModelAttribute Program program) {
+    public String saveProgram(@ModelAttribute Program program, @RequestParam(name = "shelter") Long shelter) {
+        Shelter shelter1 = shelterDao.findOne(shelter);
+        program.setShelter(shelter1);
         programDao.save(program);
         return "redirect:/home";
     }

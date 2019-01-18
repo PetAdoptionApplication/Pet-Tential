@@ -35,9 +35,9 @@ private String breed;
     <br/>
     <br/>
     <label for="shelter">Shelter</label>
-    <select id="shelter">
+    <select id="shelter" name="shelter">
         <div th:each="shelter : ${shelters}">
-            <option th:value="${shelter.name}"><span th:text="${shelter.name}"></span></option>
+            <option th:value="${shelter.id}"><span th:text="${shelter.name}"></span></option>
         </div>
     </select>
     <button type="submit" class="btn btn-primary btn-lg">Submit</button>
