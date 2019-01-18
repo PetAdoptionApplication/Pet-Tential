@@ -31,6 +31,9 @@ public class Shelter {
     @OneToMany
     private List<Program> programs;
 
+    @OneToMany
+    private List<App> applicants;
+
     public Shelter() {
 
     }
@@ -41,6 +44,10 @@ public class Shelter {
         this.number = number;
         this.numberOfPets = numberOfPets;
         this.email = email;
+    }
+
+    public long getId(){
+        return id;
     }
 
     public String getName() {
@@ -81,5 +88,16 @@ public class Shelter {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Pet> getPets(){
+        return pets;
+    }
+
+    public List<Program> getPrograms(){
+        return programs;
+    }
+    public List<App> getApplicants(){
+        return applicants;
     }
 }
