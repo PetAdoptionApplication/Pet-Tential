@@ -21,7 +21,7 @@ public class PreferencesControllers {
     @GetMapping ("adopter/preferences")
     public String createPreference(Model model) {
         model.addAttribute("preference", new Preferences());
-        return "preferences";
+        return "adopter/preferences";
     }
 
     @PostMapping ("adopter/preferences")

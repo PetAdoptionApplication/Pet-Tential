@@ -33,10 +33,10 @@ public class Program {
     private int length;
 
     @Column
-    private int time;
+    private String time;
 
     @Column
-    private String breed;
+    private String petType;
 
     @ManyToOne
     @JoinColumn (name = "shelter_id")
@@ -46,13 +46,13 @@ public class Program {
 
     }
 
-    public Program (String name, String type, String description, int length, int time, String breed) {
+    public Program (String name, String type, String description, int length, String time, String PetType) {
         this.name = name;
         this.type = type;
         this.description = description;
         this.length = length;
         this.time = time;
-        this.breed = breed;
+        this.petType = petType;
     }
 
     public String getType() {
@@ -79,20 +79,20 @@ public class Program {
         this.length = length;
     }
 
-    public int getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
-    public String getBreed() {
-        return breed;
+    public String getPetType() {
+        return petType;
     }
 
-    public void setBreed(String breed) {
-        this.breed = breed;
+    public void setPetType(String petType) {
+        this.petType = petType;
     }
 
     public String getName() {
