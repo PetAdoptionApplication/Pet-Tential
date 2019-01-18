@@ -2,10 +2,8 @@ package com.codeup.pettential.controllers;
 
 import com.codeup.pettential.models.Shelter;
 import com.codeup.pettential.models.User;
-import com.codeup.pettential.repositories.AppRepository;
-import com.codeup.pettential.repositories.ProgramRepository;
-import com.codeup.pettential.repositories.ShelterRepository;
-import com.codeup.pettential.repositories.Users;
+import com.codeup.pettential.repositories.*;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,13 +18,15 @@ public class UserController {
     private ShelterRepository shelterDao;
     private ProgramRepository programDao;
     private AppRepository appDao;
+    private UserRepository userDao;
 
-    public UserController(Users users, PasswordEncoder passwordEncoder, ShelterRepository shelterDao, ProgramRepository programDao, AppRepository appDao) {
+    public UserController(Users users, PasswordEncoder passwordEncoder, ShelterRepository shelterDao, ProgramRepository programDao, AppRepository appDao, UserRepository userDao) {
         this.users = users;
         this.passwordEncoder = passwordEncoder;
         this.shelterDao = shelterDao;
         this.programDao = programDao;
         this.appDao = appDao;
+        this.userDao = userDao;
     }
 
     @GetMapping("/sign-up")
@@ -40,7 +40,16 @@ public class UserController {
         model.addAttribute("shelter", shelterDao.findAll());
         model.addAttribute("program", programDao.findAll());
         model.addAttribute("app", appDao.findAll());
-        return "landing";
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (userDao.findOne(user.getId()).getIsShelter()) {
+            return "shelter/home";
+        } if (!userDao.findOne(user.getId()).getIsShelter()) {
+            return "adopter/home";
+        } else {
+            return "landing";
+        }
     }
 
     @PostMapping("/sign-up")
