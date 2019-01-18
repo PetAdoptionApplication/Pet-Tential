@@ -35,7 +35,7 @@ public class ProgramController {
     @PostMapping("shelter/createProgram")
     public String saveProgram(@ModelAttribute Program program) {
         programDao.save(program);
-        return "redirect:/landing";
+        return "redirect:/home";
     }
 
     @GetMapping("adopter/programs")

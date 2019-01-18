@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<h1>Search</h1>
+<form action="/search" method="post">
+    <input type="text" name="search"/>
+    <input type="submit"/>
+</form>
+<!--<div th:each="program : ${programs}">-->
+    <!--<p th:text="${program.getName()}"></p>-->
+<!--</div>-->
+<h1>Pets that match your search</h1>
+<div th:each="pet : ${pets}">
+    <p th:text="${pet.name}"></p>
+</div>
+
+<h1>Programs that match your search</h1>
+<div th:each="program : ${programs}">
+    <p th:text="${program.name}"></p>
+</div>
+
+</body>
+</html>
