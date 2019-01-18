@@ -35,7 +35,7 @@ public class User {
     private Boolean notifications;
 
     @Column
-    private Boolean isShelter;
+    private boolean isShelter;
 
 
     @OneToMany

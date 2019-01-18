@@ -13,6 +13,9 @@ public class Pet {
     private String breed;
 
     @Column
+    private String name;
+
+    @Column
     private int age;
 
     @Column
@@ -42,14 +45,17 @@ public class Pet {
 
     }
 
-    public Pet (String breed, int age, String color, String description, String picture, String sex, int weight) {
+    public Pet(String breed, String name, int age, String color, String description, String picture, String sex, int weight, Shelter shelter, User user) {
         this.breed = breed;
+        this.name = name;
         this.age = age;
         this.color = color;
         this.description = description;
         this.picture = picture;
         this.sex = sex;
         this.weight = weight;
+        this.shelter = shelter;
+        this.user = user;
     }
 
     public long getId() {
@@ -110,5 +116,13 @@ public class Pet {
 
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
