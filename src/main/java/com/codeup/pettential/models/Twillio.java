@@ -63,9 +63,8 @@ public class Twillio {
 
     }
 
-    public static void sendMessage(User user) {
+    public static void sendMessage(String userNumber) {
 
-        if (user != null) {
             String ACCOUNT_SID = "ACac2b4d5200d52339abe5d570fdbfcc28";
             String AUTH_TOKEN = "1afd3e99cf55ec6173dbf2b3cf7ad0d6";
 
@@ -73,12 +72,12 @@ public class Twillio {
             Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
             Message message = Message.creator(
-                    new PhoneNumber("+12108383684"),
+                    new PhoneNumber("+" + userNumber),
                     new PhoneNumber("+18302660958"),
                     "This is the ship that made the Kessel Run in fourteen parsecs?").create();
 
             System.out.println(message.getSid());
-        }
+
     }
 
         public static void main(String[] args) {
