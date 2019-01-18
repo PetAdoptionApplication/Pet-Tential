@@ -29,4 +29,9 @@ public class ShelterController {
         model.addAttribute("shelter", shelterDao.findOne(id));
         return "shelter/shelter";
     }
+
+    @GetMapping("shelter/home")
+    public String getShelterHome(){
+        return "shelter/home";
+    }
 }
