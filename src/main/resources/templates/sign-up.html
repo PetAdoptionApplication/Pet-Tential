@@ -1,34 +1,57 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="partials :: head">
     <meta charset="UTF-8" />
     <title>Sign up</title>
 </head>
 <body>
-<h1>Create an account</h1>
-<form th:action="@{/sign-up}" method="POST" th:object="${user}">
+<nav th:replace="partials :: navbar"/>
+
+<div class="container">
+
+
+<form th:action="@{/sign-up}" method="POST" class="uk-margin-top uk-position-center" th:object="${user}">
+    <h1>Create an account</h1>
+    <div class="uk-margin">
     <label for="username">Username</label>
-    <input id="username" th:field="*{username}" />
+    <input id="username" class="uk-input uk-form-width-medium" type="text" th:field="*{username}" />
+    </div>
 
+    <div class="uk-margin">
     <label for="email">Email</label>
-    <input id="email" th:field="*{email}" />
+    <input id="email" class="uk-input uk-form-width-medium" type="text" th:field="*{email}" />
+    </div>
 
+    <div class="uk-margin">
     <label for="password">Password</label>
-    <input id="password" type="password" th:field="*{password}" />
+    <input id="password" class="uk-input uk-form-width-medium" type="password" th:field="*{password}" />
+    </div>
 
+    <div class="uk-margin">
     <label for="name">Name</label>
-    <input id="name" type="text" th:field="*{name}" />
+    <input id="name" class="uk-input uk-form-width-medium" type="text" th:field="*{name}" />
+    </div>
 
+    <div class="uk-margin">
     <label for="address">Address</label>
-    <input id="address" type="text" th:field="*{address}" />
+    <input id="address" class="uk-input uk-form-width-medium" type="text" th:field="*{address}" />
+    </div>
 
+    <div class="uk-margin">
     <label for="number">Number</label>
-    <input id="number" type="text" th:field="*{number}" />
+    <input id="number" class="uk-input uk-form-width-medium" type="text" th:field="*{number}" />
+    </div>
 
+    <div class="uk-margin">
     <label for="shelter"> Trying to adopt out animals? </label>
-    <input type="checkbox" id="shelter" th:field="*{isShelter}"/>
+    <input type="checkbox" class="uk-checkbox" id="shelter" th:field="*{isShelter}"/>
+    </div>
 
     <input value="Sign me up!" type="submit" />
 </form>
+
+</div>
+<div th:replace="partials :: footer" />
+<div th:replace="partials :: scripts" />
 </body>
 </html>

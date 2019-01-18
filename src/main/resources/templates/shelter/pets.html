@@ -1,49 +1,61 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace = "partials :: head('Here are some pets available!')">
-    <div class="container">
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container" style="background-color: yellow">
-                <h1 class="display-4"><strong>Shelters Pets Page</strong></h1>
-            </div>
-        </div>
-    </div>
+<head th:replace = "partials :: head">
+    <!--<div class="container">-->
+        <!--<div class="jumbotron jumbotron-fluid">-->
+            <!--<div class="container" style="background-color: yellow">-->
+                <!--<h1 class="display-4"><strong>Shelters Pets Page</strong></h1>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 </head>
 <body>
 
 <nav th:replace="partials :: navbar"/>
-<header th:replace="partials::header"/>
 
 
-<form action="/create/pet" method="post" th:object="${pet}" >
-    <input class="form-control" type="text" placeholder="Enter Pet name Here" th:field="*{name}"/>
-    <br/>
-    <br/>
-    <input class="form-control" type="text" placeholder="Enter Pet Breed Here" th:field="*{breed}"/>
-    <br/>
-    <br/>
-    <input class="form-control" type="text" placeholder="Enter Pet Age Here" th:field="*{age}"/>
-    <br/>
-    <br/>
-    <input class="form-control" type="text" placeholder="Enter Color of Pet" th:field="*{color}"/>
-    <br/>
-    <br/>
-    <input class="form-control" type="text" placeholder="Enter Weight of Pet" th:field="*{weight}"/>
-    <br/>
-    <br/>
-    <label>Description</label>
-    <textarea cols="30" rows="10" th:field="*{description}"></textarea>
-    <br/>
-    <br/>
-    <input class="form-control" type="text" placeholder="Enter link for pets pic" th:field="*{picture}"/>
-    <br/>
-    <br/>
-    <select name="sex">
-        <option value="male">Male</option>
-        <option value="f">Female</option>
-    </select>
-    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-</form>
+
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <form action="/create/pet" method="post" th:object="${pet}" >
+            <h5 class="mx-auto">Create a Pet!</h5>
+
+                Name:
+                <input class="form-control" type="text" placeholder="Enter Pet name Here" th:field="*{name}"/>
+                <br/>
+                Breed:
+                <input class="form-control" type="text" placeholder="Enter Pet Breed Here" th:field="*{breed}"/>
+                <br/>
+                Age:
+                <input class="form-control" type="text" placeholder="Enter Pet Age Here" th:field="*{age}"/>
+                <br/>
+                Color:
+                <input class="form-control" type="text" placeholder="Enter Color of Pet" th:field="*{color}"/>
+                <br/>
+                Weight:
+                <input class="form-control" type="text" placeholder="Enter Weight of Pet" th:field="*{weight}"/>
+                <br/>
+                Description:
+                <label>Description</label>
+                <textarea cols="30" rows="10" th:field="*{description}"></textarea>
+                <br/>
+                Picture:
+                <input class="form-control" type="text" placeholder="Enter link for pets pic" th:field="*{picture}"/>
+                <br/>
+                Sex
+                <select th:field="*{sex}">
+                    <option value="m">Male</option>
+                    <option value="f">Female</option>
+                </select>
+                <br/>
+                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
 
 
 <footer th:replace="partials::footer" />
