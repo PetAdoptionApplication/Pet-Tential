@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials::head('Shelter Registration')"/>
+<body>
+
+<header th:replace="partials::header"/>
+
+<h3> Shelter Registration Page </h3>
+<form th:object="${newShelter}" method="post" th:action="@{/shelter/register}">
+    <label for="nameofShelter"> Name: </label>
+    <input type="text" th:field="*{name}" id="nameofShelter"/>
+
+    <label for="location"> Location: </label>
+    <input type="text" th:field="*{location}" id="location"/>
+
+    <label for="phoneNum"> Phone Number: </label>
+    <input type="tel" th:field="*{number}" id="phoneNum"/>
+
+    <label for="email"> Email: </label>
+    <input type="email" th:field="*{email}" id="email"/>
+
+    <label for="numPets"> Pets Available: </label>
+    <input type="number" th:field="*{numberOfPets}" th:checked="${flag}" id="numPets"/>
+
+    <button class="btn button-primary" type="submit"> Register </button>
+</form>
+
+
+<footer th:replace="partials::footer"/>
+
+</body>
+</html>
