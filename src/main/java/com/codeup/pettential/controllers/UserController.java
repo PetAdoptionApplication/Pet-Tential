@@ -41,7 +41,7 @@ public class UserController {
         model.addAttribute("program", programDao.findAll());
         model.addAttribute("app", appDao.findAll());
 
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getDetails();
 
         if (userDao.findOne(user.getId()).getIsShelter()) {
             return "shelter/home";
@@ -77,5 +77,9 @@ public class UserController {
     public String saveShelter (@ModelAttribute Shelter newShelter){
         shelterDao.save(newShelter);
         return "redirect:/shelter/home";
+    }
+
+    public static void main(String[] args) {
+        System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
     }
 }
