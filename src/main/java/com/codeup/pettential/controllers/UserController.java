@@ -47,6 +47,9 @@ public class UserController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         users.save(user);
-        return "redirect:/login";
+        if (user.getShelter()) {
+            return "redirect:/shelter/register";
+        }
+            return "redirect:/login";
     }
 }
