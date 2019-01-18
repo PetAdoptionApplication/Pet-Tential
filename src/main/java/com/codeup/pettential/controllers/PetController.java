@@ -30,7 +30,7 @@ public class PetController {
         return "shelter/pets";
     }
 
-    @PostMapping("create/pet")
+    @PostMapping("/create/pet")
     public String savePet(@ModelAttribute Pet pet) {
         User user;
         petDao.save(pet);
@@ -38,7 +38,7 @@ public class PetController {
         if (user != null) {
             Twillio.sendMessage(user.getNumber());
         }
-        return "redirect:shelter/home";
+        return "redirect:/shelter/home";
     }
 
     @GetMapping("adopter/pet/{id}")
