@@ -24,7 +24,7 @@ public class PreferencesControllers {
         return "adopter/preferences";
     }
 
-    @PostMapping ("adopter/preferences")
+    @PostMapping ("/adopter/preferences")
     public String savePreferences(@ModelAttribute Preferences preferences) {
         preferencesDao.save(preferences);
         return "redirect:/home";
