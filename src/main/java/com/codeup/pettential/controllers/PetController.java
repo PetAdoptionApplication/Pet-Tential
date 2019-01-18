@@ -2,6 +2,7 @@ package com.codeup.pettential.controllers;
 
 import com.codeup.pettential.models.Pet;
 import com.codeup.pettential.models.Preferences;
+import com.codeup.pettential.models.User;
 import com.codeup.pettential.repositories.PetRepository;
 import com.codeup.pettential.repositories.PreferencesRepository;
 import org.springframework.stereotype.Controller;
@@ -31,8 +32,12 @@ public class PetController {
 
     @PostMapping("create/pet")
     public String savePet(@ModelAttribute Pet pet) {
+        User user;
         petDao.save(pet);
-        Twillio.sendMessage(Twillio.checkPreferences(preferenceDao, pet));
+        user = Twillio.checkPreferences(preferenceDao, pet);
+        if (user != null) {
+            Twillio.sendMessage(user.getNumber());
+        }
         return "redirect:shelter/home";
     }
 
