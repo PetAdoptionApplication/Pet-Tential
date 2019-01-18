@@ -31,16 +31,10 @@ public class PetController {
         return "shelter/pets";
     }
 
-    @PostMapping("create/pet")
-    public String savePet(@ModelAttribute Pet pet, @RequestParam(name = "sex") String sex) {
-        pet.setSex(sex);
-        petDao.save(pet);
-        return "redirect:/home";
-    }
-
     @PostMapping("/create/pet")
-    public String savePet(@ModelAttribute Pet pet) {
+    public String savePet(@ModelAttribute Pet pet, @RequestParam(name = "sex") String sex) {
         User user;
+        pet.setSex(sex);
         petDao.save(pet);
         user = Twillio.checkPreferences(preferenceDao, pet);
         if (user != null) {
