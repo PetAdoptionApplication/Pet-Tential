@@ -18,16 +18,16 @@ public class PetController {
         this.petDao = petDao;
     }
 
-    @GetMapping("/create/pets")
+    @GetMapping("create/pet")
     public String createPet(Model model) {
         model.addAttribute("pet", new Pet());
-        return "shelter/createpets";
+        return "create/pet";
     }
 
-    @PostMapping("/create/pets")
+    @PostMapping("create/pet")
     public String savePet(@ModelAttribute Pet pet) {
         petDao.save(pet);
-        return "redirect:shelter/home";
+        return "redirect:/home";
     }
 
     @GetMapping("adopter/pet/{id}")
