@@ -1,5 +1,6 @@
 package com.codeup.pettential.controllers;
 
+import com.codeup.pettential.models.Shelter;
 import com.codeup.pettential.models.User;
 import com.codeup.pettential.repositories.AppRepository;
 import com.codeup.pettential.repositories.ProgramRepository;
@@ -54,5 +55,18 @@ public class UserController {
             returnValue = "redirect:login";
         }
         return returnValue;
+    }
+
+    //For the Shelter Registration form
+    @GetMapping("/shelter/register")
+    public String createShelter(Model model){
+        model.addAttribute("newShelter", new Shelter());
+        return "shelter/register";
+    }
+
+    @PostMapping("/shelter/register")
+    public String saveShelter (@ModelAttribute Shelter shelter){
+        shelterDao.save(shelter);
+        return "redirect:/shelter/home";
     }
 }
