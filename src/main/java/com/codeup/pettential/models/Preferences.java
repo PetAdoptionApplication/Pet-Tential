@@ -29,17 +29,16 @@ public class Preferences {
     @OneToOne
     private User owner;
 
-    public Preferences() {
+    public Preferences () {
 
     }
 
-    public Preferences(String breed, int age, String color, String sex, int weight, User owner) {
+    public Preferences(String breed, int age, String color, String sex, int weight) {
         this.breed = breed;
         this.age = age;
         this.color = color;
         this.sex = sex;
         this.weight = weight;
-        this.owner = owner;
     }
 
     public long getId() {
