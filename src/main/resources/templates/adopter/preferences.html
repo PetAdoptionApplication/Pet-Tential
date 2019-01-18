@@ -6,6 +6,7 @@
 </head>
 <body>
 
+<nav th:replace="partials :: navbar"/>
 
 <form action="/adopter/preferences" method="post" th:object="${preference}" >
     <label>Breed</label>
