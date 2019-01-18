@@ -6,10 +6,10 @@
 </head>
 <body>
 <nav th:replace="partials :: navbar"/>
-<header th:replace="partials::header"/>
+
 <div class="container">
     <div class="row text-center" style="margin-bottom: 20px">
-        <h2 th:text="${pet.getBreed()}" class="underline"/>
+        <h2 th:text="${pet.getBreed()}" class="underline" />
     </div>
     <div class="row text-center" style="margin-bottom: 20px">
         <p th:text="${pet.getAge()}" />

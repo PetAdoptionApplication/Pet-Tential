@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials::head('Shelter Registration')"/>
+<head th:replace="partials::head"/>
 <body>
 
-<header th:replace="partials::header"/>
+<nav th:replace="partials :: navbar"/>
 
 <h3> Shelter Registration Page </h3>
 <form th:object="${newShelter}" method="post" th:action="@{/shelter/register}">
