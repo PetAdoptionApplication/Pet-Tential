@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+        <skipTests>true</skipTests>
 	</properties>
 
 	<dependencies>
@@ -23,6 +24,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>com.twilio.sdk</groupId>
+            <artifactId>twilio</artifactId>
+            <version>7.34.1</version>
+        </dependency>
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
