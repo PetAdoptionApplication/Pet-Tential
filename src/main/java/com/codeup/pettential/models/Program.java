@@ -102,4 +102,28 @@ public class Program {
     public void setName(String name) {
         this.name = name;
     }
+
+    public List<User> getProgramUsers() {
+        return programUsers;
+    }
+
+    public void setProgramUsers(List<User> programUsers) {
+        this.programUsers = programUsers;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Shelter getShelter() {
+        return shelter;
+    }
+
+    public void setShelter(Shelter shelter) {
+        this.shelter = shelter;
+    }
 }

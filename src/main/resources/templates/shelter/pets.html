@@ -16,6 +16,9 @@
 
 
 <form action="/create/pet" method="post" th:object="${pet}" >
+    <input class="form-control" type="text" placeholder="Enter Pet name Here" th:field="*{name}"/>
+    <br/>
+    <br/>
     <input class="form-control" type="text" placeholder="Enter Pet Breed Here" th:field="*{breed}"/>
     <br/>
     <br/>
@@ -35,8 +38,8 @@
     <input class="form-control" type="text" placeholder="Enter link for pets pic" th:field="*{picture}"/>
     <br/>
     <br/>
-    <select th:field="*{sex}">
-        <option value="m">Male</option>
+    <select name="sex">
+        <option value="male">Male</option>
         <option value="f">Female</option>
     </select>
     <button type="submit" class="btn btn-primary btn-lg">Submit</button>

@@ -10,9 +10,7 @@
     <input type="text" name="search"/>
     <input type="submit"/>
 </form>
-<!--<div th:each="program : ${programs}">-->
-    <!--<p th:text="${program.getName()}"></p>-->
-<!--</div>-->
+
 <h1>Pets that match your search</h1>
 <div th:each="pet : ${pets}">
     <p th:text="${pet.name}"></p>
@@ -21,6 +19,11 @@
 <h1>Programs that match your search</h1>
 <div th:each="program : ${programs}">
     <p th:text="${program.name}"></p>
+</div>
+
+<h1>Shelters that match your search</h1>
+<div th:each="shelter : ${shelters}">
+    <p th:text="${shelter.name}"></p>
 </div>
 
 </body>
