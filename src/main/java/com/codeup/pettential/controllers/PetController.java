@@ -39,9 +39,14 @@ public class PetController {
     @PostMapping("/create/pet")
     public String savePet(@ModelAttribute Pet pet, @RequestParam(name = "sex") String sex,
                           @RequestParam(name = "shelter") long shelter) {
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() == "anonymousUser"){
+            return "redirect:/login";
+        }
         User user;
+        User user1 = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         pet.setSex(sex);
         pet.setShelter(shelterDao.findOne(shelter));
+        pet.setUser(user1);
         petDao.save(pet);
         user = Twillio.checkPreferences(preferenceDao, pet);
         if (user != null) {

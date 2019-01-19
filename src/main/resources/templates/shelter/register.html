@@ -6,7 +6,7 @@
 <nav th:replace="partials :: navbar"/>
 
 <h3> Shelter Registration Page </h3>
-<form th:object="${newShelter}" method="post" th:action="@{/shelter/register}">
+<form th:object="${newShelter}" method="post" th:action="@{'/shelter/register/' + ${user.getId()}}">
     <label for="nameofShelter"> Name: </label>
     <input type="text" th:field="*{name}" id="nameofShelter"/>
 

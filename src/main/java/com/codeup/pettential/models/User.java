@@ -44,6 +44,7 @@ public class User {
     @ManyToMany
     private List<Program> programs;
 
+
     public User(User copy) {
         id = copy.id;
         email = copy.email;

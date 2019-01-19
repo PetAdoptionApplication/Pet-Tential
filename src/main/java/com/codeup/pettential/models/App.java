@@ -9,6 +9,9 @@ public class App {
     @GeneratedValue
     private long id;
 
+    @Column
+    private Boolean approvalStatus;
+
     @OneToOne
     private User user;
 
@@ -48,5 +51,13 @@ public class App {
 
     public void setShelter(Shelter shelter) {
         this.shelter = shelter;
+    }
+
+    public Boolean getApprovalStatus() {
+        return approvalStatus;
+    }
+
+    public void setApprovalStatus(Boolean approvalStatus) {
+        this.approvalStatus = approvalStatus;
     }
 }
