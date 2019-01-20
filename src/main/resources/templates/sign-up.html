@@ -5,49 +5,51 @@
     <title>Sign up</title>
 </head>
 <body>
+<div class="container uk-margin-bottom">
 <nav th:replace="partials :: navbar"/>
+</div>
+<div class="container uk-flex">
 
-<div class="container">
 
-
-<form th:action="@{/sign-up}" method="POST" class="uk-margin-top uk-position-center" th:object="${user}">
-    <h1>Create an account</h1>
+<form th:action="@{/sign-up}" method="POST" class="uk-margin-auto uk-width-1-2 " th:object="${user}">
+    <h1 class="uk-margin-top">Create an account</h1>
     <div class="uk-margin">
     <label for="username">Username</label>
-    <input id="username" class="uk-input uk-form-width-medium" type="text" th:field="*{username}" />
+    <input id="username" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{username}" />
     </div>
 
-    <div class="uk-margin">
+    <div>
     <label for="email">Email</label>
-    <input id="email" class="uk-input uk-form-width-medium" type="text" th:field="*{email}" />
+    <input id="email" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{email}" />
     </div>
 
-    <div class="uk-margin">
+    <div>
     <label for="password">Password</label>
-    <input id="password" class="uk-input uk-form-width-medium" type="password" th:field="*{password}" />
+    <input id="password" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="password" th:field="*{password}" />
     </div>
 
-    <div class="uk-margin">
+    <div>
     <label for="name">Name</label>
-    <input id="name" class="uk-input uk-form-width-medium" type="text" th:field="*{name}" />
+    <input id="name" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{name}" />
     </div>
 
-    <div class="uk-margin">
+    <div>
     <label for="address">Address</label>
-    <input id="address" class="uk-input uk-form-width-medium" type="text" th:field="*{address}" />
+    <input id="address" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{address}" />
     </div>
 
-    <div class="uk-margin">
-    <label for="number">Number</label>
-    <input id="number" class="uk-input uk-form-width-medium" type="text" th:field="*{number}" />
+    <div>
+    <label for="number">Phone Number</label>
+    <input id="number" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{number}" />
     </div>
 
-    <div class="uk-margin">
-    <label for="shelter"> Trying to adopt out animals? </label>
-    <input type="checkbox" class="uk-checkbox" id="shelter" th:field="*{isShelter}"/>
+    <div>
+    <label for="shelter"> Are you a shelter? </label>
+    <input type="checkbox" class="uk-checkbox uk-margin-small-left" id="shelter" th:field="*{isShelter}"/>
     </div>
-
-    <input value="Sign me up!" type="submit" />
+    <div class="uk-width-expand uk-flex">
+        <button class="uk-button uk-button-default uk-margin-auto uk-width-1-2" value="Sign me up!" type="submit">Submit</button>
+    </div>
 </form>
 
 </div>

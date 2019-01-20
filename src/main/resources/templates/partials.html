@@ -5,13 +5,14 @@
 <!--<div th:fragment="head (title)" >-->
 <!--<title><span th:text="${title}"></span></title>-->
 <!--</div>-->
-<head th:fragment="head"><span><strong>Welcome to Pet-Tential</strong></span>
+<head th:fragment="head">
     <meta charset="UTF-8"/>
     <title th:text="${title}"></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/css/uikit.min.css" />
 </head>
 
 <body>
+<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar uk-margin-bottom">
 <nav th:fragment="navbar" style="background-color: purple" class="uk-navbar-container uk-margin" uk-navbar="mode: click">
     <div class="uk-navbar-left">
     <ul class="uk-navbar-nav">
@@ -33,10 +34,11 @@
     </ul>
     </div>
 </nav>
+</div>
 
 <div th:fragment="footer">
-    <footer class="footer">
-        2019 Codeup. For Educational Purposes Only.
+    <footer class="footer uk-flex">
+        <span class="uk-margin-auto">2019 Codeup. For Educational Purposes Only.</span>
     </footer>
 </div>
 <div th:fragment="scripts">
