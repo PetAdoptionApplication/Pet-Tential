@@ -16,11 +16,18 @@
         <div class="col-md-4 col-sm-12">
 
             <!--TODO: Show all adoption applicants here -->
-            <div th:each="applicant : ${applicants}">
+            <div th:each="app : ${apps}">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h3 class= "card-title"><a th:href=" 'adopter/' + ${adopter.getId()}"><span class="card-link" th:text="${adopter.getName()}"></span></a> </h3>
+                            <h1 th:text="${app.getPet().getName()}"></h1>
+                            <h1 th:text="${app.getUser().getName()}"></h1>
+                            <form th:action="'/adopt/' + ${app.getPet().getId()} + '/accept'" method="post" >
+                                <input type="submit"/>
+                            </form>
+                            <form th:action="'/adopt/' + ${app.getPet().getId()} + '/reject'" method="post" >
+                                <input type="submit"/>
+                            </form>
                         </div>
                     </div>
                 </div>

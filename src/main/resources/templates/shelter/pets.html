@@ -50,6 +50,12 @@
                     <option value="f">Female</option>
                 </select>
                 <br/>
+                Shelters
+                <select id="shelter" name="shelter">
+                    <div th:each="shelter : ${shelters}">
+                        <option th:value="${shelter.id}"><span th:text="${shelter.name}"></span></option>
+                    </div>
+                </select>
                 <button type="submit" class="btn btn-primary btn-lg">Submit</button>
             </form>
         </div>

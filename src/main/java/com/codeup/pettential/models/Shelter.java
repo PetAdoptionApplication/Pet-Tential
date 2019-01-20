@@ -34,6 +34,9 @@ public class Shelter {
     @OneToMany
     private List<App> applicants;
 
+    @OneToOne
+    private User user;
+
     public Shelter() {
 
     }
@@ -102,5 +105,13 @@ public class Shelter {
     }
     public List<App> getApplicants(){
         return applicants;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
