@@ -1,5 +1,6 @@
 package com.codeup.pettential.controllers;
 
+import com.codeup.pettential.models.App;
 import com.codeup.pettential.models.Shelter;
 import com.codeup.pettential.models.User;
 import com.codeup.pettential.repositories.*;
@@ -9,7 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -37,14 +41,19 @@ public class UserController {
 
     @GetMapping("/home")
     public String success(Model model){
-        model.addAttribute("shelter", shelterDao.findAll());
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() == "anonymousUser"){
+            return "redirect:/login";
+        }
         model.addAttribute("program", programDao.findAll());
         model.addAttribute("app", appDao.findAll());
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (user.getIsShelter()) {
-            return "redirect:shelter/home";
+            Shelter thisShelter = shelterDao.findByUser(user);
+            List<App> appForThisShelter = appDao.findAllByShelter(thisShelter);
+            model.addAttribute("apps", appForThisShelter);
+            return "shelter/home";
         }else {
             return "landing";
         }
@@ -57,7 +66,7 @@ public class UserController {
         users.save(user);
         String returnValue = "";
         if (user.getIsShelter()){
-            returnValue = "redirect:shelter/register";
+            returnValue = "redirect:shelter/register/" + user.getId();
         } else {
             returnValue = "redirect:login";
         }
@@ -65,15 +74,19 @@ public class UserController {
     }
 
     //For the Shelter Registration form
-    @GetMapping("/shelter/register")
-    public String createShelter(Model model){
+    @GetMapping("/shelter/register/{id}")
+    public String createShelter(Model model, @PathVariable long id){
+        User user = userDao.findOne(id);
+        model.addAttribute("user", user);
         model.addAttribute("newShelter", new Shelter());
         return "shelter/register";
     }
 
-    @PostMapping("/shelter/register")
-    public String saveShelter (@ModelAttribute Shelter newShelter){
+    @PostMapping("/shelter/register/{id}")
+    public String saveShelter (@ModelAttribute Shelter newShelter, @PathVariable long id){
+        User user = userDao.findOne(id);
+        newShelter.setUser(user);
         shelterDao.save(newShelter);
-        return "redirect:/shelter/home";
+        return "redirect:/login";
     }
 }
