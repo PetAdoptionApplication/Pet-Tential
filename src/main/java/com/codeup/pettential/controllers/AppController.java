@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.transaction.Transactional;
+
 @Controller
 public class AppController {
     private AppRepository appDao;
@@ -40,24 +42,21 @@ public class AppController {
         app.setShelter(pet.getShelter());
         app.setUser(user);
         appDao.save(app);
-        return "redirect:/shelter/home";
-    }
-
-    @PostMapping("/adopt/{id}/accept")
-    public String acceptApp (@PathVariable Long id){
-        Pet pet = petDao.findOne(id);
-        App app = appDao.findByPet(pet);
-        app.setApprovalStatus(true);
-        appDao.save(app);
         return "redirect:/home";
     }
 
+    @Transactional
+    @PostMapping("/adopt/{id}/accept")
+    public String acceptApp (@PathVariable Long id){
+        petDao.delete(id);
+        appDao.delete(id);
+        return "redirect:/home";
+    }
+
+    @Transactional
     @PostMapping("/adopt/{id}/reject")
     public String rejectApp (@PathVariable Long id){
-        Pet pet = petDao.findOne(id);
-        App app = appDao.findByPet(pet);
-        app.setApprovalStatus(false);
-        appDao.save(app);
+        appDao.delete(id);
         return "redirect:/home";
     }
 }

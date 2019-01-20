@@ -41,6 +41,9 @@ public class UserController {
 
     @GetMapping("/home")
     public String success(Model model){
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() == "anonymousUser"){
+            return "redirect:/login";
+        }
         model.addAttribute("program", programDao.findAll());
         model.addAttribute("app", appDao.findAll());
 

@@ -11,4 +11,5 @@ import java.util.List;
 public interface AppRepository extends CrudRepository <App, Long> {
     List<App> findAllByShelter(Shelter shelter);
     App findByPet(Pet pet);
+    App deleteById(long id);
 }
