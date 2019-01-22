@@ -9,9 +9,10 @@
 <nav th:replace="partials :: navbar"/>
 </div>
 <div class="container uk-flex">
-
-
 <form th:action="@{/sign-up}" method="POST" class="uk-margin-auto uk-width-1-2 " th:object="${user}">
+    <div>
+        <span th:if="${error != null}" th:text="${error}">Static summary</span>
+    </div>
     <h1 class="uk-margin-top">Create an account</h1>
     <div class="uk-margin">
     <label for="username">Username</label>
@@ -25,6 +26,7 @@
 
     <div>
     <label for="password">Password</label>
+        <small>Password must be at least 8 characters long and include one number and one letter</small>
     <input id="password" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="password" th:field="*{password}" />
     </div>
 

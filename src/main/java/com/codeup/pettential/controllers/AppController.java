@@ -43,11 +43,13 @@ public class AppController {
     }
 
     @Transactional
-    @PostMapping("/adopt/{id}/accept")
-    public String acceptApp (@PathVariable Long id){
-        petDao.delete(id);
-        appDao.delete(id);
-//        Twillio.sendMessage("13259984721", "Youre pet request has been accepted");
+    @PostMapping("/adopt/{id}/accept/{id2}")
+    public String acceptApp (@PathVariable Long id, @PathVariable Long id2){
+        User user = userDao.findOne(id2);
+        App app = appDao.findOne(id);
+        app.setApprovalStatus(true);
+        Twillio.sendMessage(user.getNumber().replaceAll("[\\s\\-()]", ""), "Your adoption request has been accepted! Please contact the shelter for " +
+                "more information");
         return "redirect:/home";
     }
 

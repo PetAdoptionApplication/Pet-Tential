@@ -19,15 +19,17 @@
             <div th:each="app : ${apps}">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-body">
+                        <div th:if="${app.approvalStatus == null}">
+                        <div class="card-body" >
                             <h1 th:text="${app.getPet().getName()}"></h1>
                             <h1 th:text="${app.getUser().getName()}"></h1>
-                            <form th:action="'/adopt/' + ${app.getPet().getId()} + '/accept'" method="post" >
+                            <form th:action="'/adopt/' + ${app.getPet().getId()} + '/accept/' + ${app.getUser().getId()}" method="post" >
                                 <button type="submit">Accept Adoption Request</button>
                             </form>
                             <form th:action="'/adopt/' + ${app.getPet().getId()} + '/reject'" method="post" >
                                 <button type="submit">Reject Adoption Request</button>
                             </form>
+                        </div>
                         </div>
                     </div>
                 </div>

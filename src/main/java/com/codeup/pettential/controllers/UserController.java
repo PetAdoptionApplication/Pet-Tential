@@ -60,7 +60,16 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public String saveUser(@ModelAttribute User user){
+    public String saveUser(@ModelAttribute User user, Model model){
+        if (user.getUsername().equals("") || user.getPassword().equals("") || user.getEmail().equals("") ||
+                user.getAddress().equals("") || user.getNumber().equals("")){
+            model.addAttribute("error", "All Fields Must be filled in");
+            return "sign-up";
+        }
+        if (user.getPassword().length() < 8){
+            model.addAttribute("error", "Password Must Be 8 characters in length");
+            return "sign-up";
+        }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         users.save(user);
