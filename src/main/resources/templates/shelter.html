@@ -1,44 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials::head"/>
+<head th:replace="partials::head('Shelter')"/>
 <body>
 
 <nav th:replace="partials::navbar"/>
 
 
-<div class="container">
 
-   <div class="row">
-       <div class="col-md-4 offset-md-4">
+
+<div class="uk-container">
+       <div class="uk-width-expand">
            <h3 th:text="${shelter.name}"></h3>
-           <h4 th:text="${shelter.location}"></h4>
+           <label for="located"> Located at.... </label>
+           <h3 th:text="${shelter.location}" id="located"></h3>
        </div>
-   </div>
 
-    <div class="row">
-        <div class="col-md-6 col-sm-12">
-            <h3> Pets Available </h3>
+
+
+  <div class="uk-grid uk-grid-divider">
+
+        <div class="uk-width-1-2@m">
+          <h3> Pets Available </h3>
             <div th:each="pet : ${pets}">
-                <div class="card">
-                    <div class="card-body">
-                        <h4><a th:href="'/adopter/pet/' + pet.id"> <span th:text="${pet.name}"></span> </a> </h4>
+                <div class="uk-card">
+                    <div class="uk-card-media-top">
                         <img th:src="${pet.picture}"/>
+                    </div>
+                    <div class="uk-card-body uk-width-expand">
+                        <h4><a th:href="'/adopter/pet/' + pet.id"> <span th:text="${pet.name}"></span> </a> </h4>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-6 col-sm-12">
-            <h3> Programs </h3>
+
+
+          <div class="uk-width-1-2@m">
+              <h3> Programs </h3>
             <div th:each="program : ${programs}">
-                <div class="card">
-                    <div class="card-body">
+                <div class="uk-card">
+                    <div class="uk-card-body uk-width-expand">
                         <h4><a th:href="'/adopter/program/' + program.id"> <span th:text="${program.name}"></span> </a> </h4>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+          </div>
+
+  </div>
 </div>
 
 <footer th:replace="partials::footer"/>

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace = "partials :: head"/>
+<head th:replace = "partials :: head('Pet-tential')"/>
 <body>
-
 
     <div uk-height-viewport="expand: true" class="uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('https://www.dailydot.com/wp-content/uploads/f00/fe/3715697e82d68e33a9752a2ee757edba.jpg');">
 
@@ -36,13 +35,13 @@
 
     <div class="uk-height-large uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('http://www.insurancecredit.us/wp-content/uploads/2018/05/Veterinary-Pet-Insurance.jpg');">
 
-        <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5"><a href="sign-up.html">Register today!</a></h1>
-
+        <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5"><a href="/sign-up">Register today!</a></h1>
+        <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5"><a href="/home">Sign-in</a></h1>
     </div>
 
 
 
-    <!--<footer th:replace="partials::footer"/>-->
+    <footer th:replace="partials::footer"/>
     <div th:replace="partials::scripts"/>
 </body>
 </html>
