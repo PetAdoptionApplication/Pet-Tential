@@ -44,7 +44,7 @@ public class UserController {
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() == "anonymousUser"){
             return "redirect:/login";
         }
-        model.addAttribute("program", programDao.findAll());
+        model.addAttribute("programs", programDao.findAll());
         model.addAttribute("app", appDao.findAll());
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -55,7 +55,7 @@ public class UserController {
             model.addAttribute("apps", appForThisShelter);
             return "shelter/home";
         }else {
-            return "landing";
+            return "adopter/home";
         }
     }
 

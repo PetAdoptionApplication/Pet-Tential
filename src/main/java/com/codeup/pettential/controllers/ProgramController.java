@@ -43,7 +43,7 @@ public class ProgramController {
         return "adopter/programs";
     }
 
-    @GetMapping("adopter/program/{id}")
+    @PostMapping("adopter/program/{id}")
     public String getAllPrograms(@PathVariable long id, Model model) {
         model.addAttribute("program", programDao.findOne(id));
         return "adopter/program";
