@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Indiv Post</title>
+</head>
+<body>
+<nav th:replace="partials :: navbar"/>
+
+<div class="container">
+    <div class="row text-center" style="margin-bottom: 20px">
+        <h2 th:text="${preference.breed}" class="underline" />
+    </div>
+    <div class="row text-center" style="margin-bottom: 20px">
+        <h2 th:text="${preference.age}" class="underline" />
+    </div>
+    <div class="row text-center" style="margin-bottom: 20px">
+        <p th:text="${preference.color}" />
+    </div>
+    <div class="row text-center" style="margin-bottom: 50px">
+        <p th:text="${preference.sex}" />
+    </div>
+    <div class="row text-center" style="margin-bottom: 50px">
+        <p th:text="${preference.weight}" />
+    </div>
+    <form th:action="'/adopter/preferences/edit/' + ${preference.id}" method="get" >
+        <button type="submit">Edit Preference</button>
+    </form>
+</div>
+<footer th:replace="partials::footer" />
+<div th:replace="partials::scripts" />
+</body>
+</html>

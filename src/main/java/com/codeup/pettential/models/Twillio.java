@@ -63,7 +63,7 @@ public class Twillio {
 
     }
 
-    public static void sendMessage(String userNumber) {
+    public static void sendMessage(String userNumber, String textMessage) {
 
             String ACCOUNT_SID = "ACac2b4d5200d52339abe5d570fdbfcc28";
             String AUTH_TOKEN = "1afd3e99cf55ec6173dbf2b3cf7ad0d6";
