@@ -1,71 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace = "partials :: head">
-    <!--<div class="container">-->
-        <!--<div class="jumbotron jumbotron-fluid">-->
-            <!--<div class="container" style="background-color: yellow">-->
-                <!--<h1 class="display-4"><strong>Shelters Pets Page</strong></h1>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
+    <meta charset="UTF-8"/>
+    <title>Create Pet Form</title>
 </head>
 <body>
-
-<nav th:replace="partials :: navbar"/>
-
-
-
-<div class="container">
-    <div class="row">
-        <div class="col"></div>
-        <div class="col">
-            <form action="/create/pet" method="post" th:object="${pet}" >
-            <h5 class="mx-auto">Create a Pet!</h5>
-
-                Name:
-                <input class="form-control" type="text" placeholder="Enter Pet name Here" th:field="*{name}"/>
-                <br/>
-                Breed:
-                <input class="form-control" type="text" placeholder="Enter Pet Breed Here" th:field="*{breed}"/>
-                <br/>
-                Age:
-                <input class="form-control" type="text" placeholder="Enter Pet Age Here" th:field="*{age}"/>
-                <br/>
-                Color:
-                <input class="form-control" type="text" placeholder="Enter Color of Pet" th:field="*{color}"/>
-                <br/>
-                Weight:
-                <input class="form-control" type="text" placeholder="Enter Weight of Pet" th:field="*{weight}"/>
-                <br/>
-                Description:
-                <label>Description</label>
-                <textarea cols="30" rows="10" th:field="*{description}"></textarea>
-                <br/>
-                Picture:
-                <input class="form-control" type="text" placeholder="Enter link for pets pic" th:field="*{picture}"/>
-                <br/>
-                Sex
-                <select th:field="*{sex}">
-                    <option value="m">Male</option>
-                    <option value="f">Female</option>
-                </select>
-                <br/>
-                Shelters
-                <select id="shelter" name="shelter">
-                    <div th:each="shelter : ${shelters}">
-                        <option th:value="${shelter.id}"><span th:text="${shelter.name}"></span></option>
-                    </div>
-                </select>
-                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-            </form>
-        </div>
-        <div class="col"></div>
-    </div>
+<div class="container uk-margin-bottom">
+    <nav th:replace="partials :: navbar"/>
 </div>
 
 
-<footer th:replace="partials::footer" />
-<div th:replace="partials::scripts" />
+<div class="container uk-flex">
+
+    <form th:action="@{/create/pet}" method="POST" class="uk-margin-auto uk-width-1-2 " th:object="${pet}">
+        <h1 class="uk-margin-top">Create a New Pet</h1>
+        <div class="uk-margin">
+            <label for="breed">Breed</label>
+            <input id="breed" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{breed}" />
+        </div>
+
+        <div>
+            <label for="color">Color</label>
+            <input id="color" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="password" th:field="*{color}" />
+        </div>
+
+        <div>
+            <label for="name">Name</label>
+            <input id="name" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{name}" />
+        </div>
+
+        <div>
+            <label for="age">Age</label>
+            <input id="age" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{age}" />
+        </div>
+
+        <div>
+            <label for="weight">Weight</label>
+            <input id="weight" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{weight}" />
+        </div>
+
+    </form>
+</div>
+
+<div th:replace="partials :: footer" />
+<div th:replace="partials :: scripts" />
 
 </body>
 </html>
