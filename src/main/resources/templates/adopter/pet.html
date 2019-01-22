@@ -1,40 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Indiv Post</title>
-</head>
+<head th:replace="partials::head('Pet Page')"/>
 <body>
 <nav th:replace="partials :: navbar"/>
 
-<div class="container">
-    <div class="row text-center" style="margin-bottom: 20px">
-        <h2 th:text="${pet.name}" class="underline" />
-    </div>
-    <div class="row text-center" style="margin-bottom: 20px">
-        <h2 th:text="${pet.breed}" class="underline" />
-    </div>
-    <div class="row text-center" style="margin-bottom: 20px">
-        <p th:text="${pet.age}" />
-    </div>
-    <div class="row text-center" style="margin-bottom: 50px">
-        <p th:text="${pet.color}" />
-    </div>
-    <div class="row text-center" style="margin-bottom: 50px">
-        <p th:text="${pet.description}" />
-    </div>
-    <div class="row text-center" style="margin-bottom: 50px">
-        <p th:text="${pet.sex}" />
-    </div>
-    <div class="row text-center" style="margin-bottom: 50px">
-        <p th:text="${pet.weight}" />
-    </div>
-    <div class="row text-center" style="margin-bottom: 50px">
-        <img th:src="${pet.picture}" alt="Picture of Pet"/>
-    </div>
-    <form th:action="'/adopt/pet/' + ${pet.id}" method="post" >
-        <input type="submit"/>
-    </form>
+<div class="uk-container">
+    <h2 th:text="${pet.name}"/>
+    <img th:src="${pet.picture}" alt="Picture of Pet"/>
+    <h3 th:text="'Breed: '+${pet.breed}"/>
+    <h3 th:text="'Shelter' + ${}"
+    <p th:text="'Age (in years): '+${pet.age}" />
+    <p th:text="'Color: '+${pet.color}" />
+    <p th:text="'Description: '+${pet.description}" />
+    <p th:text="'Sex: '+${pet.sex}" />
+    <p th:text="'Weight (in pounds): '+${pet.weight}" />
 </div>
 <footer th:replace="partials::footer" />
 <div th:replace="partials::scripts" />
