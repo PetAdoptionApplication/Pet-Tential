@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Log In</title>
+<head th:replace="partials :: head">
 </head>
 <nav th:replace="partials :: navbar"/>
 <body>
-<h1>Log In</h1>
 <div th:if="${param.error}">
     Invalid Username and Password.
 </div>
 <div th:if="${param.logout}">
     You have been logged out.
 </div>
-
-<form th:action="@{/login}" method="post">
+<div class="container uk-flex">
+<form th:action="@{/login}" class="uk-margin-auto uk-width-1-2" method="post">
+    <h1 class="uk-margin-top">Login</h1>
+    <div class="uk-margin">
     <label for="username">Username</label>
-    <input id="username" name="username" type="text" />
+    <input id="username" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" name="username" type="text" />
+    </div>
+    <div>
     <label for="password">Password</label>
-    <input id="password" name="password" type="password" />
-    <input type="submit" value="Log In" />
+    <input id="password" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" name="password" type="password" />
+    </div>
+    <div class="uk-width-expand uk-flex">
+        <button type="submit" class="uk-button uk-button-default uk-margin-auto uk-width-1-2" value="Log In">Log-in</button>
+    </div>
 </form>
-
 </div>
 <div th:replace="partials :: footer"></div>
 <div th:replace="partials :: scripts"></div>
