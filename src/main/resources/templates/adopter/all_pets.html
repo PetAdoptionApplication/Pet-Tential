@@ -6,25 +6,28 @@
 <nav th:replace="partials :: navbar"/>
 
 
-  <div class="container">
       <!--TODO: Pass all pets to this page-->
-  <div class="row">
-   <div class="col-md-4 col-lg-3">
-       <div class="card" th:each="pet : ${pets}">
-        <div class="card-body">
-            <a th:href="'/adopter/pet/' + ${pet.id}"><img th:src="${pet.picture}" class="card-img-top" alt="Pet Image"/></a>
-            <h3 class="card-title" th:text="${pet.age}"></h3>
-            <p class="card-text" th:text="${pet.description}"></p>
-            <p class="card-text" th:text="${pet.sex}"></p>
+  <div class="container uk-flex">
+      <h1 class="uk-margin-top">List of Pets</h1>
+      <div class="uk-margin">
+        <div class="uk-card" th:each="pet : ${pets}">
+            <div class="uk-card-body">
+                <a th:href="'/adopter/pet/' + ${pet.id}"><img th:src="${pet.picture}" class="card-img-top" alt="Pet Image"/></a>
+                <p class="uk-card-title" th:text="${pet.age}"></p>
+                <p class="uk-card-text" th:text="${pet.breed}"></p>
+                <p class="uk-card-text" th:text="${pet.color}"></p>
+                <p class="uk-card-text" th:text="${pet.name}"></p>
+                <p class="uk-card-text" th:text="${pet.description}"></p>
+                <p class="uk-card-text" th:text="${pet.sex}"></p>
+                <p class="uk-card-text" th:text="${pet.weight}"></p>
+            </div>
         </div>
-    </div>
-   </div>
-  </div>
+     </div>
   </div>
 
 
-<footer th:replace="partials::footer"/>
 <div th:replace="partials::scripts"/>
+<footer th:replace="partials::footer"/>
 
 </body>
 </html>
