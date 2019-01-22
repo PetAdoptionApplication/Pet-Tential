@@ -33,7 +33,7 @@
         <img th:src="${pet.picture}" alt="Picture of Pet"/>
     </div>
     <form th:action="'/adopt/pet/' + ${pet.id}" method="post" >
-        <input type="submit"/>
+        <button type="submit">Submit Adoption Request</button>
     </form>
 </div>
 <footer th:replace="partials::footer" />

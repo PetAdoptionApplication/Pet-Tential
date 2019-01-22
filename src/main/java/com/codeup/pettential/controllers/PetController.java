@@ -50,7 +50,7 @@ public class PetController {
         petDao.save(pet);
         user = Twillio.checkPreferences(preferenceDao, pet);
         if (user != null) {
-            Twillio.sendMessage(user.getNumber());
+            Twillio.sendMessage(user.getNumber(), "Your prefrence has been pinged");
         }
         return "redirect:/shelter/home";
     }

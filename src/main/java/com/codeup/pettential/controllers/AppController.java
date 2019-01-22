@@ -1,9 +1,6 @@
 package com.codeup.pettential.controllers;
 
-import com.codeup.pettential.models.App;
-import com.codeup.pettential.models.Pet;
-import com.codeup.pettential.models.Shelter;
-import com.codeup.pettential.models.User;
+import com.codeup.pettential.models.*;
 import com.codeup.pettential.repositories.AppRepository;
 import com.codeup.pettential.repositories.PetRepository;
 import com.codeup.pettential.repositories.ShelterRepository;
@@ -50,6 +47,7 @@ public class AppController {
     public String acceptApp (@PathVariable Long id){
         petDao.delete(id);
         appDao.delete(id);
+//        Twillio.sendMessage("13259984721", "Youre pet request has been accepted");
         return "redirect:/home";
     }
 
