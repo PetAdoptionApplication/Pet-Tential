@@ -58,6 +58,8 @@ public class PetController {
     @GetMapping("adopter/pet/{id}")
     public String findPet(@PathVariable long id, Model model) {
         model.addAttribute("pet", petDao.findOne(id));
+        long shelterId = petDao.findOne(id).getShelter().getId();
+        model.addAttribute("shelter", shelterDao.findOne(shelterId));
         return "adopter/pet";
     }
 

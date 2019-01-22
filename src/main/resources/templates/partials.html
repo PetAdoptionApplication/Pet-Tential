@@ -5,30 +5,38 @@
 <!--<div th:fragment="head (title)" >-->
 <!--<title><span th:text="${title}"></span></title>-->
 <!--</div>-->
-<head th:fragment="head">
+<head th:fragment="head(title)">
     <meta charset="UTF-8"/>
     <title th:text="${title}"></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/css/uikit.min.css" />
+    <style>
+        li a{
+            color:#f4429b;
+        }
+        li a:hover {
+            color: #a02489;
+        }
+    </style>
 </head>
 
 <body>
 <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar uk-margin-bottom">
-<nav th:fragment="navbar" style="background-color: purple" class="uk-navbar-container uk-margin" uk-navbar="mode: click">
+<nav th:fragment="navbar"  style="background-color: #CCCCFF" class="uk-navbar-container uk-margin" uk-navbar="mode: click">
     <div class="uk-navbar-left">
     <ul class="uk-navbar-nav">
-        <li style="color: white;">
+        <li>
             <a class="nav-link" href="">Home</a>
         </li>
-        <li style="color: white;">
+        <li>
             <a class="nav-link" href="/sign-up">Register</a>
         </li>
-        <li style="color: white;">
+        <li>
             <a class="nav-link" href="/">Login</a>
         </li>
-        <li style="color: white;">
+        <li>
             <a class="nav-link" href="/adopter/pets">View Pets</a>
         </li>
-        <li style="color: white;">
+        <li>
             <a class="nav-link" href="/">Logout</a>
         </li>
     </ul>
