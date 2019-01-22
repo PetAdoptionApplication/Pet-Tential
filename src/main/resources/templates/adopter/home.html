@@ -5,43 +5,66 @@
 
     <nav th:replace="partials :: navbar"/>
 
-    <div class="container">
+    <div class="uk-grid-divider uk-child-width-expand uk-grid">
         <!--Row One-->
-        <div class="row">
-        </div>
 
-        <!--Row Two: Three columns-->
-        <div class="row">
-            <!--Column One: Programs-->
-            <div class="col-md-4 col-sm-12">
 
                 <!--TODO: The controller with the path to this home page need to relay the programs that user has -->
-               <div th:each="program : ${programs}">
-                   <div class="col-12">
-                       <div class="card">
-                           <div class="card-body">
-                               <h4 class="card-title" th:text="${program.getName()}"> </h4>
-                               <p class="card-text" th:text="${program.getDescription()}"></p>
-                           </div>
-                       </div>
-                   </div>
+               <div>
+                   <table class="uk-table uk-table-striped">
+                       <thead>
+                           <tr class="card-body">
+                               <p>Name</p>
+                               <p>Description</p>
+                               <p>Location</p>
+                           </tr>
+                       </thead>
+                       <tbody>
+                            <tr>
+                               <p>TestName</p>
+                               <p>TestDescription</p>
+                                <p>TestLocation</p>
+                            </tr>
+                            <tr>
+                                <p>TestName</p>
+                                <p>TestDescription</p>
+                                <p>TestLocation</p>
+                            </tr>
+                            <tr>
+                                <p>TestName</p>
+                                <p>TestDescription</p>
+                                <p>TestLocation</p>
+                            </tr>
+                       </tbody>
+                   </table>
                </div>
-            </div>
 
 
             <!--Column Two: Actions-->
-            <div class="col-md-4 col-sm-12">
+            <div class="uk-margin">
 
                 <!--TODO: Add the appropirate pages and Controllers for the pages-->
-                <a href="/adopter/programs"><button class="btn btn-primary">Join Program</button></a>
-                <a href="/adopter/pets"><button class="btn btn-primary">Find a Pet</button></a>
-                <a href="/adopter/preferences"><button class="btn btn-primary">Preferences</button></a>
+                <a href="/adopter/programs"><button class="uk-button uk-button-primary">Join Program</button></a>
+                <a href="/adopter/pets"><button class="uk-button uk-button-primary">Find a Pet</button></a>
+                <a href="/adopter/preferences"><button class="uk-button uk-button-primary">Preferences</button></a>
             </div>
 
 
             <!--Column Three: Nearby Shelters-->
-            <div class="col-md-4 col-sm-12">
-                <!--TODO: Google API search results here-->
+            <div>
+                <div class="uk-card uk-card-default">
+                    <div class="uk-card-media-top">
+                    <!-- google api here -->
+                    </div>
+                    <div class="uk-card-body">
+                        <ul>
+                            <!-- list of close shelters -->
+                            <li>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <!--ROW TWO END-->
