@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="partials :: head">
     <meta charset="UTF-8"/>
-    <title>Shelter PROGRAMS PAGE</title>
+    <title>Shelter Programs</title>
 </head>
 <body>
 <div class="container uk-margin-bottom">
     <nav th:replace="partials :: navbar"/>
 </div>
-<form th:action="@{/createProgram}" method="POST" class="uk-margin-auto uk-width-1-2 " th:object="${program}">
-
 <div class="container uk-flex">
-    <div>
-        <label for="email">Name</label>
-        <input id="email" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{name}" />
+
+<form th:action="@{/createProgram}" method="POST" class="uk-margin-auto uk-width-1-2 " th:object="${program}">
+    <h1 class="uk-margin-top">Create a Program</h1>
+    <div class="uk-margin">
+    <label for="name">Name</label>
+    <input id="name" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{name}" />
     </div>
 
     <div>
-        <label for="password">Type</label>
-        <input id="password" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="password" th:field="*{petType}" />
+    <label for="type">Type</label>
+    <input id="type" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="password" th:field="*{type}" />
     </div>
 
     <div>
-        <label for="name">Description</label>
-        <input id="name" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{description}" />
+    <label for="description">Description</label>
+    <input id="description" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{description}" />
     </div>
 
     <div>
-        <label for="address">Time</label>
-        <input id="address" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{program.time}" />
+    <label for="length">Length</label>
+    <input id="length" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{length}" />
     </div>
-</div>
+
+    <div>
+    <label for="time">Time</label>
+    <input id="time" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{time}" />
+    </div>
+
+    <div>
+    <label for="pet type">Pet Type</label>
+    <input id="pet type" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{petType}" />
+    </div>
 </form>
+</div>
+
+<div th:replace="partials :: footer" />
+<div th:replace="partials :: scripts" />
 
 </body>
 </html>
