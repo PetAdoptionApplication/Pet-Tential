@@ -1,32 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<head th:replace="partials::head('Program')"/>
 <body>
 <nav th:replace="partials :: navbar"/>
 
-<div class="container">
-    <div class="row">
-        <div class="col"></div>
-        <div class="col">
-
-            <div class="card" style="width: 18rem;" th:object="${program}">
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${program.name}"></h5>
-                    <p class="card-text" th:text="${program.type}"></p>
-                    <p class="card-text" th:text="${program.description}"></p>
-                    <p class="card-text" th:text="${program.time} + ':00 pm'"></p>
-                    <p class="card-text" th:text="${program.length} + ' hours'"></p>
-                    <p class="card-text" th:text="'Breed: ' + ${program.breed}"></p>
+<div class="uk-container">
+    <div class="uk-grid" uk-grid="masonry:true">
+            <div class="uk-card">
+                <div class="uk-card-body">
+                    <h1 class="uk-card-title" th:text="${program.name}"></h1>
+                    <h2 class="uk-card-text" th:text="'Shelter: ' + ${shelter.name}"></h2>
+                    <p class="uk-card-text" th:text="${program.type}"></p>
+                    <p class="uk-card-text" th:text="${program.description}"></p>
+                    <p class="uk-card-text" th:text="${program.time} + ':00 pm'"></p>
+                    <p class="uk-card-text" th:text="${program.length} + ' hours'"></p>
+                    <p class="uk-card-text" th:text="'Breed: ' + ${program.petType}"></p>
                 </div>
             </div>
-
         </div>
-        <div class="col"></div>
     </div>
 </div>
+
+<footer th:replace="partials::footer"/>
+<div th:replace="partials::scripts"/>
 
 </body>
 </html>
