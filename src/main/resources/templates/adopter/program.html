@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<head th:replace="partials::head('Program')"/>
 <body>
 <nav th:replace="partials :: navbar"/>
 
@@ -23,6 +20,9 @@
         </div>
     </div>
 </div>
+
+<footer th:replace="partials::footer"/>
+<div th:replace="partials::scripts"/>
 
 </body>
 </html>
