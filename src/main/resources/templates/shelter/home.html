@@ -23,10 +23,10 @@
                             <h1 th:text="${app.getPet().getName()}"></h1>
                             <h1 th:text="${app.getUser().getName()}"></h1>
                             <form th:action="'/adopt/' + ${app.getPet().getId()} + '/accept'" method="post" >
-                                <input type="submit"/>
+                                <button type="submit">Accept Adoption Request</button>
                             </form>
                             <form th:action="'/adopt/' + ${app.getPet().getId()} + '/reject'" method="post" >
-                                <input type="submit"/>
+                                <button type="submit">Reject Adoption Request</button>
                             </form>
                         </div>
                     </div>
