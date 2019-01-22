@@ -33,6 +33,11 @@ public class UserController {
         this.userDao = userDao;
     }
 
+    @GetMapping("/")
+    public String homePage() {
+        return "landing";
+    }
+
     @GetMapping("/sign-up")
     public String showSignupForm(Model model){
         model.addAttribute("user", new User());
