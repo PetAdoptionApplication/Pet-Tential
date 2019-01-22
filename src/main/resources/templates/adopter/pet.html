@@ -5,15 +5,24 @@
 <nav th:replace="partials :: navbar"/>
 
 <div class="uk-container">
-    <h2 th:text="${pet.name}"/>
-    <img th:src="${pet.picture}" alt="Picture of Pet"/>
-    <h3 th:text="'Breed: '+${pet.breed}"/>
-    <h3 th:text="'Shelter' + ${}"
-    <p th:text="'Age (in years): '+${pet.age}" />
-    <p th:text="'Color: '+${pet.color}" />
-    <p th:text="'Description: '+${pet.description}" />
-    <p th:text="'Sex: '+${pet.sex}" />
-    <p th:text="'Weight (in pounds): '+${pet.weight}" />
+    <div class="uk-grid">
+      <div class="uk-width-1-2@m">
+          <h1 th:text="${pet.name}"/>
+        <h3 th:text="'Breed: '+${pet.breed}"/>
+        <h3 th:text="'Shelter: ' + ${shelter.name}"/>
+        <p th:text="'Age (in years): '+${pet.age}" />
+        <p th:text="'Color: '+${pet.color}" />
+        <p th:text="'Description: '+${pet.description}" />
+        <p th:text="'Sex: '+${pet.sex}" />
+        <p th:text="'Weight (in pounds): '+${pet.weight}" />
+      </div>
+
+        <div class="uk-grid-divider"/>
+
+        <div class="uk-width-1-2@m">
+            <img th:src="${pet.picture}" alt="Picture of Pet"/>
+        </div>
+    </div>
 </div>
 <footer th:replace="partials::footer" />
 <div th:replace="partials::scripts" />
