@@ -68,7 +68,7 @@ public class PetController {
         model.addAttribute("pet", petDao.findOne(id));
         long shelterId = petDao.findOne(id).getShelter().getId();
         model.addAttribute("shelter", shelterDao.findOne(shelterId));
-        return "pet";
+        return "pet_view";
     }
 
     @GetMapping("adopter/pets")
