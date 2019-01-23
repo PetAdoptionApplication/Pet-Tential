@@ -67,23 +67,18 @@
             zoom: 15
         });
         geocoder.geocode({"address": shelter.location}, function (results, status) {
-            markerLat = 0;
-            markerLong = 0;
             if (status == google.maps.GeocoderStatus.OK) {
                 map.setCenter(results[0].geometry.location);
-                markerLat = results[0].geometry.location.lat;
-                markerLong = results[0].geometry.location.lng;
+                markerLat = results[0].geometry.location.lat();
+                markerLong = results[0].geometry.location.lng();
+                console.log(markerLat);
+                console.log(markerLong);
                 startingCoordinates = { lat : results[0].geometry.location.lat, lng : results[0].geometry.location.lat};
+                markCord = {lat: markerLat, lng: markerLong};
+                var marker = new google.maps.Marker({position: markCord, map: map});
             } else {
                 alert("Geocoding was not successful - STATUS: " + status);
             }
-            console.log(markerLong);
-            console.log(markerLat);
-            markerLat = parseFloat(markerLat);
-            markerLong = parseFloat(markerLong);
-            markerLatandLong = {lat: markerLat, lng: markerLong};
-            console.log(markerLatandLong);
-            var marker = new google.maps.Marker({position: markerLatandLong, map: map});
         });
     }
 </script>
