@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-</head>
+<head th:replace = "partials :: head('Search')" />
 <body>
-<nav th:replace="partials :: navbar"/>
-<h1>Search</h1>
-<form action="/search" method="post">
-    <input type="text" name="search"/>
-    <input type="submit"/>
-</form>
+<nav style="background-color: #CCCCFF" class="uk-navbar-container uk-margin" uk-navbar="mode: click">
+    <div class="uk-navbar-center">
 
-<h1>Pets that match your search</h1>
-<div th:each="pet : ${pets}">
-    <p th:text="${pet.name}"></p>
+        <div><div>
+            <ul class="uk-navbar-nav">
+                <li><a href="/adopter/pets">View all pets</a></li>
+            </ul>
+        </div></div>
+        <a class="uk-navbar-item uk-logo" href="#">Pet-tential</a>
+        <div class="uk-navbar-right"><div>
+            <ul class="uk-navbar-nav">
+                <li><a href="/logout">Logout</a></li>
+                <li><a href="/user_info">Profile</a></li>
+            </ul>
+        </div></div>
+
+    </div>
+</nav>
+<div class="uk-margin-auto uk-width-1-2">
+    <h1 class="uk-margin-auto">Search</h1>
+    <form action="/search" method="post">
+        <input name="search" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text"/>
+        <button type="submit" class="uk-button uk-button-default uk-button-small">Submit</button>
+    </form>
+
+    <h5>Pets that match your search</h5>
+    <div th:each="pet : ${pets}">
+        <p th:text="${pet.name}"></p>
+    </div>
+
+    <h5>Programs that match your search</h5>
+    <div th:each="program : ${programs}">
+        <p th:text="${program.name}"></p>
+    </div>
+
+    <h5>Shelters that match your search</h5>
+    <div th:each="shelter : ${shelters}">
+        <p th:text="${shelter.name}"></p>
+    </div>
 </div>
-
-<h1>Programs that match your search</h1>
-<div th:each="program : ${programs}">
-    <p th:text="${program.name}"></p>
-</div>
-
-<h1>Shelters that match your search</h1>
-<div th:each="shelter : ${shelters}">
-    <p th:text="${shelter.name}"></p>
-</div>
-
 </body>
 </html>
