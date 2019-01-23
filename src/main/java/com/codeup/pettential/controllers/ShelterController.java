@@ -48,8 +48,8 @@ public class ShelterController {
         return "home";
     }
 
-    @GetMapping("shelter/edit")
-    public String editShelter(Model model){
+    @GetMapping("shelter/edit/{id}")
+    public String editShelter(Model model, @PathVariable long id){
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() == "anonymousUser"){
             return "redirect:/home";
         }
