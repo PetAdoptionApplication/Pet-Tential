@@ -39,7 +39,7 @@ public class PetController {
         List<Shelter> shelters = (List<Shelter>) shelterDao.findAll();
         model.addAttribute("shelters", shelters);
         model.addAttribute("pet", new Pet());
-        return "pets";
+        return "create_pet";
     }
 
     @PostMapping("/create/pet")
