@@ -46,7 +46,7 @@ public class SearchController {
 
     @GetMapping("search")
     public String createProgram() {
-        return "search";
+        return "system/search";
     }
 
 //    need to implement search by shelter for pets
