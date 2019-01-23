@@ -6,10 +6,7 @@
     <nav th:replace="partials :: navbar"/>
 
     <div class="uk-grid-divider uk-child-width-expand uk-grid">
-        <!--Row One-->
 
-
-                <!--TODO: The controller with the path to this home page need to relay the programs that user has -->
                <div>
                    <table class="uk-table uk-table-striped">
                        <caption class="uk-margin-auto"><h4>Programs in your area</h4></caption>
@@ -21,22 +18,20 @@
                                <th>Sign-up</th>
                            </tr>
                        </thead>
-                       <tbody th:each="program : *{programs}">
+                       <tbody th:each="program : ${programs}">
                            <tr>
-                               <td th:text="*{program.name}"></td>
-                               <td th:text="*{program.description}"></td>
-                               <td th:text="*{program.length}"></td>
-                               <td><button type="submit" th:action="'adopter/program/' + *{program.id}">More info</button></td>
+                               <td th:text="${program.name}"></td>
+                               <td th:text="${program.description}"></td>
+                               <td th:text="${program.length}"></td>
+                               <td><button type="submit" th:action="'adopter/program/' + ${program.id}">More info</button></td>
                            </tr>
                        </tbody>
                    </table>
                </div>
 
 
-            <!--Column Two: Actions-->
             <div>
                 <div style="margin-left: 15vh;" class="uk-margin-auto-vertical">
-                    <!--TODO: Add the appropirate pages and Controllers for the pages-->
                     <div class="uk-margin-auto uk-margin-bottom uk-margin-large-top"><a href="/adopter/programs"><button class="uk-margin-auto uk-width-auto uk-button uk-button-primary">Join Program</button></a></div>
                     <div class="uk-margin-auto uk-margin-bottom"><a href="/adopter/pets"><button class="uk-margin-auto uk-width-auto uk-button uk-button-primary">Find a Pet</button></a></div>
                     <div class="uk-margin-auto"><a href="/adopter/preferences"><button class="uk-margin-auto uk-width-auto uk-button uk-button-primary">Preferences</button></a></div>
@@ -44,7 +39,6 @@
             </div>
 
 
-            <!--Column Three: Nearby Shelters-->
         <div>
             <table class="uk-table uk-table-striped">
                 <caption><h4>Volunteer opportunities near you</h4></caption>
@@ -75,11 +69,8 @@
             </table>
         </div>
     </div>
-        <!--ROW TWO END-->
 
-
-    <footer th:replace="partials :: footer"/>
-
+<footer th:replace="partials :: footer"/>
 <div th:replace="partials :: scripts"/>
 </body>
 </html>
