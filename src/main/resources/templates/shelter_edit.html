@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
-</head>
+<head th:replace="partials::head('Shelter Edit')"/>
 <body>
 
 <nav th:replace="partials :: navbar"/>
@@ -21,6 +18,8 @@
     <input type="submit" />
 </form>
 
+<footer th:replace="partials::footer"/>
+<div th:replace="partials::scripts"/>
 
 </body>
 </html>
