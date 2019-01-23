@@ -80,11 +80,11 @@ public class UserController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         users.save(user);
-        users.save(user);
-        String returnValue = "";
+        String returnValue;
         if (user.getIsShelter()){
             returnValue = "redirect:shelter/register/" + user.getId();
         } else {
+            returnValue = "system/log-in";
         }
         return returnValue;
     }
