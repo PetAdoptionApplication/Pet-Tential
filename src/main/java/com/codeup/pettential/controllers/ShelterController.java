@@ -59,7 +59,7 @@ public class ShelterController {
         }
         Shelter shelter = shelterDao.findByUser(user);
         model.addAttribute("shelter", shelter);
-        return "edit";
+        return "shelter_edit";
     }
 
     @PostMapping("shelter/edit/{id}")
