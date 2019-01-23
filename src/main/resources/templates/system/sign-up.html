@@ -37,7 +37,17 @@
 
     <div>
     <label for="address">Address</label>
-    <input id="address" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{address}" />
+    <input id="address" name="address" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{address}" />
+    </div>
+
+    <div>
+        <label for="city">City</label>
+        <input id="city" name="city" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" />
+    </div>
+
+    <div>
+        <label for="state">State</label>
+        <input id="state" name="state" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" />
     </div>
 
     <div>

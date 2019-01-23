@@ -8,10 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -67,7 +64,7 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public String saveUser(@ModelAttribute User user, Model model){
+    public String saveUser(@ModelAttribute User user, Model model, @RequestParam(name = "city") String city, @RequestParam(name = "state") String state){
         if (user.getUsername().equals("") || user.getPassword().equals("") || user.getEmail().equals("") ||
                 user.getAddress().equals("") || user.getNumber().equals("")){
             model.addAttribute("error", "All Fields Must be filled in");
@@ -79,14 +76,20 @@ public class UserController {
         }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
+        String address = user.getAddress();
+        String newAddress = address + ", " + city + ", " + state;
+        user.setAddress(newAddress);
         users.save(user);
-        String returnValue;
         if (user.getIsShelter()){
-            returnValue = "redirect:shelter/register/" + user.getId();
-        } else {
-            returnValue = "system/log-in";
+            Shelter shelter = new Shelter();
+            shelter.setName(user.getName());
+            shelter.setLocation(user.getAddress());
+            shelter.setEmail(user.getEmail());
+            shelter.setNumber(user.getNumber());
+            shelter.setUser(user);
+            shelterDao.save(shelter);
         }
-        return returnValue;
+        return "redirect:/login";
     }
 
     //For the Shelter Registration form
