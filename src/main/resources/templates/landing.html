@@ -1,41 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace = "partials :: head"/>
+<head th:replace = "partials :: head('Pet-tential')"/>
 <body>
 
-    <nav th:replace="partials :: navbar"/>
+    <div uk-height-viewport="expand: true" class="uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('https://www.dailydot.com/wp-content/uploads/f00/fe/3715697e82d68e33a9752a2ee757edba.jpg');">
 
+        <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical">Pet-Tential</h1>
 
-    <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="../images/cat.jpg" alt="First slide"/>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="../images/dog1.jpg" alt="Second slide"/>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="../images/dog2.jpg" alt="Third slide"/>
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
     </div>
+
+    <div class="uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('http://hsmo.zurihosting.com/wp-content/uploads/2016/06/Pebbles2-A608071a.jpg');">
+
+        <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5">Adopt with ease.</h1>
+
+    </div>
+
+    <div class="uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('https://www.michiganhumane.org/wp-content/uploads/2018/02/Adopt-a-Pet.jpg');">
+
+        <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5">Introduce a furry-friend.</h1>
+
+    </div>
+
+    <div class="uk-height-large uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('https://cdn.bestfriends.org/s3fs-public/pages/family-volunteering-dogs-kids.jpg');">
+
+        <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5">Sign up for training programs.</h1>
+
+    </div>
+
+    <div class="uk-height-large uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('https://www.sdhumane.org/wp-content/uploads/2015/08/volpic2.jpg');">
+
+        <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5">Find local volunteer opportunities.</h1>
+
+    </div>
+
+    <div class="uk-height-large uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('http://www.insurancecredit.us/wp-content/uploads/2018/05/Veterinary-Pet-Insurance.jpg');">
+
+        <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5"><a href="/sign-up">Register today!</a></h1>
+        <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5"><a href="/home">Sign-in</a></h1>
+    </div>
+
+
 
     <footer th:replace="partials::footer"/>
     <div th:replace="partials::scripts"/>
-
-
 </body>
 </html>

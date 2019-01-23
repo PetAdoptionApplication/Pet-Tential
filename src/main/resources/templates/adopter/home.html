@@ -1,52 +1,82 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace = "partials :: head('Home')"/>
+<head th:replace = "partials :: head('Home')" />
 <body>
 
     <nav th:replace="partials :: navbar"/>
 
-    <div class="container">
+    <div class="uk-grid-divider uk-child-width-expand uk-grid">
         <!--Row One-->
-        <div class="row">
-        </div>
 
-        <!--Row Two: Three columns-->
-        <div class="row">
-            <!--Column One: Programs-->
-            <div class="col-md-4 col-sm-12">
 
                 <!--TODO: The controller with the path to this home page need to relay the programs that user has -->
-               <div th:each="program : ${programs}">
-                   <div class="col-12">
-                       <div class="card">
-                           <div class="card-body">
-                               <h4 class="card-title" th:text="${program.getName()}"> </h4>
-                               <p class="card-text" th:text="${program.getDescription()}"></p>
-                           </div>
-                       </div>
-                   </div>
+               <div>
+                   <table class="uk-table uk-table-striped">
+                       <caption class="uk-margin-auto"><h4>Programs in your area</h4></caption>
+                       <thead>
+                           <tr class="card-body">
+                               <th>Name</th>
+                               <th>Description</th>
+                               <th>Length</th>
+                               <th>Sign-up</th>
+                           </tr>
+                       </thead>
+                       <tbody th:each="program : *{programs}">
+                           <tr>
+                               <td th:text="*{program.name}"></td>
+                               <td th:text="*{program.description}"></td>
+                               <td th:text="*{program.length}"></td>
+                               <td><button type="submit" th:action="'adopter/program/' + *{program.id}">More info</button></td>
+                           </tr>
+                       </tbody>
+                   </table>
                </div>
-            </div>
 
 
             <!--Column Two: Actions-->
-            <div class="col-md-4 col-sm-12">
-
-                <!--TODO: Add the appropirate pages and Controllers for the pages-->
-                <a href="/adopter/programs"><button class="btn btn-primary">Join Program</button></a>
-                <a href="/adopter/pets"><button class="btn btn-primary">Find a Pet</button></a>
-                <a href="/adopter/preferences"><button class="btn btn-primary">Preferences</button></a>
+            <div>
+                <div style="margin-left: 15vh;" class="uk-margin-auto-vertical">
+                    <!--TODO: Add the appropirate pages and Controllers for the pages-->
+                    <div class="uk-margin-auto uk-margin-bottom uk-margin-large-top"><a href="/adopter/programs"><button class="uk-margin-auto uk-width-auto uk-button uk-button-primary">Join Program</button></a></div>
+                    <div class="uk-margin-auto uk-margin-bottom"><a href="/adopter/pets"><button class="uk-margin-auto uk-width-auto uk-button uk-button-primary">Find a Pet</button></a></div>
+                    <div class="uk-margin-auto"><a href="/adopter/preferences"><button class="uk-margin-auto uk-width-auto uk-button uk-button-primary">Preferences</button></a></div>
+                </div>
             </div>
 
 
             <!--Column Three: Nearby Shelters-->
-            <div class="col-md-4 col-sm-12">
-                <!--TODO: Google API search results here-->
-            </div>
+        <div>
+            <table class="uk-table uk-table-striped">
+                <caption><h4>Volunteer opportunities near you</h4></caption>
+                <thead>
+                <tr class="card-body">
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Location</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>TestName</td>
+                    <td>TestDescription</td>
+                    <td>TestLocation</td>
+                </tr>
+                <tr>
+                    <td>TestName</td>
+                    <td>TestDescription</td>
+                    <td>TestLocation</td>
+                </tr>
+                <tr>
+                    <td>TestName</td>
+                    <td>TestDescription</td>
+                    <td>TestLocation</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
+    </div>
         <!--ROW TWO END-->
 
-    </div>
 
     <footer th:replace="partials :: footer"/>
 

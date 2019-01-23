@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Shelter PROGRAMS PAGE</title>
-</head>
-<nav th:replace="partials :: navbar"/>
+<head th:replace="partials :: head('Create Program')"/>
 <body>
-<h1>PROGRAM NAME</h1>
-<h2>SHELTER NAME</h2>
-<form action="createProgram" method="post" th:object="${program}">
-    <label for="name">Program name</label>
-    <input class="form-control" type="text" id="name" placeholder="Enter Pet Name Here" th:field="*{name}"/>
-    <br/>
-    <br/>
-    <label for="type">Program Type</label>
-    <input class="form-control" type="text" id="type" placeholder="Enter Pet Type Here" th:field="*{type}"/>
-    <br/>
-    <br/>
-    <label for="description">Program Description</label>
-    <textarea class="form-control" type="text" id="description" th:field="*{description}"/>
-    <br/>
-    <br/>
-    <label for="length">Program Length</label>
-    <input class="form-control" type="text" id="length" placeholder="Enter Program Length Here" th:field="*{length}"/>
-    <br/>
-    <br/>
-    <label for="time">Program Time</label>
-    <input class="form-control" type="text" id="time" placeholder="Enter Program Time Here" th:field="*{time}"/>
-    <br/>
-    <br/>
-    <label for="petType">Pet type of for Program</label>
-    <input class="form-control" type="text" id="petType" placeholder="Enter Program Time Here" th:field="*{petType}"/>
-    <br/>
-    <br/>
-    <label for="shelter">Shelter</label>
-    <select id="shelter" name="shelter">
-        <div th:each="shelter : ${shelters}">
-            <option th:value="${shelter.id}"><span th:text="${shelter.name}"></span></option>
-        </div>
-    </select>
-    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+<div class="container uk-margin-bottom">
+    <nav th:replace="partials :: navbar"/>
+</div>
+<div class="container uk-flex">
+
+<form th:action="@{/createProgram}" method="POST" class="uk-margin-auto uk-width-1-2 " th:object="${program}">
+    <h1 class="uk-margin-top">Create a Program</h1>
+    <div class="uk-margin">
+    <label for="name">Name</label>
+    <input id="name" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{name}" />
+    </div>
+
+    <div>
+    <label for="type">Type</label>
+    <input id="type" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="password" th:field="*{type}" />
+    </div>
+
+    <div>
+    <label for="description">Description</label>
+    <input id="description" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{description}" />
+    </div>
+
+    <div>
+    <label for="length">Length</label>
+    <input id="length" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{length}" />
+    </div>
+
+    <div>
+    <label for="time">Time</label>
+    <input id="time" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{time}" />
+    </div>
+
+    <div>
+    <label for="pet type">Pet Type</label>
+    <input id="pet type" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{petType}" />
+    </div>
 </form>
+</div>
+
+<div th:replace="partials :: footer" />
+<div th:replace="partials :: scripts" />
 
 </body>
 </html>
