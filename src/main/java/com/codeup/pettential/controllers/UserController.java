@@ -1,7 +1,6 @@
 package com.codeup.pettential.controllers;
 
 import com.codeup.pettential.models.App;
-import com.codeup.pettential.models.Preferences;
 import com.codeup.pettential.models.Shelter;
 import com.codeup.pettential.models.User;
 import com.codeup.pettential.repositories.*;
