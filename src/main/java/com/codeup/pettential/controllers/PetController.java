@@ -39,7 +39,7 @@ public class PetController {
         List<Shelter> shelters = (List<Shelter>) shelterDao.findAll();
         model.addAttribute("shelters", shelters);
         model.addAttribute("pet", new Pet());
-        return "pets";
+        return "create/create_pet";
     }
 
     @PostMapping("/create/pet")
@@ -68,13 +68,13 @@ public class PetController {
         model.addAttribute("pet", petDao.findOne(id));
         long shelterId = petDao.findOne(id).getShelter().getId();
         model.addAttribute("shelter", shelterDao.findOne(shelterId));
-        return "pet";
+        return "views/pet_view";
     }
 
     @GetMapping("adopter/pets")
     public String allPets(Model model) {
         model.addAttribute("pets", petDao.findAll());
-        return "all_pets";
+        return "views/all_pets";
     }
 
 }

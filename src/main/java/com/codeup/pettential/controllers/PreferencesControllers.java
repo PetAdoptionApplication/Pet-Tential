@@ -22,7 +22,7 @@ public class PreferencesControllers {
     @GetMapping ("adopter/preferences")
     public String createPreference(Model model) {
         model.addAttribute("preference", new Preferences());
-        return "adopter/preferences";
+        return "views/preferences";
     }
 
     @PostMapping ("/adopter/preferences")
@@ -42,7 +42,7 @@ public class PreferencesControllers {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Preferences preferences = preferencesDao.findByOwner(user);
         model.addAttribute("preference", preferences);
-        return "adopter/preference-show";
+        return "views/preference-show";
     }
 
 
@@ -50,7 +50,7 @@ public class PreferencesControllers {
     public String editPreferencePage(Model model, @PathVariable long id) {
         Preferences oldPref = preferencesDao.findOne(id);
         model.addAttribute("oldPref", oldPref);
-        return "adopter/preference-edit";
+        return "edit_pages/preference-edit";
     }
 
     @PostMapping ("/adopter/preferences/edit/{id}")

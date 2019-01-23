@@ -26,7 +26,7 @@ public class ShelterController {
     @GetMapping ("adopter/{id}")
     public String findUser(@PathVariable long id, Model model) {
         model.addAttribute("user", userDao.findOne(id));
-        return "user";
+        return "views/user_info";
     }
 
     @GetMapping("shelter/{id}")
@@ -35,7 +35,7 @@ public class ShelterController {
         model.addAttribute("shelter", currentShelter);
         model.addAttribute("pets", currentShelter.getPets());
         model.addAttribute("programs", currentShelter.getPrograms());
-        return "shelter";
+        return "views/shelter_view";
     }
 
     @GetMapping("shelter/home")
@@ -45,7 +45,7 @@ public class ShelterController {
         Shelter shelter = shelterDao.findByUser(user);
 
         model.addAttribute("programs", programDao.findOne(shelter.getId()));
-        return "home";
+        return "views/shelter_home";
     }
 
     @GetMapping("shelter/edit/{id}")
@@ -59,7 +59,7 @@ public class ShelterController {
         }
         Shelter shelter = shelterDao.findByUser(user);
         model.addAttribute("shelter", shelter);
-        return "shelter_edit";
+        return "edit_pages/shelter_edit";
     }
 
     @PostMapping("shelter/edit/{id}")
