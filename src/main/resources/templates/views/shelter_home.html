@@ -4,83 +4,73 @@
 <body>
 
 <nav th:replace="partials :: navbar"/>
-<div class="container">
-    <div class="uk-grid-divider uk-child-width-expand uk-grid">
-        <!--Row One-->
 
-
-        <!--TODO: The controller with the path to this home page need to relay the programs that user has -->
-        <div>
-            <table class="uk-table uk-table-striped">
-                <caption class="uk-margin-auto"><h4>Applications</h4></caption>
-                <thead>
-                <tr class="card-body">
-                    <th>Applicant name</th>
-                    <th>Pet name</th>
-                    <th>Accept/Reject</th>
-                </tr>
-                </thead>
-                <tbody th:each="app : *{apps}">
-                <tr>
-                    <td th:text="${app.getPet().getName()}"></td>
-                    <td th:text="${app.getUser().getName()}"></td>
-                    <td>
-                        <form th:action="'/adopt/' + ${app.getPet().getId()} + '/accept'" method="post" >
-                            <button type="submit">Accept</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form th:action="'/adopt/' + ${app.getPet().getId()} + '/reject'" method="post" >
-                            <button type="submit">Reject</button>
-                        </form>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div>
-            <div style="margin-left: 15vh;" class="uk-margin-auto-vertical">
-                <!--TODO: Add the appropirate pages and Controllers for the pages-->
-                <div class="uk-margin-auto uk-margin-bottom uk-margin-large-top"><a href="/create/pet"><button class="uk-margin-auto uk-width-auto uk-button uk-button-primary">Create pet listing</button></a></div>
-                <div class="uk-margin-auto uk-margin-bottom"><a href="/adopter/pets"><button class="uk-margin-auto uk-width-auto uk-button uk-button-primary">Pet Management</button></a></div>
-                <div class="uk-margin-auto"><a href="/shelter/createProgram"><button class="uk-margin-auto uk-width-auto uk-button uk-button-primary">Create Program</button></a></div>
+    <div class="uk-grid uk-margin-auto">
+        <!--Buttons-->
+        <div class="uk-grid uk-text-center">
+            <div class="uk-child-width-expand uk-margin-auto">
+                <button class="uk-button uk-button-default"><a href="/shelter/createProgram">Create a Program</a></button>
+            </div>
+            <div class="uk-child-width-expand uk-margin-auto">
+                <button class="uk-button uk-button-default"><a href="/adopter/pets">Pet Management</a></button>
+            </div>
+            <div class="uk-child-width-expand uk-margin-auto">
+                <button class="uk-button uk-button-default"><a href="/create/pet">Add Pet</a></button>
             </div>
         </div>
-
-
     </div>
 
-    <div class="uk-grid-divider uk-child-width-expand uk-grid">
+    <hr/>
 
-        <div>
-            <table class="uk-table uk-table-striped">
-                <caption class="uk-margin-auto"><h4>Programs</h4></caption>
-                <thead>
-                <tr class="card-body">
-                    <th>Program name</th>
-                    <th>Edit</th>
-                </tr>
-                </thead>
-                <tbody th:each="program : *{programs}">
-                <tr>
-                    <td th:text="${program.getName()}"></td>
-                    <td>
-                        <form th:action="'/shelter/program/edit/' + ${program.getId()}" method="post" >
-                            <button type="submit">Edit</button>
-                        </form>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+    <!--Info-->
+    <div class="uk-grid uk-column-1-3 uk-margin-auto">
+        <div class="uk-grid uk-text-center">
+
+            <div class="uk-child-width-expand uk-margin-auto">
+               <h2> Applications </h2>
+                <table class="uk-table uk-table-striped">
+                   <div th:each="app : ${apps}">
+                       <tr>
+                           <td th:text="${app.getPet().getName()}"></td>
+                           <td th:text="${app.getUser().getName()}"></td>
+                           <td>
+                               <form th:action="'/adopt/' + ${app.getPet().getId()} + '/accept'" method="post" >
+                                   <button type="submit">Accept</button>
+                               </form>
+                           </td>
+                           <td>
+                               <form th:action="'/adopt/' + ${app.getPet().getId()} + '/reject'" method="post" >
+                                   <button type="submit">Reject</button>
+                               </form>
+                           </td>
+                       </tr>
+                   </div>
+                </table>
+            </div>
+
+            <div class="uk-child-width-expand uk-margin-auto">
+                <h2> Calender </h2>
+                <iframe src="https://calendar.google.com/calendar/b/2/embed?title=List%20of%20Events&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=kcdu3013jq0shm8mc1fo8r9034%40group.calendar.google.com&amp;color=%23333333&amp;ctz=America%2FChicago" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+            </div>
+
+            <div class="uk-child-width-expand uk-margin-auto">
+                <h2> Programs </h2>
+                <table class="uk-table uk-table-striped">
+                    <div th:each="program : ${programs}">
+                        <tr>
+                            <td><a th:href="'/adopter/program/'+${program.getId()}"><span th:text="${program.getTitle()}"></span></a> </td>
+                            <td th:text="${program.getDescription()}"></td>
+                        </tr>
+                    </div>
+                </table>
+            </div>
+
         </div>
-
-
-
     </div>
 
-</div>
 
+
+<hr/>
 <footer th:replace="partials :: footer"/>
 
 <div th:replace="partials :: scripts"/>

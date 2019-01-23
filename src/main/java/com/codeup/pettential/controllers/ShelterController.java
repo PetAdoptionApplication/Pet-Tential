@@ -45,6 +45,7 @@ public class ShelterController {
         Shelter shelter = shelterDao.findByUser(user);
 
         model.addAttribute("programs", programDao.findOne(shelter.getId()));
+        model.addAttribute("apps", shelter.getApplicants());
         return "views/shelter_home";
     }
 
