@@ -34,7 +34,6 @@ public class User {
     @Column
     private boolean isShelter;
 
-
     @OneToMany
     private List<Pet> pets;
 
@@ -44,17 +43,6 @@ public class User {
     @OneToOne
     private Preferences preferences;
 
-//    @ManyToOne
-//    @JoinColumn (name = "shelter_id")
-//    private Shelter shelter;
-
-//    public Shelter getShelter() {
-//        return shelter;
-//    }
-//
-//    public void setShelter(Shelter shelter) {
-//        this.shelter = shelter;
-//    }
 
     public User(User copy) {
         id = copy.id;
