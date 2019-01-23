@@ -74,7 +74,7 @@ public class PetController {
     @GetMapping("adopter/pets")
     public String allPets(Model model) {
         model.addAttribute("pets", petDao.findAll());
-        return ("all_pets");
+        return "all_pets";
     }
 
 }
