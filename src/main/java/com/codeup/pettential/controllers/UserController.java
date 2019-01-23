@@ -60,7 +60,7 @@ public class UserController {
             Shelter thisShelter = shelterDao.findByUser(user);
             List<App> appForThisShelter = appDao.findAllByShelter(thisShelter);
             model.addAttribute("apps", appForThisShelter);
-            return "home";
+            return "shelter_home";
         }else {
             return "adopter_home";
         }

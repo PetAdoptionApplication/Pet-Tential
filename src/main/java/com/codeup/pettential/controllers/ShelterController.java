@@ -45,7 +45,7 @@ public class ShelterController {
         Shelter shelter = shelterDao.findByUser(user);
 
         model.addAttribute("programs", programDao.findOne(shelter.getId()));
-        return "home";
+        return "shelter_home";
     }
 
     @GetMapping("shelter/edit/{id}")
