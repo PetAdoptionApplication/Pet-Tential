@@ -1,7 +1,6 @@
 package com.codeup.pettential.controllers;
 
 import com.codeup.pettential.models.App;
-import com.codeup.pettential.models.Preferences;
 import com.codeup.pettential.models.Shelter;
 import com.codeup.pettential.models.User;
 import com.codeup.pettential.repositories.*;
@@ -61,9 +60,9 @@ public class UserController {
             Shelter thisShelter = shelterDao.findByUser(user);
             List<App> appForThisShelter = appDao.findAllByShelter(thisShelter);
             model.addAttribute("apps", appForThisShelter);
-            return "shelter/home";
+            return "home";
         }else {
-            return "adopter/home";
+            return "adopter_home";
         }
     }
 
@@ -86,7 +85,6 @@ public class UserController {
         if (user.getIsShelter()){
             returnValue = "redirect:shelter/register/" + user.getId();
         } else {
-            returnValue = "redirect:login";
         }
         return returnValue;
     }

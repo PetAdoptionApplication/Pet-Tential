@@ -26,7 +26,7 @@ public class ProgramController {
         List<Shelter> sheleters = (List<Shelter>) shelterDao.findAll();
         model.addAttribute("program", new Program());
         model.addAttribute("shelters", sheleters);
-        return "shelter/createProgram";
+        return "createProgram";
     }
 
     @PostMapping("shelter/createProgram")
@@ -40,7 +40,7 @@ public class ProgramController {
     @GetMapping("adopter/programs")
     public String getPrograms(Model model) {
         model.addAttribute("programs", programDao.findAll());
-        return "adopter/programs";
+        return "programs";
     }
 
     @PostMapping("adopter/program/{id}")
@@ -48,6 +48,20 @@ public class ProgramController {
         model.addAttribute("program", programDao.findOne(id));
         long shelterId = programDao.findOne(id).getShelter().getId();
         model.addAttribute("shelter", shelterDao.findOne(shelterId));
-        return "adopter/program";
+        return "program";
+    }
+
+    @PostMapping("shelter/program/edit/{id}")
+    public String editProgram(@PathVariable long id, Model model) {
+        model.addAttribute("program", programDao.findOne(id));
+        return "shelter/editProgram";
+    }
+
+    @PostMapping("/editProgram")
+    public String saveEditProgram(@ModelAttribute Program program, @RequestParam(name = "shelter") Long shelter) {
+        Shelter shelter1 = shelterDao.findOne(shelter);
+        program.setShelter(shelter1);
+        programDao.save(program);
+        return "redirect:/home";
     }
 }

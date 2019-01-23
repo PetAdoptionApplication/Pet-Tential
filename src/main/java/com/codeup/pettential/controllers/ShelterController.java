@@ -2,6 +2,7 @@ package com.codeup.pettential.controllers;
 
 import com.codeup.pettential.models.Shelter;
 import com.codeup.pettential.models.User;
+import com.codeup.pettential.repositories.ProgramRepository;
 import com.codeup.pettential.repositories.ShelterRepository;
 import com.codeup.pettential.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,16 +15,18 @@ public class ShelterController {
 
     private final ShelterRepository shelterDao;
     private final UserRepository userDao;
+    private final ProgramRepository programDao;
 
-    public ShelterController(ShelterRepository shelterDao, UserRepository userDao) {
+    public ShelterController(ShelterRepository shelterDao, UserRepository userDao, ProgramRepository programDao) {
         this.shelterDao = shelterDao;
         this.userDao = userDao;
+        this.programDao = programDao;
     }
 
     @GetMapping ("adopter/{id}")
     public String findUser(@PathVariable long id, Model model) {
         model.addAttribute("user", userDao.findOne(id));
-        return "shelter/user";
+        return "user";
     }
 
     @GetMapping("shelter/{id}")
@@ -36,12 +39,17 @@ public class ShelterController {
     }
 
     @GetMapping("shelter/home")
-    public String getShelterHome(){
-        return "shelter/home";
+    public String getShelterHome(Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        Shelter shelter = shelterDao.findByUser(user);
+
+        model.addAttribute("programs", programDao.findOne(shelter.getId()));
+        return "home";
     }
 
-    @GetMapping("shelter/edit")
-    public String editShelter(Model model){
+    @GetMapping("shelter/edit/{id}")
+    public String editShelter(Model model, @PathVariable long id){
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() == "anonymousUser"){
             return "redirect:/home";
         }
@@ -51,7 +59,7 @@ public class ShelterController {
         }
         Shelter shelter = shelterDao.findByUser(user);
         model.addAttribute("shelter", shelter);
-        return "shelter/edit";
+        return "shelter_edit";
     }
 
     @PostMapping("shelter/edit/{id}")

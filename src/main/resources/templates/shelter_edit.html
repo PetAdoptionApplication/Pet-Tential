@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials::head('Shelter Edit')"/>
+<body>
+
+<nav th:replace="partials :: navbar"/>
+
+<div class="uk-container">
+    <form th:action="'/shelter/edit/' + ${shelter.getId()}" method="post" >
+        <label>Name</label>
+        <input type="text" name="name" th:value="${shelter.getName()}"/>
+        <label>Location</label>
+        <input type="text" name="location" th:value="${shelter.getLocation()}"/>
+        <label>Phone Number</label>
+        <input type="text" name="number" th:value="${shelter.getNumber()}"/>
+        <label>Email</label>
+        <input type="text" name="email" th:value="${shelter.getEmail()}"/>
+
+        <button type="uk-button uk-button-primary"> Confirm </button>
+    </form>
+</div>
+
+<footer th:replace="partials::footer"/>
+<div th:replace="partials::scripts"/>
+
+</body>
+</html>
