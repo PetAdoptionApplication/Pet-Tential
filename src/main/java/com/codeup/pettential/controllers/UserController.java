@@ -1,6 +1,7 @@
 package com.codeup.pettential.controllers;
 
 import com.codeup.pettential.models.App;
+import com.codeup.pettential.models.Preferences;
 import com.codeup.pettential.models.Shelter;
 import com.codeup.pettential.models.User;
 import com.codeup.pettential.repositories.*;
@@ -23,14 +24,16 @@ public class UserController {
     private ProgramRepository programDao;
     private AppRepository appDao;
     private UserRepository userDao;
+    private PreferencesRepository preferenceDao;
 
-    public UserController(Users users, PasswordEncoder passwordEncoder, ShelterRepository shelterDao, ProgramRepository programDao, AppRepository appDao, UserRepository userDao) {
+    public UserController(Users users, PasswordEncoder passwordEncoder, ShelterRepository shelterDao, ProgramRepository programDao, AppRepository appDao, UserRepository userDao, PreferencesRepository preferenceDao) {
         this.users = users;
         this.passwordEncoder = passwordEncoder;
         this.shelterDao = shelterDao;
         this.programDao = programDao;
         this.appDao = appDao;
         this.userDao = userDao;
+        this.preferenceDao = preferenceDao;
     }
 
     @GetMapping("/sign-up")
@@ -70,8 +73,18 @@ public class UserController {
             model.addAttribute("error", "Password Must Be 8 characters in length");
             return "sign-up";
         }
+//        Preferences preferences = new Preferences();
+//        preferences.setWeight(1);
+//        preferences.setSex("none");
+//        preferences.setBreed("none");
+//        preferences.setAge(100);
+//        preferences.setColor("none");
+//        preferences.setOwner(user);
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
+        users.save(user);
+//        preferenceDao.save(preferences);
+//        user.setPreferences(preferences);
         users.save(user);
         String returnValue = "";
         if (user.getIsShelter()){
