@@ -48,10 +48,28 @@
                    </div>
                 </table>
             </div>
+
+            <div class="uk-child-width-expand uk-margin-auto">
+                <h2> Calender </h2>
+                <!--TODO: Add calender stuff-->
+            </div>
+
+            <div class="uk-child-width-expand uk-margin-auto">
+                <h2> Programs </h2>
+                <table class="uk-table uk-table-striped">
+                    <div th:each="program : ${programs}">
+                        <tr>
+                            <td><a th:href="'/adopter/program/'+${program.getId()}"><span th:text="${program.getTitle()}"></span></a> </td>
+                            <td th:text="${program.getDescription()}"></td>
+                        </tr>
+                    </div>
+                </table>
+            </div>
+
         </div>
-
-
     </div>
+
+
 </div>
 
 <hr/>
