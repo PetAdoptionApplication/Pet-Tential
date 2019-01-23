@@ -1,9 +1,7 @@
 package com.codeup.pettential.controllers;
 
 import com.codeup.pettential.models.*;
-import com.codeup.pettential.repositories.PetRepository;
-import com.codeup.pettential.repositories.PreferencesRepository;
-import com.codeup.pettential.repositories.ShelterRepository;
+import com.codeup.pettential.repositories.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,15 +19,23 @@ public class PetController {
     private final PetRepository petDao;
     private final PreferencesRepository preferenceDao;
     private final ShelterRepository shelterDao;
+    private final UserRepository userDao;
+    private final Users userDao1;
 
-    public PetController(PetRepository petDao, PreferencesRepository preferenceDao, ShelterRepository shelterDao) {
+    public PetController(PetRepository petDao, PreferencesRepository preferenceDao, ShelterRepository shelterDao, UserRepository userDao, Users userDao1) {
+        this.userDao = userDao;
         this.petDao = petDao;
         this.preferenceDao = preferenceDao;
         this.shelterDao = shelterDao;
+        this.userDao1 =  userDao1;
     }
 
     @GetMapping("create/pet")
     public String createPet(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (user.isShelter() != true){
+            return "redirect:/home";
+        }
         List<Shelter> shelters = (List<Shelter>) shelterDao.findAll();
         model.addAttribute("shelters", shelters);
         model.addAttribute("pet", new Pet());
@@ -37,21 +43,23 @@ public class PetController {
     }
 
     @PostMapping("/create/pet")
-    public String savePet(@ModelAttribute Pet pet, @RequestParam(name = "sex") String sex,
-                          @RequestParam(name = "shelter") long shelter) {
-        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() == "anonymousUser"){
-            return "redirect:/login";
-        }
-        User user;
+    public String savePet(@ModelAttribute Pet pet, @RequestParam(name = "sex") String sex) {
         User user1 = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         pet.setSex(sex);
-        pet.setShelter(shelterDao.findOne(shelter));
+        Shelter shelter1 = shelterDao.findByUser(user1);
+        pet.setShelter(shelter1);
         pet.setUser(user1);
         petDao.save(pet);
-        user = Twillio.checkPreferences(preferenceDao, pet);
-        if (user != null) {
-            Twillio.sendMessage(user.getNumber(), "Your prefrence has been pinged");
-        }
+        List<Preferences> preferences  = (List<Preferences>) preferenceDao.findAll();
+        for (Preferences preference : preferences){
+         if (preference.getBreed().contains(pet.getBreed()) || preference.getColor().contains(pet.getColor()) ||
+                 preference.getSex().contains(pet.getSex()) || preference.getAge() == pet.getAge()
+                        || preference.getWeight() == pet.getWeight()) {
+                User user2 = userDao.findOne(preference.getOwner().getId());
+                Twillio.sendMessage(user2.getNumber(), "A animal matching your preference has been added to the site." +
+                        "Please log in to meet" + pet.getName());
+                }
+            }
         return "redirect:/shelter/home";
     }
 

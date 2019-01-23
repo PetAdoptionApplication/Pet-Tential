@@ -26,9 +26,6 @@ public class User {
     private String number;
 
     @Column
-    private String preferences;
-
-    @Column
     private String email;
 
     @Column
@@ -44,6 +41,20 @@ public class User {
     @ManyToMany
     private List<Program> programs;
 
+    @OneToOne
+    private Preferences preferences;
+
+//    @ManyToOne
+//    @JoinColumn (name = "shelter_id")
+//    private Shelter shelter;
+
+//    public Shelter getShelter() {
+//        return shelter;
+//    }
+//
+//    public void setShelter(Shelter shelter) {
+//        this.shelter = shelter;
+//    }
 
     public User(User copy) {
         id = copy.id;
@@ -109,14 +120,6 @@ public class User {
         this.number = number;
     }
 
-    public String getPreferences() {
-        return preferences;
-    }
-
-    public void setPreferences(String preferences) {
-        this.preferences = preferences;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -148,5 +151,30 @@ public class User {
 
     public void setPrograms(List<Program> programs) {
         this.programs = programs;
+    }
+
+    public boolean isShelter() {
+        return isShelter;
+    }
+
+    public void setShelter(boolean shelter) {
+        isShelter = shelter;
+    }
+
+    public List<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(List<Pet> pets) {
+        this.pets = pets;
+    }
+
+    public void setPreferences(Preferences preferences) {
+        this.preferences = preferences;
+    }
+
+
+    public Preferences getPreferences() {
+        return preferences;
     }
 }
