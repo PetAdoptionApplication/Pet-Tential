@@ -35,7 +35,7 @@ public class ShelterController {
         model.addAttribute("shelter", currentShelter);
         model.addAttribute("pets", currentShelter.getPets());
         model.addAttribute("programs", currentShelter.getPrograms());
-        return "shelter";
+        return "shelter_view";
     }
 
     @GetMapping("shelter/home")
