@@ -62,7 +62,7 @@ public class UserController {
             model.addAttribute("apps", appForThisShelter);
             return "shelter/home";
         }else {
-            return "adopter/home";
+            return "adopter_home";
         }
     }
 
@@ -94,7 +94,6 @@ public class UserController {
         if (user.getIsShelter()){
             returnValue = "redirect:shelter/register/" + user.getId();
         } else {
-            returnValue = "redirect:login";
         }
         return returnValue;
     }
