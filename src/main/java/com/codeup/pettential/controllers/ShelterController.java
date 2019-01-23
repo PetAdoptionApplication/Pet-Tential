@@ -26,7 +26,7 @@ public class ShelterController {
     @GetMapping ("adopter/{id}")
     public String findUser(@PathVariable long id, Model model) {
         model.addAttribute("user", userDao.findOne(id));
-        return "user";
+        return "user_info";
     }
 
     @GetMapping("shelter/{id}")
