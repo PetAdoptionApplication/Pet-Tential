@@ -37,6 +37,9 @@ public class Shelter {
     @OneToOne
     private User user;
 
+//    @OneToMany
+//    private List<User> volunteers;
+
     public Shelter() {
 
     }
@@ -48,6 +51,26 @@ public class Shelter {
         this.numberOfPets = numberOfPets;
         this.email = email;
     }
+
+    public void setPets(List<Pet> pets) {
+        this.pets = pets;
+    }
+
+    public void setPrograms(List<Program> programs) {
+        this.programs = programs;
+    }
+
+    public void setApplicants(List<App> applicants) {
+        this.applicants = applicants;
+    }
+
+//    public List<User> getVolunteers() {
+//        return volunteers;
+//    }
+//
+//    public void setVolunteers(List<User> volunteers) {
+//        this.volunteers = volunteers;
+//    }
 
     public long getId(){
         return id;

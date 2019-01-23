@@ -32,6 +32,10 @@ public class PetController {
 
     @GetMapping("create/pet")
     public String createPet(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (user.isShelter() != true){
+            return "redirect:/home";
+        }
         List<Shelter> shelters = (List<Shelter>) shelterDao.findAll();
         model.addAttribute("shelters", shelters);
         model.addAttribute("pet", new Pet());
@@ -39,15 +43,11 @@ public class PetController {
     }
 
     @PostMapping("/create/pet")
-    public String savePet(@ModelAttribute Pet pet, @RequestParam(name = "sex") String sex,
-                          @RequestParam(name = "shelter") long shelter) {
-        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() == "anonymousUser"){
-            return "redirect:/login";
-        }
-        User user;
+    public String savePet(@ModelAttribute Pet pet, @RequestParam(name = "sex") String sex) {
         User user1 = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         pet.setSex(sex);
-        pet.setShelter(shelterDao.findOne(shelter));
+        Shelter shelter1 = shelterDao.findByUser(user1);
+        pet.setShelter(shelter1);
         pet.setUser(user1);
         petDao.save(pet);
         List<Preferences> preferences  = (List<Preferences>) preferenceDao.findAll();

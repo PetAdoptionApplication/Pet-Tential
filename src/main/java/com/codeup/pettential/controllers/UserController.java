@@ -77,18 +77,9 @@ public class UserController {
             model.addAttribute("error", "Password Must Be 8 characters in length");
             return "sign-up";
         }
-//        Preferences preferences = new Preferences();
-//        preferences.setWeight(1);
-//        preferences.setSex("none");
-//        preferences.setBreed("none");
-//        preferences.setAge(100);
-//        preferences.setColor("none");
-//        preferences.setOwner(user);
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         users.save(user);
-//        preferenceDao.save(preferences);
-//        user.setPreferences(preferences);
         users.save(user);
         String returnValue = "";
         if (user.getIsShelter()){
