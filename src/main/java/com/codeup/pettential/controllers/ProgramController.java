@@ -50,6 +50,4 @@ public class ProgramController {
         model.addAttribute("shelter", shelterDao.findOne(shelterId));
         return "adopter/program";
     }
-
-
 }
