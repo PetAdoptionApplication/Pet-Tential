@@ -37,7 +37,7 @@ public class UserController {
 
     @GetMapping("/")
     public String homePage() {
-        return "landing";
+        return "system/landing";
     }
 
     @GetMapping("/sign-up")
