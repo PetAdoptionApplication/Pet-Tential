@@ -43,7 +43,7 @@ public class UserController {
     @GetMapping("/sign-up")
     public String showSignupForm(Model model){
         model.addAttribute("user", new User());
-        return "sign-up";
+        return "system/sign-up";
     }
 
     @GetMapping("/home")
@@ -60,9 +60,9 @@ public class UserController {
             Shelter thisShelter = shelterDao.findByUser(user);
             List<App> appForThisShelter = appDao.findAllByShelter(thisShelter);
             model.addAttribute("apps", appForThisShelter);
-            return "shelter_home";
+            return "views/shelter_home";
         }else {
-            return "adopter_home";
+            return "views/adopter_home";
         }
     }
 
@@ -71,11 +71,11 @@ public class UserController {
         if (user.getUsername().equals("") || user.getPassword().equals("") || user.getEmail().equals("") ||
                 user.getAddress().equals("") || user.getNumber().equals("")){
             model.addAttribute("error", "All Fields Must be filled in");
-            return "sign-up";
+            return "system/sign-up";
         }
         if (user.getPassword().length() < 8){
             model.addAttribute("error", "Password Must Be 8 characters in length");
-            return "sign-up";
+            return "system/sign-up";
         }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
@@ -95,7 +95,7 @@ public class UserController {
         User user = userDao.findOne(id);
         model.addAttribute("user", user);
         model.addAttribute("newShelter", new Shelter());
-        return "shelter/register";
+        return "system/register";
     }
 
     @PostMapping("/shelter/register/{id}")
