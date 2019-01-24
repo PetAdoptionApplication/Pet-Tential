@@ -51,7 +51,7 @@
                 <div th:each="program : ${programs}">
                     <tr>
                         <form th:action="'/adopter/program/'+${program.id}" method="POST">
-                            <td><button type="submit" class="uk-button uk-button-primary"><span th:text="${program.name}"></span></button> </td>
+                            <td><button type="submit" class="uk-button uk-button-default"><span th:text="${program.name}"></span></button> </td>
                             <td class="uk-vertical-align-middle" th:text="${program.description}"></td>
                         </form>
                     </tr>
