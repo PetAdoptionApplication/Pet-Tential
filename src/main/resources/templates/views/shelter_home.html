@@ -51,15 +51,17 @@
             <div class="uk-child-width-expand uk-margin-auto">
                 <h2> Calender </h2>
                 <iframe src="https://calendar.google.com/calendar/b/2/embed?title=List%20of%20Events&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=kcdu3013jq0shm8mc1fo8r9034%40group.calendar.google.com&amp;color=%23333333&amp;ctz=America%2FChicago" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-            </div>
+            </div>d
 
             <div class="uk-child-width-expand uk-margin-auto">
                 <h2> Programs </h2>
                 <table class="uk-table uk-table-striped">
                     <div th:each="program : ${programs}">
                         <tr>
-                            <td><a th:href="'/adopter/program/'+${program.getId()}"><span th:text="${program.getTitle()}"></span></a> </td>
-                            <td th:text="${program.getDescription()}"></td>
+                            <form th:action="'/adopter/program/'+${program.id}" method="POST">
+                            <td><button type="submit" class="uk-button uk-button-primary"><span th:text="${program.name}"></span></button> </td>
+                            <td class="uk-vertical-align-middle" th:text="${program.description}"></td>
+                            </form>
                         </tr>
                     </div>
                 </table>
