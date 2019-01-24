@@ -45,14 +45,19 @@
         <li>
             <a class="nav-link" href="/adopter/pets">View Pets</a>
         </li>
+        <!--Logged in users see....-->
         <li sec:authorize="isAuthenticated()">
             <a class="nav-link" href="/logout">Logout</a>
         </li>
+        <li sec:authorize="isAuthenticated()">
+            <a class="nav-link" th:href="'/adopter/preferences/edit/'+${userId}">Settings</a>
+        </li>
+        <!--Logged out users see....-->
         <li sec:authorize="!isAuthenticated()">
             <a class="nav-link" href="/login">Login</a>
         </li>
         <li sec:authorize="!isAuthenticated()">
-            <a class="nav-link" th:href="'/adopter/preferences/edit/'+${user.id}">Login</a>
+            <a class="nav-link" href="/sign-up">Register</a>
         </li>
     </ul>
     </div>
