@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 
 <!--<div th:fragment="head (title)" >-->
@@ -45,13 +45,10 @@
         <li>
             <a class="nav-link" href="/adopter/pets">View Pets</a>
         </li>
-        <li>
+        <li sec:authorize="isAuthenticated()">
             <a class="nav-link" href="/logout">Logout</a>
         </li>
-        <li>
-            <a class="nav-link" href="/sign-up">Register</a>
-        </li>
-        <li>
+        <li sec:authorize="!isAuthenticated()">
             <a class="nav-link" href="/login">Login</a>
         </li>
     </ul>
