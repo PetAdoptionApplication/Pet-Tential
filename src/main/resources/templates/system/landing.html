@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace = "partials :: head('Pet-tential')"/>
+
+<style>
+
+    .image-overlay {
+        position: fixed;
+        z-index: 9999;
+        left: 75vw;
+    }
+
+</style>
+
 <body>
 
-    <div uk-height-viewport="expand: true" class="uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('https://www.dailydot.com/wp-content/uploads/f00/fe/3715697e82d68e33a9752a2ee757edba.jpg');">
+<a href="/home"><img th:src="@{/images/pettential_1.png}" style="width: 300px; height: 300px" class="image-overlay"/></a>
 
-        <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical">Pet-Tential</h1>
-
-    </div>
-
-    <div class="uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('http://hsmo.zurihosting.com/wp-content/uploads/2016/06/Pebbles2-A608071a.jpg');">
+    <div class="uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('/images/landing1.jpg');">
 
         <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5">Adopt with ease.</h1>
 
     </div>
 
-    <div class="uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('https://www.michiganhumane.org/wp-content/uploads/2018/02/Adopt-a-Pet.jpg');">
+    <div class="uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('/images/landing2.jpg');">
 
         <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5">Introduce a furry-friend.</h1>
 
     </div>
 
-    <div class="uk-height-large uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('https://cdn.bestfriends.org/s3fs-public/pages/family-volunteering-dogs-kids.jpg');">
+    <div class="uk-height-large uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('/images/landing3.jpg');">
 
         <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5">Sign up for training programs.</h1>
 
     </div>
 
-    <div class="uk-height-large uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('https://www.sdhumane.org/wp-content/uploads/2015/08/volpic2.jpg');">
+    <div class="uk-height-large uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('/images/landing4.jpg');">
 
         <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5">Find local volunteer opportunities.</h1>
 
     </div>
 
-    <div class="uk-height-large uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('http://www.insurancecredit.us/wp-content/uploads/2018/05/Veterinary-Pet-Insurance.jpg');">
+    <div class="uk-height-large uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('/images/landing5.jpg');">
 
         <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5"><a href="/sign-up">Register today!</a></h1>
         <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5"><a href="/home">Sign-in</a></h1>
