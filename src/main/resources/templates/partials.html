@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 
 <!--<div th:fragment="head (title)" >-->
@@ -43,16 +43,21 @@
             <a class="nav-link" href="/home">Home</a>
         </li>
         <li>
-            <a class="nav-link" href="/sign-up">Register</a>
-        </li>
-        <li>
-            <a class="nav-link" href="/login">Login</a>
-        </li>
-        <li>
             <a class="nav-link" href="/adopter/pets">View Pets</a>
         </li>
-        <li>
+        <!--Logged in users see....-->
+        <li sec:authorize="isAuthenticated()">
             <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        <li sec:authorize="isAuthenticated()">
+            <a class="nav-link" th:href="'/adopter/preferences/edit/'+${userId}">Settings</a>
+        </li>
+        <!--Logged out users see....-->
+        <li sec:authorize="!isAuthenticated()">
+            <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li sec:authorize="!isAuthenticated()">
+            <a class="nav-link" href="/sign-up">Register</a>
         </li>
     </ul>
     </div>
