@@ -6,20 +6,20 @@
 
 <div class="uk-container">
     <div class="uk-grid" uk-grid="masonry:true">
-            <div class="uk-card">
-                <div class="uk-card-body">
-                    <h1 class="uk-card-title" th:text="${program.name}"></h1>
-                    <h2 class="uk-card-text" th:text="'Shelter: ' + ${shelter.name}"></h2>
-                    <p class="uk-card-text" th:text="${program.type}"></p>
-                    <p class="uk-card-text" th:text="${program.description}"></p>
-                    <p class="uk-card-text" th:text="${program.time} + ':00 pm'"></p>
-                    <p class="uk-card-text" th:text="${program.length} + ' hours'"></p>
-                    <p class="uk-card-text" th:text="'Breed: ' + ${program.petType}"></p>
-                </div>
+        <div class="uk-card">
+            <div class="uk-card-body">
+                <h1 class="uk-card-title" th:text="${program.name}"></h1>
+                <h2 class="uk-card-text" th:text="'Location: ' + ${shelter.name}"></h2>
+                <p class="uk-card-text" th:text="${program.type}"></p>
+                <p class="uk-card-text" th:text="${program.description}"></p>
+                <p class="uk-card-text" th:text="${program.time} + ':00 pm'"></p>
+                <p class="uk-card-text" th:text="${program.length} + ' hours'"></p>
+                <p class="uk-card-text" th:text="'Breed: ' + ${program.petType}"></p>
             </div>
         </div>
     </div>
 </div>
+
 
 <footer th:replace="partials::footer"/>
 <div th:replace="partials::scripts"/>
