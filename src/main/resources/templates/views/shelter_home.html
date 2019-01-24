@@ -7,7 +7,7 @@
 
     <div class="uk-grid uk-margin-auto">
         <!--Buttons-->
-        <div class="uk-grid uk-text-center">
+        <div class="uk-grid uk-text-center uk-width-1-1">
             <div class="uk-child-width-expand uk-margin-auto">
                 <button class="uk-button uk-button-default"><a href="/shelter/createProgram">Create a Program</a></button>
             </div>
@@ -23,52 +23,52 @@
     <hr/>
 
     <!--Info-->
-    <div class="uk-grid uk-column-1-3 uk-margin-auto">
-        <div class="uk-grid uk-text-center">
-
-            <div class="uk-child-width-expand uk-margin-auto">
-               <h2> Applications </h2>
-                <table class="uk-table uk-table-striped">
-                   <div th:each="app : ${apps}">
-                       <tr>
-                           <td th:text="${app.getPet().getName()}"></td>
-                           <td th:text="${app.getUser().getName()}"></td>
-                           <td>
-                               <form th:action="'/adopt/' + ${app.getPet().getId()} + '/accept'" method="post" >
-                                   <button type="submit">Accept</button>
-                               </form>
-                           </td>
-                           <td>
-                               <form th:action="'/adopt/' + ${app.getPet().getId()} + '/reject'" method="post" >
-                                   <button type="submit">Reject</button>
-                               </form>
-                           </td>
-                       </tr>
-                   </div>
-                </table>
-            </div>
-
-            <div class="uk-child-width-expand uk-margin-auto">
-                <h2> Calender </h2>
-                <iframe src="https://calendar.google.com/calendar/b/2/embed?title=List%20of%20Events&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=kcdu3013jq0shm8mc1fo8r9034%40group.calendar.google.com&amp;color=%23333333&amp;ctz=America%2FChicago" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-            </div>d
-
-            <div class="uk-child-width-expand uk-margin-auto">
-                <h2> Programs </h2>
-                <table class="uk-table uk-table-striped">
-                    <div th:each="program : ${programs}">
-                        <tr>
-                            <form th:action="'/adopter/program/'+${program.id}" method="POST">
+    <div class="uk-child-width-1-2@l uk-grid-match uk-grid uk-child-width-1-2@s">
+        <div>
+           <p> Applications</p>
+            <table class="uk-table uk-table-striped">
+               <div th:each="app : ${apps}">
+                   <tr>
+                       <td th:text="${app.getPet().getName()}"></td>
+                       <td th:text="${app.getUser().getName()}"></td>
+                       <td>
+                           <form th:action="'/adopt/' + ${app.getPet().getId()} + '/accept'" method="post" >
+                               <button type="submit">Accept</button>
+                           </form>
+                       </td>
+                       <td>
+                           <form th:action="'/adopt/' + ${app.getPet().getId()} + '/reject'" method="post" >
+                               <button type="submit">Reject</button>
+                           </form>
+                       </td>
+                   </tr>
+               </div>
+            </table>
+        </div>
+        <div>
+            <p> Programs </p>
+            <table class="uk-table uk-table-striped">
+                <div th:each="program : ${programs}">
+                    <tr>
+                        <form th:action="'/adopter/program/'+${program.id}" method="POST">
                             <td><button type="submit" class="uk-button uk-button-primary"><span th:text="${program.name}"></span></button> </td>
                             <td class="uk-vertical-align-middle" th:text="${program.description}"></td>
-                            </form>
-                        </tr>
-                    </div>
-                </table>
-            </div>
-
+                        </form>
+                    </tr>
+                </div>
+            </table>
         </div>
     </div>
+
+    <hr />
+
+    <div class="uk-child-width-expand uk-margin-auto">
+        <h2> Calender </h2>
+        <iframe src="https://calendar.google.com/calendar/b/2/embed?title=List%20of%20Events&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=kcdu3013jq0shm8mc1fo8r9034%40group.calendar.google.com&amp;color=%23333333&amp;ctz=America%2FChicago" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    </div>
+
+
+
 
 
 
