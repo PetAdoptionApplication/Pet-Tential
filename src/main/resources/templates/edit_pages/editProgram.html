@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials :: head('Edit Program')"/>
 <body>
-
+<nav th:replace="partials::navbar"/>
 <div class="container uk-flex">
 
     <form th:action="@{/editProgram}" method="POST" class="uk-margin-auto uk-width-1-2 " th:object="${program}">
