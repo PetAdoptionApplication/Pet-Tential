@@ -85,6 +85,6 @@ public class SearchController {
         model.addAttribute("pets", pets);
         model.addAttribute("programs", programs);
         model.addAttribute("shelters", shelters);
-        return "search";
+        return "system/search";
     }
 }
