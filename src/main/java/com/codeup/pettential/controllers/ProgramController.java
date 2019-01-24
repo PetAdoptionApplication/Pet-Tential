@@ -46,7 +46,7 @@ public class ProgramController {
         return "views/programs";
     }
 
-    @PostMapping("adopter/program/{id}")
+    @GetMapping("adopter/program/{id}")
     public String getAllPrograms(@PathVariable long id, Model model) {
         model.addAttribute("program", programDao.findOne(id));
         long shelterId = programDao.findOne(id).getShelter().getId();

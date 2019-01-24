@@ -22,7 +22,7 @@
                                <td th:text="${program.name}"></td>
                                <td th:text="${program.description}"></td>
                                <td th:text="${program.length}"></td>
-                               <td><button type="submit" th:action="'adopter/program/' + ${program.id}">More info</button></td>
+                               <td><button type="submit"><a th:href="'adopter/program/' + ${program.id}">More info</a></button></td>
                            </tr>
                        </tbody>
                    </table>
