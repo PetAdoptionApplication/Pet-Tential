@@ -70,6 +70,12 @@
 
 
 
+<div th:each="vol : ${vols}">
+    <a th:href="'/showVolunteers/' + ${vol.id}"><span th:text="${vol.date}"></span></a>
+</div>
+
+
+
 <hr/>
 <footer th:replace="partials :: footer"/>
 

@@ -57,6 +57,18 @@
 
     </div>
 
+<h1>Volunteer Oppurtunites</h1>
+<div th:each="volunteer : ${volunteers}">
+    <div th:if="${volunteer.getVolunteerUsers().contains(user) == false}">
+    <form th:action="@{'/volunteer/' + ${volunteer.id}}" method="POST">
+        <p th:text="${volunteer.getShelter().name}"></p>
+        <p th:text="${volunteer.date}"></p>
+        <p th:text="${volunteer.time}"></p>
+        <button type="submit">Sign Me Up!!</button>
+    </form>
+    </div>
+</div>
+
 <footer th:replace="partials :: footer"/>
 <div th:replace="partials :: scripts"/>
 </body>

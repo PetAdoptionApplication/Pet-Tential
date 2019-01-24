@@ -1,8 +1,6 @@
 package com.codeup.pettential.controllers;
 
-import com.codeup.pettential.models.App;
-import com.codeup.pettential.models.Shelter;
-import com.codeup.pettential.models.User;
+import com.codeup.pettential.models.*;
 import com.codeup.pettential.repositories.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,8 +19,10 @@ public class UserController {
     private AppRepository appDao;
     private UserRepository userDao;
     private PreferencesRepository preferenceDao;
+    private VolunteerRepository volDao;
 
-    public UserController(Users users, PasswordEncoder passwordEncoder, ShelterRepository shelterDao, ProgramRepository programDao, AppRepository appDao, UserRepository userDao, PreferencesRepository preferenceDao) {
+    public UserController(Users users, PasswordEncoder passwordEncoder, ShelterRepository shelterDao, ProgramRepository programDao, AppRepository appDao, UserRepository userDao,
+                          PreferencesRepository preferenceDao, VolunteerRepository volDao) {
         this.users = users;
         this.passwordEncoder = passwordEncoder;
         this.shelterDao = shelterDao;
@@ -30,6 +30,7 @@ public class UserController {
         this.appDao = appDao;
         this.userDao = userDao;
         this.preferenceDao = preferenceDao;
+        this.volDao = volDao;
     }
 
     @GetMapping("/")
@@ -54,11 +55,19 @@ public class UserController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (user.getIsShelter()) {
+            User user1 = userDao.findOne(user.getId());
             Shelter thisShelter = shelterDao.findByUser(user);
             List<App> appForThisShelter = appDao.findAllByShelter(thisShelter);
+            List<Volunteer> volsForThisShelter = volDao.findAllByShelter(thisShelter);
+            model.addAttribute("user", user1);
             model.addAttribute("apps", appForThisShelter);
+            model.addAttribute("vols", volsForThisShelter);
             return "views/shelter_home";
         }else {
+            List<Volunteer> volunteers = (List<Volunteer>) volDao.findAll();
+            List<Program> programs = (List<Program>) programDao.findAll();
+            model.addAttribute("volunteers", volunteers);
+            model.addAttribute("programs", programs);
             return "views/adopter_home";
         }
     }
@@ -78,6 +87,13 @@ public class UserController {
         if (!user.getPassword().equals(confPass)){
             model.addAttribute("error", "Passwords do not match");
             return "system/sign-up";
+        }
+        List<User> users1 = (List<User>) userDao.findAll();
+        for (User user1 : users1){
+            if (user1.getUsername().equals(user.getUsername())){
+                model.addAttribute("error", "Sorry, Username has already been used, please select a different one");
+                return "system/sign-up";
+            }
         }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
