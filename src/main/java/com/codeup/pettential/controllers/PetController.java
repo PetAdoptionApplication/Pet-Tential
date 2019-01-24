@@ -49,6 +49,9 @@ public class PetController {
         Shelter shelter1 = shelterDao.findByUser(user1);
         pet.setShelter(shelter1);
         pet.setUser(user1);
+        if (pet.getPicture().equals("")){
+            pet.setPicture("https://localnewsonly.com/wp-content/uploads/2018/12/dog-adoption-1.jpg");
+        }
         petDao.save(pet);
         List<Preferences> preferences  = (List<Preferences>) preferenceDao.findAll();
         for (Preferences preference : preferences){
@@ -56,8 +59,8 @@ public class PetController {
                  preference.getSex().contains(pet.getSex()) || preference.getAge() == pet.getAge()
                         || preference.getWeight() == pet.getWeight()) {
                 User user2 = userDao.findOne(preference.getOwner().getId());
-                Twillio.sendMessage(user2.getNumber(), "A animal matching your preference has been added to the site." +
-                        "Please log in to meet" + pet.getName());
+                Twillio.sendMessage(user2.getNumber(), "A animal matching your preference has been added to the site. " +
+                        "Please log in to meet " + pet.getName() + ".");
                 }
             }
         return "redirect:/shelter/home";

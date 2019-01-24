@@ -21,6 +21,11 @@ public class PreferencesControllers {
 
     @GetMapping ("adopter/preferences")
     public String createPreference(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Preferences preferences = preferencesDao.findByOwner(user);
+        if (preferences != null){
+            return "redirect:/adopter/preferences/edit/" + preferences.getId();
+        }
         model.addAttribute("preference", new Preferences());
         return "views/preferences";
     }
@@ -32,17 +37,6 @@ public class PreferencesControllers {
         preferencesDao.save(preferences);
         user.setPreferences(preferences);
         return "redirect:/home";
-    }
-
-    @GetMapping ("adopter/preferences/show")
-    public String showPreferencePage(Model model) {
-        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() == "anonymousUser"){
-            return "redirect:/login";
-        }
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Preferences preferences = preferencesDao.findByOwner(user);
-        model.addAttribute("preference", preferences);
-        return "views/preference-show";
     }
 
 
@@ -64,7 +58,7 @@ public class PreferencesControllers {
         preference.setSex(sex);
         preference.setWeight(Integer.parseInt(weight));
         preferencesDao.save(preference);
-        return "redirect:/adopter/preferences/show";
+        return "redirect:/home";
     }
 
 }

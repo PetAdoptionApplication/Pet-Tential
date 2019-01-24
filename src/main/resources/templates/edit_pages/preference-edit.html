@@ -1,31 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace = "partials :: head('Set Preference')">
     <meta charset="UTF-8" />
     <title>Title</title>
 </head>
 <body>
 
 <nav th:replace="partials :: navbar"/>
+<div class="container uk-flex">
+    <form class="uk-margin-auto uk-width-1-2" th:action="'/adopter/preferences/edit/' + ${oldPref.getId()}" method="post">
 
-<form th:action="'/adopter/preferences/edit/' + ${oldPref.getId()}" method="post" >
-    <label>Breed</label>
-    <input type="text" name="breed" th:value="${oldPref.getBreed()}"/>
-    <label>Age</label>
-    <input type="text" name="age" th:value="${oldPref.getAge()}"/>
-    <label>Color</label>
-    <input type="text" name="color" th:value="${oldPref.getColor()}"/>
-    <label>Sex</label>
-    <select name="sex">
-        <option value="m">Male</option>
-        <option value="f">Female</option>
-    </select>
-    <label>Weight</label>
-    <input type="text" name="weight" th:value="${oldPref.getWeight()}"/>
+        <h1>Edit your preference</h1>
+        <div class="uk-margin">
+            <label for="breed">Breed</label>
+            <input id="breed" class="uk-input uk-form-width-medium uk-width-expand" type="text"
+                   name="breed" th:value="${oldPref.getBreed()}"/>
+        </div>
+        <div class="uk-margin">
+            <label for="age">Age</label>
+            <input id="age" class="uk-input uk-form-width-medium uk-width-expand" type="text" placeholder="0"
+                   name="age" th:value="${oldPref.getAge()}"/>
+        </div>
+        <div class="uk-margin">
+            <label for="color">Color</label>
+            <input id="color" class="uk-input uk-form-width-medium uk-width-expand" type="text"
+                   name="color" th:value="${oldPref.getColor()}"/>
+        </div>
+        <div class="uk-margin">
+            <label for="sex">Sex</label>
+            <select id="sex" class="uk-input uk-form-width-medium uk-width-expand" name="sex" th:value="${oldPref.getSex()}">
+                <option value="m">Male</option>
+                <option value="f">Female</option>
+            </select>
+        </div>
+        <div class="uk-margin">
+            <label for="weight">Weight</label>
+            <input id="weight" class="uk-input uk-form-width-medium uk-width-expand" type="text" placeholder="0"
+                   name="weight" th:value="${oldPref.getWeight()}"/>
+        </div>
 
-    <input type="submit" />
-</form>
+        <button type="submit" class="uk-margin-auto uk-button uk-button-default uk-button-small">Submit</button>
+    </form>
 
+
+</div>
 
 </body>
 </html>
