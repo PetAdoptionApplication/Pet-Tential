@@ -5,18 +5,13 @@
 
 <nav th:replace="partials :: navbar"/>
 
-<div class="card text-center" style="width: 18rem;">
-    <h5 class="card-title"><strong>User Information</strong></h5>
-
-    <div class="card-body" method="GET" th:object="${user}">
-        <div class="card" style="width: 18rem;">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item" th:field="*{name}">name</li>
-                <li class="list-group-item" th:field="*{email}">email</li>
-                <li class="list-group-item" th:field="*{address}">address</li>
-                <li class="list-group-item" th:field="*{number}">number</li>
-            </ul>
-        </div>
+<div class="uk-flex">
+    <div class="uk-margin-auto uk-width-1-2@m uk-card uk-card-default uk-card-body" th:object="{user}">
+        <h1 class="uk-card-title" th:text="${user.name}"/>
+        <h3 th:text="'Email: '+${user.email}"/>
+        <h3 th:text="'Shelter: ' + ${user.username}"/>
+        <p th:text="'Age (in years): '+${user.number}"/>
+        <p th:text="'Color: '+${user.address}"/>
     </div>
 </div>
 
