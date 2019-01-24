@@ -50,10 +50,8 @@
             <table class="uk-table uk-table-striped">
                 <div th:each="program : ${programs}">
                     <tr>
-                        <form th:action="'/adopter/program/'+${program.id}" method="POST">
-                            <td><button type="submit" class="uk-button uk-button-primary"><span th:text="${program.name}"></span></button> </td>
-                            <td class="uk-vertical-align-middle" th:text="${program.description}"></td>
-                        </form>
+                        <td><button type="submit" class="uk-button uk-button-primary"><a th:href="'adopter/program/'+${program.id}"><span th:text="${program.name}"></span></a></button> </td>
+                        <td class="uk-vertical-align-middle" th:text="${program.description}"></td>
                     </tr>
                 </div>
             </table>

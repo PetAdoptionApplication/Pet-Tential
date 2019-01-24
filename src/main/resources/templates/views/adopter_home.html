@@ -2,24 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace = "partials :: head('Home')" />
 <body>
-<nav style="background-color: #CCCCFF" class="uk-navbar-container uk-margin" uk-navbar="mode: click">
-    <div class="uk-navbar-center">
-
-        <div><div>
-            <ul class="uk-navbar-nav">
-                <li><a href="/adopter/pets">View all pets</a></li>
-            </ul>
-        </div></div>
-        <a class="uk-navbar-item uk-logo" href="#">Pet-tential</a>
-        <div class="uk-navbar-right"><div>
-            <ul class="uk-navbar-nav">
-                <li><a href="/logout">Logout</a></li>
-                <li><a href="/user_info">Profile</a></li>
-            </ul>
-        </div></div>
-
-    </div>
-</nav>
+<nav th:replace="partials::navbar"/>
 
     <div class="uk-grid-divider uk-child-width-1-2 uk-grid uk-grid-match">
 
