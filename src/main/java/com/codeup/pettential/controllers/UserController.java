@@ -64,7 +64,8 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public String saveUser(@ModelAttribute User user, Model model, @RequestParam(name = "city") String city, @RequestParam(name = "state") String state){
+    public String saveUser(@ModelAttribute User user, Model model, @RequestParam(name = "city") String city, @RequestParam(name = "state") String state,
+                           @RequestParam(name = "confPass") String confPass){
         if (user.getUsername().equals("") || user.getPassword().equals("") || user.getEmail().equals("") ||
                 user.getAddress().equals("") || user.getNumber().equals("")){
             model.addAttribute("error", "All Fields Must be filled in");
@@ -72,6 +73,10 @@ public class UserController {
         }
         if (user.getPassword().length() < 8){
             model.addAttribute("error", "Password Must Be 8 characters in length");
+            return "system/sign-up";
+        }
+        if (!user.getPassword().equals(confPass)){
+            model.addAttribute("error", "Passwords do not match");
             return "system/sign-up";
         }
         String hash = passwordEncoder.encode(user.getPassword());

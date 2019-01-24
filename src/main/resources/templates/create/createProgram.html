@@ -7,38 +7,39 @@
 </div>
 <div class="uk-container uk-flex">
 
-<form th:action="@{/createProgram}" method="POST" class="uk-margin-auto uk-width-1-2 " th:object="${program}">
+<form th:action="@{/shelter/createProgram}" method="POST" class="uk-margin-auto uk-width-1-2 " th:object="${program}">
     <h1 class="uk-margin-top">Create a Program</h1>
 
-    <label for="name">Name</label>
+    <label for="name">Name of program</label>
     <input id="name" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{name}" />
 
 
     <div>
-    <label for="type">Type</label>
-    <input id="type" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="password" th:field="*{type}" />
+    <label for="type">Type of program (walking/tricks/etc)</label>
+    <input id="type" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{type}" />
     </div>
 
     <div>
-    <label for="description">Description</label>
+    <label for="description">Description of program</label>
     <input id="description" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{description}" />
     </div>
 
     <div>
-    <label for="length">Length</label>
+    <label for="length">Length of program (in hours)</label>
     <input id="length" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{length}" />
     </div>
 
     <div>
-    <label for="time">Time</label>
+    <label for="time">Time of program</label>
     <input id="time" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{time}" />
     </div>
 
     <div>
-    <label for="pet type">Pet Type</label>
+    <label for="pet type">Breed type for program (Dog/cat/etc)</label>
     <input id="pet type" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{petType}" />
     </div>
 
+    <input type="hidden" th:value="${shelters.id}" name="shelter" />
     <button class="uk-button uk-button-primary uk-margin-auto" type="submit"> Submit </button>
 </form>
 </div>
