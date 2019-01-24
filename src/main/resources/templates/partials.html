@@ -51,6 +51,9 @@
         <li sec:authorize="!isAuthenticated()">
             <a class="nav-link" href="/login">Login</a>
         </li>
+        <li sec:authorize="!isAuthenticated()">
+            <a class="nav-link" th:href="'/adopter/preferences/edit/'+${user.id}">Login</a>
+        </li>
     </ul>
     </div>
 </nav>
