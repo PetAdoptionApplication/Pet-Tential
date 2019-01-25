@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace = "partials :: head('Pet-tential')"/>
+<head>
+
+    <meta charset="UTF-8"/>
+    <title>Welcome!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/css/uikit.min.css" />
+    <link rel="icon" href="../static/img/paw_2.png"/>
 
 <style>
 
@@ -11,36 +16,36 @@
     }
 
 </style>
-
+</head>
 <body>
 
-<a href="/home"><img th:src="@{/images/pettential_1.png}" style="width: 300px; height: 300px" class="image-overlay"/></a>
+<a href="/home"><img th:src="@{/img/pettential_1.png}" style="width: 300px; height: 300px" class="image-overlay"/></a>
 
-    <div class="uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('/images/landing1.jpg');">
+    <div class="uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('/img/landing1.jpg');">
 
         <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5">Adopt with ease.</h1>
 
     </div>
 
-    <div class="uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('/images/landing2.jpg');">
+    <div class="uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('/img/landing2.jpg');">
 
         <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5">Introduce a furry-friend.</h1>
 
     </div>
 
-    <div class="uk-height-large uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('/images/landing3.jpg');">
+    <div class="uk-height-large uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('/img/landing3.jpg');">
 
         <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5">Sign up for training programs.</h1>
 
     </div>
 
-    <div class="uk-height-large uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('/images/landing4.jpg');">
+    <div class="uk-height-large uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('/img/landing4.jpg');">
 
         <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5">Find local volunteer opportunities.</h1>
 
     </div>
 
-    <div class="uk-height-large uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('/images/landing5.jpg');">
+    <div class="uk-height-large uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; background-image: url('/img/landing5.jpg');">
 
         <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5"><a href="/sign-up">Register today!</a></h1>
         <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5"><a href="/home">Sign-in</a></h1>
