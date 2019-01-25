@@ -1,77 +1,115 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace = "partials :: head('Home')"/>
+<head th:replace="partials :: head('Home')"/>
 <body>
 
 <nav th:replace="partials :: navbar"/>
 
-    <div class="uk-grid uk-margin-auto">
-        <!--Buttons-->
-        <div class="uk-grid uk-text-center uk-width-1-1">
-            <div class="uk-child-width-expand uk-margin-auto">
-                <button class="uk-button uk-button-default"><a href="/shelter/createProgram">Create a Program</a></button>
-            </div>
-            <div class="uk-child-width-expand uk-margin-auto">
-                <button class="uk-button uk-button-default"><a href="/adopter/pets">Pet Management</a></button>
-            </div>
-            <div class="uk-child-width-expand uk-margin-auto">
-                <button class="uk-button uk-button-default"><a href="/create/pet">Add Pet</a></button>
-            </div>
-            <div class="uk-child-width-expand uk-margin-auto">
-                <button class="uk-button uk-button-default"><a href="/getvolunteer">New Volunteer Oppurtunity</a></button>
-            </div>
+<div class="uk-grid uk-margin-auto">
+    <!--Buttons-->
+    <div class="uk-grid uk-text-center uk-width-1-1">
+        <div class="uk-child-width-expand uk-margin-auto">
+            <button class="uk-button uk-button-default"><a href="/shelter/createProgram">Create a Program</a></button>
+        </div>
+        <div class="uk-child-width-expand uk-margin-auto">
+            <button class="uk-button uk-button-default"><a href="/adopter/pets">Pet Management</a></button>
+        </div>
+        <div class="uk-child-width-expand uk-margin-auto">
+            <button class="uk-button uk-button-default"><a href="/create/pet">Add Pet</a></button>
+        </div>
+        <div class="uk-child-width-expand uk-margin-auto">
+            <button class="uk-button uk-button-default"><a href="/getvolunteer">New Volunteer Oppurtunity</a></button>
         </div>
     </div>
+</div>
 
-    <hr/>
+<hr/>
 
-    <!--Info-->
-    <div class="uk-child-width-1-2@l uk-grid-match uk-grid uk-child-width-1-2@s">
-        <div>
-           <p> Applications</p>
-            <table class="uk-table uk-table-striped">
-               <div th:each="app : ${apps}">
-                   <div th:if="${app.getApprovalStatus() != true}">
-                   <tr>
-                       <td th:text="${app.getPet().getName()}"></td>
-                       <td th:text="${app.getUser().getName()}"></td>
-                       <td>
-                           <form th:action="'/adopt/' + ${app.getId()} + '/accept/' + ${app.getUser().getId()}" method="post" >
-                               <button type="submit">Accept</button>
-                           </form>
-                       </td>
-                       <td>
-                           <form th:action="'/adopt/' + ${app.getId()} + '/reject/' + ${app.getUser().getId()}" method="post" >
-                               <button type="submit">Reject</button>
-                           </form>
-                       </td>
-                   </tr>
-                   </div>
-               </div>
-            </table>
-        </div>
-        <div>
-            <p> Programs </p>
-            <table class="uk-table uk-table-striped">
-                <div th:each="program : ${programs}">
+<!--Info-->
+<div class="uk-child-width-1-2@l uk-grid uk-child-width-1-2@s">
+    <div class="uk-text-center">
+        <h4 class="uk-margin-auto"><u>Applications</u></h4>
+        <table class="uk-table uk-table-striped">
+            <tr>
+                <th class="uk-text-center">
+                    Pet Name
+                </th>
+                <th class="uk-text-center">
+                    User Name
+                </th>
+                <th class="uk-text-center">
+                    Accept
+                </th>
+                <th class="uk-text-center">
+                    Reject
+                </th>
+            </tr>
+            <div th:each="app : ${apps}">
+                <div th:if="${app.getApprovalStatus() != true}">
                     <tr>
-                        <td><button type="submit" class="uk-button uk-button-primary"><a th:href="'adopter/program/'+${program.id}"><span th:text="${program.name}"></span></a></button> </td>
-                        <td class="uk-vertical-align-middle" th:text="${program.description}"></td>
+                        <td th:text="${app.getPet().getName()}"></td>
+                        <td th:text="${app.getUser().getName()}"></td>
+                        <td>
+                            <form th:action="'/adopt/' + ${app.getId()} + '/accept/' + ${app.getUser().getId()}"
+                                  method="post">
+                                <button type="submit">Accept</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form th:action="'/adopt/' + ${app.getId()} + '/reject/' + ${app.getUser().getId()}"
+                                  method="post">
+                                <button type="submit">Reject</button>
+                            </form>
+                        </td>
                     </tr>
                 </div>
+            </div>
+        </table>
+        <div>
+            <h4><u>Upcoming Volunteer Opportunities</u></h4>
+            <table class="uk-table uk-table-striped">
+                <tr>
+                    <th class="uk-text-center">
+                        Date
+                    </th>
+                    <th class="uk-text-center">
+                        Time
+                    </th>
+                </tr>
+                <tr th:each="vol : ${vols}">
+                    <td>
+                        <a th:href="'/showVolunteers/' + ${vol.id}"><span th:text="${vol.date}"></span></a>
+                    </td>
+                    <td>
+                        <span th:text="${vol.time}"></span>
+                    </td>
+                </tr>
             </table>
         </div>
     </div>
+    <div class="uk-text-center">
+        <h4 class="uk-margin-auto"><u>Programs</u></h4>
+        <table class="uk-table uk-table-striped">
+                <tr>
+                    <th class="uk-text-center">
+                        Name
+                    </th>
+                    <th class="uk-text-center">
+                        Description
+                    </th>
+                </tr>
+                <tr th:each="program : ${programs}">
+                    <td>
+                        <a th:href="'adopter/program/'+${program.id}"><span th:text="${program.name}"></span></a>
 
-    <hr />
-
-    <div class="uk-child-width-expand uk-margin-auto uk-position-center">
-        <h2> Upcoming Volunteer Opportunities </h2>
-        <div th:each="vol : ${vols}">
-            <a th:href="'/showVolunteers/' + ${vol.id}"><span th:text="${vol.date}"></span></a>
-        </div>
+                    </td>
+                    <td class="uk-vertical-align-middle" th:text="${program.description}"></td>
+                </tr>
+        </table>
     </div>
+</div>
 
+<hr/>
 
 
 <hr/>
