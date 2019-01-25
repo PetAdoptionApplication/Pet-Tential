@@ -1,6 +1,7 @@
 package com.codeup.pettential.controllers;
 
 import com.codeup.pettential.models.App;
+import com.codeup.pettential.models.Preferences;
 import com.codeup.pettential.models.Shelter;
 import com.codeup.pettential.models.User;
 import com.codeup.pettential.repositories.*;
@@ -56,7 +57,15 @@ public class UserController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         User user = userDao.findByUsername(username);
-        user.getId();
+        Preferences preferences = user.getPreferences();
+        Boolean hasPreference;
+        if (preferences == null) {
+            hasPreference = false;
+        } else {
+            hasPreference = true;
+        }
+        System.out.println(hasPreference);
+        model.addAttribute("hasPreference", hasPreference);
         model.addAttribute("userId", user.getId());
 
         if (user.getIsShelter()) {
