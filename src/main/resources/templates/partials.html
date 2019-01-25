@@ -58,7 +58,7 @@
                 </li>
                 <li sec:authorize="isAuthenticated()">
                     <a class="nav-link" th:if="${hasPreference}" th:href="'/adopter/preferences/edit/'+${userId}">Settings</a>
-                    <a class="nav-link" th:if="${!hasPreference}" th:href="/adopter/preferences">Settings</a>
+                    <a class="nav-link" th:if="${doesNotHavePreference}" href="/adopter/preferences">Settings</a>
                 </li>
                 <!--Logged out users see....-->
                 <li sec:authorize="!isAuthenticated()">

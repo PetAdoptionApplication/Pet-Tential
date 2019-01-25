@@ -13,13 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class AuthenticationController {
-
-    private UserRepository userDao;
-
-    AuthenticationController(UserRepository userDao){
-        this.userDao = userDao;
-    }
-
     @GetMapping("/login")
     public String showLoginForm() {
         return "system/log-in";

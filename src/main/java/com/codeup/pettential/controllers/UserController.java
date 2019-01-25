@@ -58,14 +58,15 @@ public class UserController {
         String username = authentication.getName();
         User user = userDao.findByUsername(username);
         Preferences preferences = user.getPreferences();
-        Boolean hasPreference;
+        boolean hasPreference = false;
+        boolean doesNotHavePreference = false;
         if (preferences == null) {
-            hasPreference = false;
+            doesNotHavePreference = true;
         } else {
             hasPreference = true;
         }
-        System.out.println(hasPreference);
         model.addAttribute("hasPreference", hasPreference);
+        model.addAttribute("doesNotHavePreference", doesNotHavePreference);
         model.addAttribute("userId", user.getId());
 
         if (user.getIsShelter()) {
