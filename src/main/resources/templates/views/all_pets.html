@@ -11,8 +11,8 @@
 <h1 class="uk-margin-top">List of Pets</h1>
 
     <div class="uk-child-width-1-2@m uk-grid" uk-grid="masonry:true">
-        <div th:each="pet : ${pets}">
-            <div class="uk-card uk-card-hover" th:if="${pet.name.equals('deleted') == false}">
+        <div th:each="pet : ${pets}" th:if="${pet.name.equals('deleted') == false}">
+            <div class="uk-card uk-card-hover">
                 <div class="uk-card-body">
                     <a th:href="'/adopter/pet/' + ${pet.id}"><img th:src="${pet.picture}" class="uk-card-media-top" alt="Pet Image"/></a>
 

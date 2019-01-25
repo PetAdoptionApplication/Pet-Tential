@@ -1,5 +1,5 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials::head('Pet Page')"/>
 <body>
 <nav th:replace="partials :: navbar"/>
@@ -22,13 +22,6 @@
           </form>
       </div>
     </div>
-
-        <!--<div class="uk-grid-divider"/>-->
-
-        <!--<div class="uk-width-1-2@m">-->
-            <!--<img th:src="${pet.picture}" alt="Picture of Pet"/>-->
-        <!--</div>-->
-    <!--</div>-->
 
 <footer th:replace="partials::footer" />
 <div th:replace="partials::scripts" />
