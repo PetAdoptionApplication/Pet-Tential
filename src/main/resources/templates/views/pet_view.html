@@ -18,7 +18,7 @@
             <p th:text="'Sex: '+${pet.sex}" />
             <p th:text="'Weight (in pounds): '+${pet.weight}" />
           <form th:action="@{'/adopt/pet/' + ${pet.getId()}}" method="POST" th:if="${user.getIsShelter() == false}">
-              <button type="submit">Put in a application for this pet!</button>
+              <button type="submit" class="uk-button uk-button-default">Put in a application for this pet!</button>
           </form>
       </div>
     </div>
