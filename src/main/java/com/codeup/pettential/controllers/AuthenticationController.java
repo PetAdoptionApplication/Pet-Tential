@@ -24,13 +24,4 @@ public class AuthenticationController {
     public String showLoginForm() {
         return "system/log-in";
     }
-
-    @PostMapping("/login")
-    public void loggedIn(Model model){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        User user = userDao.findByUsername(username);
-        long userId = user.getId();
-        model.addAttribute("user",userId);
-    }
 }
