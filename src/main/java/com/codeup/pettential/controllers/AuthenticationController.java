@@ -22,7 +22,7 @@ public class AuthenticationController {
     public void loggedIn(Model model){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User customUser = (User)authentication.getPrincipal();
-        int userId = (int) customUser.getId();
+        long userId = customUser.getId();
         model.addAttribute("userId", userId);
     }
 
