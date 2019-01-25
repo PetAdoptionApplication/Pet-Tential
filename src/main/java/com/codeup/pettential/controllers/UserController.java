@@ -108,6 +108,7 @@ public class UserController {
             List<Volunteer> volsForThisShelter = volDao.findAllByShelter(thisShelter);
             model.addAttribute("apps", appForThisShelter);
             model.addAttribute("vols", volsForThisShelter);
+            model.addAttribute("programs", programDao.findAll());
             return "views/shelter_home";
         }else {
             User user1 = userDao.findOne(user.getId());
