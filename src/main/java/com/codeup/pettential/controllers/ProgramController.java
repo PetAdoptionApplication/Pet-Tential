@@ -37,7 +37,7 @@ public class ProgramController {
         Shelter shelter1 = shelterDao.findOne(shelter);
         program.setShelter(shelter1);
         programDao.save(program);
-        return "redirect:/shelter/home";
+        return "redirect:/home";
     }
 
     @GetMapping("adopter/programs")
