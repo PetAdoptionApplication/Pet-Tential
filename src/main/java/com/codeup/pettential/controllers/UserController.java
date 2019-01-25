@@ -108,6 +108,7 @@ public class UserController {
             List<Volunteer> volsForThisShelter = volDao.findAllByShelter(thisShelter);
             model.addAttribute("apps", appForThisShelter);
             model.addAttribute("vols", volsForThisShelter);
+            model.addAttribute("programs", programDao.findAll());
             return "views/shelter_home";
         }else {
             User user1 = userDao.findOne(user.getId());
@@ -135,13 +136,6 @@ public class UserController {
         if (!user.getPassword().equals(confPass)){
             model.addAttribute("error", "Passwords do not match");
             return "system/sign-up";
-        }
-        List<User> users1 = (List<User>) userDao.findAll();
-        for (User user1 : users1){
-            if (user1.getUsername().equals(user.getUsername())){
-                model.addAttribute("error", "Sorry, Username has already been used, please select a different one");
-                return "system/sign-up";
-            }
         }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
