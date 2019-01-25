@@ -3,54 +3,75 @@
 <head th:replace = "partials :: head('Home')" />
 <body>
 <nav th:replace="partials::navbar"/>
+<div class="uk-grid uk-margin-auto">
+    <div class="uk-grid uk-text-center uk-width-1-1">
+        <div class="uk-child-width-expand uk-margin-auto">
 
-    <div class="uk-grid-divider uk-child-width-1-2 uk-grid uk-grid-match">
-
-               <div>
-                   <table class="uk-table uk-table-striped">
-                       <caption class="uk-margin-auto"><h4>Programs in your area</h4></caption>
-                       <thead>
-                           <tr class="card-body">
-                               <th>Name</th>
-                               <th>Description</th>
-                               <th>Length</th>
-                               <th>Sign-up</th>
-                           </tr>
-                       </thead>
-                       <tbody th:each="program : ${programs}">
-                           <tr>
-                               <td th:text="${program.name}"></td>
-                               <td th:text="${program.description}"></td>
-                               <td th:text="${program.length}"></td>
-                               <td><button type="submit"><a th:href="'adopter/program/' + ${program.id}">More info</a></button></td>
-                           </tr>
-                       </tbody>
-                   </table>
-               </div>
-
-
-            <div>
-                <div class="uk-flex">
-                    <div style="margin-left: 15vh;" class="uk-margin-auto-vertical">
-                        <div class="uk-margin-auto uk-margin-bottom"><a href="/search"><button class="uk-margin-auto uk-width-auto uk-button uk-button-primary">Search pets/shelters/programs</button></a></div>
-                        <div class="uk-margin-auto"><a href="/adopter/preferences"><button class="uk-margin-auto uk-width-auto uk-button uk-button-primary">Preferences</button></a></div>
-                    </div>
-                </div>
-            </div>
-
-    </div>
-
-<h1>Volunteer Oppurtunites</h1>
-<div th:each="volunteer : ${volunteers}">
-    <div th:if="${volunteer.getVolunteerUsers().contains(user) == false}">
-    <form th:action="@{'/volunteer/' + ${volunteer.id}}" method="POST">
-        <p th:text="${volunteer.getShelter().name}"></p>
-        <p th:text="${volunteer.date}"></p>
-        <p th:text="${volunteer.time}"></p>
-        <button type="submit">Sign Me Up!!</button>
-    </form>
+            <button class="uk-button uk-button-default"><a href="/search">Search pets/shelters/programs</a></button>
+        </div>
+        <div class="uk-child-width-expand uk-margin-auto">
+            <button class="uk-button uk-button-default"><a href="/adopter/preferences">Preferences</a></button>
+        </div>
     </div>
 </div>
+
+<hr/>
+
+<div class="uk-child-width-1-2@l uk-grid uk-grid-divider uk-child-width-1-2@s">
+
+    <div class="uk-text-center">
+        <h4 class="uk-margin-auto"><u>Programs in your area</u></h4>
+        <table class="uk-table uk-table-striped">
+            <tr>
+                <th class="uk-text-center">Name</th>
+                <th class="uk-text-center">Description</th>
+                <th class="uk-text-center">Length</th>
+                <th class="uk-text-center">Sign-up</th>
+            </tr>
+
+            <div th:each="program : ${programs}">
+                <tr>
+                    <td th:text="${program.name}"></td>
+                    <td th:text="${program.description}"></td>
+                    <td th:text="${program.length}"></td>
+                    <td>
+                        <button type="submit"><a th:href="'adopter/program/' + ${program.id}">Register</a></button>
+                    </td>
+                </tr>
+            </div>
+        </table>
+    </div>
+    <div class="uk-text-center">
+        <h4><u>Volunteer Opportunities</u></h4>
+        <table class="uk-table uk-table-striped">
+            <tr>
+                <th class="uk-text-center">Shelter Name</th>
+                <th class="uk-text-center">Date</th>
+                <th class="uk-text-center">Time</th>
+                <th class="uk-text-center">Register</th>
+            </tr>
+            <div th:each="volunteer : ${volunteers}">
+                <form th:action="@{'/volunteer/' + ${volunteer.id}}" method="POST">
+                    <tr>
+                        <td>
+                            <span th:text="${volunteer.getShelter().name}"></span>
+                        </td>
+                        <td>
+                            <span th:text="${volunteer.date}"></span>
+                        </td>
+                        <td>
+                            <span th:text="${volunteer.time}"></span>
+                        </td>
+                        <td>
+                            <button type="submit">Sign me up!</button>
+                        </td>
+                    </tr>
+                </form>
+            </div>
+        </table>
+    </div>
+</div>
+
 
 <footer th:replace="partials :: footer"/>
 <div th:replace="partials :: scripts"/>
