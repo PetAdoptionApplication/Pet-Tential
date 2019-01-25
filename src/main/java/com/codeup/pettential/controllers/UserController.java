@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -55,17 +56,17 @@ public class UserController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (user.getIsShelter()) {
-            User user1 = userDao.findOne(user.getId());
             Shelter thisShelter = shelterDao.findByUser(user);
             List<App> appForThisShelter = appDao.findAllByShelter(thisShelter);
             List<Volunteer> volsForThisShelter = volDao.findAllByShelter(thisShelter);
-            model.addAttribute("user", user1);
             model.addAttribute("apps", appForThisShelter);
             model.addAttribute("vols", volsForThisShelter);
             return "views/shelter_home";
         }else {
+            User user1 = userDao.findOne(user.getId());
             List<Volunteer> volunteers = (List<Volunteer>) volDao.findAll();
             List<Program> programs = (List<Program>) programDao.findAll();
+            model.addAttribute("user", user1);
             model.addAttribute("volunteers", volunteers);
             model.addAttribute("programs", programs);
             return "views/adopter_home";
