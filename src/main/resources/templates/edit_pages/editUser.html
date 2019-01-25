@@ -32,7 +32,7 @@
             <input id="number" name="number" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:value="${user.number}"  />
         </div>
         <input type="hidden" th:value="${user.id}" name="id"/>
-        <button class="uk-button uk-button-default uk-button-small"> Edit User </button>
+        <button class="uk-button uk-button-default uk-button-small" onclick="UIkit.notification({message: 'User Edited...', status: 'success'})"> Edit User </button>
     </form>
 </div>
 
