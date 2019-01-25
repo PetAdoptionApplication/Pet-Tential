@@ -9,35 +9,8 @@
     <meta charset="UTF-8"/>
     <title th:text="${title}"></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/css/uikit.min.css" />
-    <link rel="icon" href="../static/images/paw_2.png"/>
-    <style>
-        #map {
-            width: 600px;
-            height: 300px;
-        }
-        nav{
-            box-shadow: 5px 5px rgba(0, 102, 204, .2);
-        }
-        html, body {
-            margin: 0;
-            padding: 0;
-            background-image: url("../static/images/bg_1.png");
-            background-size: cover;
-        }
-        li a{
-            color:#f4429b;
-        }
-        li a:hover {
-            color: #a02489;
-        }
-        .footer {
-            position: sticky;
-            bottom: 100px;
-            left: 45px;
-            /*width:100%;*/
-            height:100px;   /* Height of the footer */
-        }
-    </style>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="icon" href="../static/img/paw_2.png"/>
 </head>
 
 <body>
