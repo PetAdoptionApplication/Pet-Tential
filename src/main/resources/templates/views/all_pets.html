@@ -26,7 +26,7 @@
                             <p id="description" th:text="${pet.description}"></p>
                             <div th:if="${user.isShelter}">
                                 <form th:action="'/pet/delete/' + ${pet.id}" method="POST">
-                                    <button type="submit" class="uk-margin-small-right" uk-icon="minus">Delete Pet</button>
+                                    <button type="submit" class="uk-margin-small-right">Delete Pet</button>
                                 </form>
                             </div>
                         </div>
