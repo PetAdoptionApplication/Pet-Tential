@@ -76,6 +76,13 @@ public class PetController {
 
     @GetMapping("adopter/pets")
     public String allPets(Model model) {
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() == "anonymousUser"){
+            User user = new User();
+            user.setIsShelter(false);
+            model.addAttribute("user", user);
+            model.addAttribute("pets", petDao.findAll());
+            return "views/all_pets";
+        }
         User user1 = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long userId = user1.getId();
         model.addAttribute("pets", petDao.findAll());
