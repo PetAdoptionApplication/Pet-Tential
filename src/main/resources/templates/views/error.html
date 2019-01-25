@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="uk-height-1-1">
+<head th:replace = "partials :: head('Error')" />
+<body class="uk-height-1-1">
+<nav th:replace="partials::navbar"/>
+
+<div class="uk-flex uk-vertical-align uk-text-center">
+    <div class="uk-container uk-vertical-align-middle uk-container-center" style="height: 500px; width: 500px">
+
+        <img th:src="@{/images/404.png}" />
+
+        <h1>Oh no! Cheddar ate the page!</h1>
+
+    </div>
+</div>
+
+
+</body>
+</html>
