@@ -47,6 +47,37 @@ public class UserController {
         return "system/sign-up";
     }
 
+    @GetMapping("/editUser")
+    public String getEditUserForm(Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User thisUser = userDao.findOne(user.getId());
+        model.addAttribute("user", thisUser);
+        return "edit_pages/editUser";
+    }
+
+    @PostMapping("/editUser")
+    public String editUser(@RequestParam(name = "name") String name, @RequestParam(name = "address") String address,
+                           @RequestParam(name = "username") String username, @RequestParam(name = "email") String email,
+                           @RequestParam(name = "number") String number, @RequestParam(name = "id") String id){
+        Long idAsLong = Long.parseLong(id);
+        User thisUser = userDao.findOne(idAsLong);
+        thisUser.setName(name);
+        thisUser.setAddress(address);
+        thisUser.setUsername(username);
+        thisUser.setEmail(email);
+        thisUser.setNumber(number);
+        userDao.save(thisUser);
+        if (thisUser.isShelter()){
+            Shelter shelter = shelterDao.findByUser(thisUser);
+            shelter.setName(name);
+            shelter.setLocation(address);
+            shelter.setNumber(number);
+            shelter.setEmail(email);
+            shelterDao.save(shelter);
+        }
+        return "redirect:/home";
+    }
+
     @GetMapping("/home")
     public String success(Model model){
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() == "anonymousUser"){
@@ -77,6 +108,7 @@ public class UserController {
             List<Volunteer> volsForThisShelter = volDao.findAllByShelter(thisShelter);
             model.addAttribute("apps", appForThisShelter);
             model.addAttribute("vols", volsForThisShelter);
+            model.addAttribute("programs", programDao.findAll());
             return "views/shelter_home";
         }else {
             User user1 = userDao.findOne(user.getId());
@@ -104,13 +136,6 @@ public class UserController {
         if (!user.getPassword().equals(confPass)){
             model.addAttribute("error", "Passwords do not match");
             return "system/sign-up";
-        }
-        List<User> users1 = (List<User>) userDao.findAll();
-        for (User user1 : users1){
-            if (user1.getUsername().equals(user.getUsername())){
-                model.addAttribute("error", "Sorry, Username has already been used, please select a different one");
-                return "system/sign-up";
-            }
         }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
