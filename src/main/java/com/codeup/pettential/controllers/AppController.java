@@ -48,7 +48,8 @@ public class AppController {
         User user = userDao.findOne(id2);
         App app = appDao.findOne(id);
         app.setApprovalStatus(true);
-        Twillio.sendMessage(user.getNumber().replaceAll("[\\s\\-()]", ""), "Your adoption request has been accepted! Please contact the shelter for " +
+        Twillio.sendMessage(user.getNumber().replaceAll("[\\s\\-()]", ""), "Your adoption request for " +
+                 app.getPet().getName() + "has been accepted! Please contact the shelter for " +
                 "more information");
         return "redirect:/home";
     }
@@ -60,7 +61,7 @@ public class AppController {
         User user = userDao.findOne(id2);
         app.setApprovalStatus(true);
         Twillio.sendMessage(user.getNumber().replaceAll("[\\s\\-()]", ""), "Sorry, your adoption request" +
-                "for been denied. Please visit our site to see more oppurtunities!!");
+                "for " + app.getPet().getName() + " been denied. Please visit our site to see more oppurtunities!!");
         return "redirect:/home";
     }
 }
