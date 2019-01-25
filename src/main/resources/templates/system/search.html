@@ -3,27 +3,48 @@
 <head th:replace = "partials :: head('Search')" />
 <body>
 <nav th:replace="partials::navbar"/>
-<div class="uk-margin-auto uk-width-1-2">
-    <h1 class="uk-margin-auto">Search</h1>
-    <form action="/search" method="post">
-        <input name="search" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text"/>
-        <button type="submit" class="uk-button uk-button-default uk-button-small">Submit</button>
-    </form>
-
-    <h5>Pets that match your search</h5>
-    <div th:each="pet : ${pets}">
-        <p th:text="${pet.name}"></p>
-    </div>
-
-    <h5>Programs that match your search</h5>
-    <div th:each="program : ${programs}">
-        <p th:text="${program.name}"></p>
-    </div>
-
-    <h5>Shelters that match your search</h5>
-    <div th:each="shelter : ${shelters}">
-        <p th:text="${shelter.name}"></p>
+<div class="uk-width-1-1 uk-text-center uk-grid">
+    <div class="uk-margin-auto">
+        <h2><u>Search</u></h2>
     </div>
 </div>
+<div class="uk-width-1-1 uk-text-center uk-grid">
+    <div class="uk-margin-auto">
+        <form action="/search" method="post">
+            <input name="search" class="uk-input uk-form-width-medium uk-container-center" type="text"/>
+            <button type="submit" class="uk-button uk-button-default uk-button-small uk-margin-left uk-container-center">Search</button>
+        </form>
+    </div>
+</div>
+
+<hr />
+
+<div class="uk-grid-divider uk-child-width-expand@s uk-grid">
+    <div>
+        <div class="uk-text-center">
+            <h5 class="uk-margin-auto"><u>Pets that match your search</u></h5>
+        </div>
+        <div th:each="pet : ${pets}" class="uk-text-center">
+            <a th:href="'/adopter/pet/' + ${pet.id}"><h4 class="uk-margin-auto" th:text="${pet.name}"></h4></a>
+        </div>
+    </div>
+    <div>
+        <div class="uk-text-center">
+            <h5 class="uk-margin-auto"><u>Programs that match your search</u></h5>
+        </div>
+        <div th:each="program : ${programs}" class="uk-text-center">
+            <a th:href="'adopter/program/' + ${program.id}"><h4 class="uk-margin-auto" th:text="${program.name}"></h4></a>
+        </div>
+    </div>
+    <div>
+        <div class="uk-text-center">
+            <h5 class="uk-margin-auto"><u>Shelters that match your search</u></h5>
+        </div>
+        <div th:each="shelter : ${shelters}" class="uk-text-center">
+            <a th:href="'shelter/' + ${shelter.id}"><h4 class="uk-margin-auto" th:text="${shelter.name}"></h4></a>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

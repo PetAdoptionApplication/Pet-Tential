@@ -50,7 +50,7 @@ public class SearchController {
     }
 
 //    need to implement search by shelter for pets
-    @PostMapping("search")
+    @PostMapping("/search")
     public String saveProgram(@RequestParam(name = "search") String search, Model model) {
         List<Pet> petByBreed = petDao.findAllByBreed(search);
         List<Pet> petByColor = petDao.findAllByColor(search);
