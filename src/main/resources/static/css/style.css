@@ -1,0 +1,26 @@
+#map {
+    width: 600px;
+    height: 300px;
+}
+nav{
+    box-shadow: 5px 5px rgba(0, 102, 204, .2);
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    background-image: url("../img/bg_1.png");
+    background-size: cover;
+}
+li a{
+    color:#f4429b;
+}
+li a:hover {
+    color: #a02489;
+}
+.footer {
+    position: sticky;
+    bottom: 100px;
+    left: 45px;
+    /*width:100%;*/
+    height:100px;   /* Height of the footer */
+}
