@@ -35,7 +35,7 @@
                     <td th:text="${program.description}"></td>
                     <td th:text="${program.length}"></td>
                     <td>
-                        <button type="submit"><a th:href="'adopter/program/' + ${program.id}">Register</a></button>
+                        <button type="submit" uk-icon="plus-circle"><a th:href="'adopter/program/' + ${program.id}"></a></button>
                     </td>
                 </tr>
             </div>
@@ -63,7 +63,7 @@
                             <span th:text="${volunteer.time}"></span>
                         </td>
                         <td>
-                            <button type="submit">Sign me up!</button>
+                            <button type="submit" uk-icon="plus-circle"></button>
                         </td>
                     </tr>
                 </form>
