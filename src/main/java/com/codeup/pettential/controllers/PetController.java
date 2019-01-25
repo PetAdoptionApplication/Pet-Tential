@@ -68,9 +68,21 @@ public class PetController {
 
     @GetMapping("adopter/pet/{id}")
     public String findPet(@PathVariable long id, Model model) {
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() == "anonymousUser"){
+            User user = new User();
+            user.setIsShelter(true);
+            model.addAttribute("pet", petDao.findOne(id));
+            long shelterId = petDao.findOne(id).getShelter().getId();
+            model.addAttribute("shelter", shelterDao.findOne(shelterId));
+            model.addAttribute("user", user);
+            return "views/pet_view";
+        }
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user1 = userDao.findOne(user.getId());
         model.addAttribute("pet", petDao.findOne(id));
         long shelterId = petDao.findOne(id).getShelter().getId();
         model.addAttribute("shelter", shelterDao.findOne(shelterId));
+        model.addAttribute("user", user1);
         return "views/pet_view";
     }
 

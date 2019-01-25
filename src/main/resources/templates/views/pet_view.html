@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="partials::head('Pet Page')"/>
 <body>
 <nav th:replace="partials :: navbar"/>
@@ -17,7 +17,7 @@
             <p th:text="'Description: '+${pet.description}" />
             <p th:text="'Sex: '+${pet.sex}" />
             <p th:text="'Weight (in pounds): '+${pet.weight}" />
-          <form th:action="@{'/adopt/pet/' + ${pet.getId()}}" method="POST">
+          <form th:action="@{'/adopt/pet/' + ${pet.getId()}}" method="POST" th:if="${user.getIsShelter() == false}">
               <button type="submit">Put in a application for this pet!</button>
           </form>
       </div>
