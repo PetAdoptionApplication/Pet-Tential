@@ -1,7 +1,9 @@
 package com.codeup.pettential.controllers;
 
 import com.codeup.pettential.models.*;
+
 import com.codeup.pettential.repositories.*;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -50,10 +52,24 @@ public class UserController {
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() == "anonymousUser"){
             return "redirect:/login";
         }
+
         model.addAttribute("programs", programDao.findAll());
         model.addAttribute("app", appDao.findAll());
 
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        User user = userDao.findByUsername(username);
+        Preferences preferences = user.getPreferences();
+        boolean hasPreference = false;
+        boolean doesNotHavePreference = false;
+        if (preferences == null) {
+            doesNotHavePreference = true;
+        } else {
+            hasPreference = true;
+        }
+        model.addAttribute("hasPreference", hasPreference);
+        model.addAttribute("doesNotHavePreference", doesNotHavePreference);
+        model.addAttribute("userId", user.getId());
 
         if (user.getIsShelter()) {
             Shelter thisShelter = shelterDao.findByUser(user);
