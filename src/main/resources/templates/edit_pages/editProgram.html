@@ -14,7 +14,7 @@
 
         <div>
             <label for="type">Type</label>
-            <input id="type" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="password" th:field="*{type}" />
+            <input id="type" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{petType}" />
         </div>
 
         <div>
@@ -31,11 +31,7 @@
             <label for="time">Time</label>
             <input id="time" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{time}" />
         </div>
-
-        <div>
-            <label for="pet type">Pet Type</label>
-            <input id="pet type" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{petType}" />
-        </div>
+        <input type="hidden" name="id" th:value="${id}"/>
         <button class="uk-button uk-button-default uk-button-small"> Submit </button>
     </form>
 </div>

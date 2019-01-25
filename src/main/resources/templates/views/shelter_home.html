@@ -95,6 +95,9 @@
                         Name
                     </th>
                     <th class="uk-text-center">
+
+                    </th>
+                    <th class="uk-text-center">
                         Description
                     </th>
                 </tr>
@@ -102,6 +105,9 @@
                     <td>
                         <a th:href="'adopter/program/'+${program.id}"><span th:text="${program.name}"></span></a>
 
+                    </td>
+                    <td>
+                        <a th:href="'shelter/program/edit/' + ${program.id}">Edit Program</a>
                     </td>
                     <td class="uk-vertical-align-middle" th:text="${program.description}"></td>
                 </tr>

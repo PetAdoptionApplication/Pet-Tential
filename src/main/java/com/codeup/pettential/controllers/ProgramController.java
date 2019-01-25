@@ -54,17 +54,23 @@ public class ProgramController {
         return "views/program";
     }
 
-    @PostMapping("shelter/program/edit/{id}")
+    @GetMapping("shelter/program/edit/{id}")
     public String editProgram(@PathVariable long id, Model model) {
+        model.addAttribute("id", id);
         model.addAttribute("program", programDao.findOne(id));
         return "edit_pages/editProgram";
     }
 
     @PostMapping("/editProgram")
-    public String saveEditProgram(@ModelAttribute Program program, @RequestParam(name = "shelter") Long shelter) {
-        Shelter shelter1 = shelterDao.findOne(shelter);
-        program.setShelter(shelter1);
-        programDao.save(program);
+    public String saveEditProgram(@ModelAttribute Program program, @RequestParam(name = "id") String id) {
+        Long thisId = Long.parseLong(id);
+        Program editProgram = programDao.findOne(thisId);
+        editProgram.setName(program.getName());
+        editProgram.setPetType(program.getPetType());
+        editProgram.setTime(program.getTime());
+        editProgram.setLength(program.getLength());
+        editProgram.setDescription(program.getDescription());
+        programDao.save(editProgram);
         return "redirect:/home";
     }
 }
