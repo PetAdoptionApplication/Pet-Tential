@@ -45,6 +45,37 @@ public class UserController {
         return "system/sign-up";
     }
 
+    @GetMapping("/editUser")
+    public String getEditUserForm(Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User thisUser = userDao.findOne(user.getId());
+        model.addAttribute("user", thisUser);
+        return "edit_pages/editUser";
+    }
+
+    @PostMapping("/editUser")
+    public String editUser(@RequestParam(name = "name") String name, @RequestParam(name = "address") String address,
+                           @RequestParam(name = "username") String username, @RequestParam(name = "email") String email,
+                           @RequestParam(name = "number") String number, @RequestParam(name = "id") String id){
+        Long idAsLong = Long.parseLong(id);
+        User thisUser = userDao.findOne(idAsLong);
+        thisUser.setName(name);
+        thisUser.setAddress(address);
+        thisUser.setUsername(username);
+        thisUser.setEmail(email);
+        thisUser.setNumber(number);
+        userDao.save(thisUser);
+        if (thisUser.isShelter()){
+            Shelter shelter = shelterDao.findByUser(thisUser);
+            shelter.setName(name);
+            shelter.setLocation(address);
+            shelter.setNumber(number);
+            shelter.setEmail(email);
+            shelterDao.save(shelter);
+        }
+        return "redirect:/home";
+    }
+
     @GetMapping("/home")
     public String success(Model model){
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() == "anonymousUser"){
