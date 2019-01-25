@@ -85,8 +85,10 @@ public class PetController {
 
     @PostMapping("/pet/delete/{id}")
     public String deletePet(@PathVariable Long id) {
-        petDao.delete(id);
-        return "redirect:adopter/pets";
+        Pet pet = petDao.findOne(id);
+        pet.setName("deleted");
+        petDao.save(pet);
+        return "redirect:/adopter/pets";
     }
 
 }
