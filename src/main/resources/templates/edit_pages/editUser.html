@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head('Edit Program')"/>
+<body>
+<nav th:replace="partials::navbar"/>
+<div class="container uk-flex">
+
+    <form th:action="@{/editUser}" method="POST" class="uk-margin-auto uk-width-1-2 ">
+        <h1 class="uk-margin-top">Edit User</h1>
+        <div class="uk-margin">
+            <label for="name">Name</label>
+            <input id="name" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:value="${user.name}" name="name"/>
+        </div>
+
+        <div>
+            <label for="address">Address</label>
+            <input id="address" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:value="${user.address}" name="address"/>
+        </div>
+
+        <div>
+            <label for="username">Username</label>
+            <input id="username" name="username" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:value="${user.username}" />
+        </div>
+
+        <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:value="${user.email}"  />
+        </div>
+
+        <div>
+            <label for="number">Phone Number</label>
+            <input id="number" name="number" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:value="${user.number}"  />
+        </div>
+        <input type="hidden" th:value="${user.id}" name="id"/>
+        <button class="uk-button uk-button-default uk-button-small"> Edit User </button>
+    </form>
+</div>
+
+
+</body>
+</html>
