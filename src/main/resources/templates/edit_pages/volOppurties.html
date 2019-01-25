@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "partials :: head('Create Pet')">
+    <meta charset="UTF-8"/>
+    <title>Create Pet Form</title>
+</head>
+<body>
+<div class="container uk-margin-bottom">
+    <nav th:replace="partials :: navbar"/>
+</div>
+
+
+<div class="container uk-flex">
+
+    <form th:action="@{/getvolunteer}" method="POST" class="uk-margin-auto uk-width-1-2" th:object="${volunteer}">
+        <h1 class="uk-margin-top">Create a New Volunteer Oppurtunity</h1>
+        <div class="uk-margin">
+            <label for="date">Date</label>
+            <input id="date" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text"  th:field="*{date}"/>
+        </div>
+        <div class="uk-margin">
+            <label for="time">Time</label>
+            <input id="time" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{time}"/>
+        </div>
+        <div class="uk-margin">
+            <label for="vols">Number of Volunteers</label>
+            <input id="vols" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="number" th:field="*{numberOfVols}"/>
+        </div>
+
+
+        <button class="uk-button uk-button-default uk-button-small"> Submit </button>
+
+    </form>
+</div>
+
+<div th:replace="partials :: scripts" />
+<div th:replace="partials :: footer" />
+
+</body>
+</html>

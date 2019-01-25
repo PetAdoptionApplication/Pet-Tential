@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "partials :: head('Create Pet')">
+    <meta charset="UTF-8"/>
+    <title>Create Pet Form</title>
+</head>
+<body>
+<div class="container uk-margin-bottom">
+    <nav th:replace="partials :: navbar"/>
+</div>
+
+
+<div class="container uk-flex">
+
+    <form th:action="@{/getvolunteer}" method="POST" class="uk-margin-auto uk-width-1-2 ">
+        <div class="uk-margin">
+            <label for="vols">How many Volunteers do you need?</label>
+            <input id="vols" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="number" name="number" />
+        </div>
+
+        <button class="uk-button uk-button-default uk-button-small"> Submit </button>
+
+    </form>
+</div>
+
+<div th:replace="partials :: scripts" />
+<div th:replace="partials :: footer" />
+
+</body>
+</html>

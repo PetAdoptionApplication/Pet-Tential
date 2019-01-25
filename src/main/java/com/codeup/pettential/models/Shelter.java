@@ -37,6 +37,9 @@ public class Shelter {
     @OneToOne
     private User user;
 
+    @OneToMany
+    private List<Volunteer> volunteers;
+
     public Shelter() {
 
     }

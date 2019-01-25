@@ -43,6 +43,15 @@ public class User {
     @OneToOne
     private Preferences preferences;
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name="vol_user",
+            joinColumns={@JoinColumn(name="user_id")},
+            inverseJoinColumns={@JoinColumn(name="volunteers_id")}
+    )
+    @OrderColumn(name = "volunteer_id")
+    private List<Volunteer> volunteers;
+
 
     public User(User copy) {
         id = copy.id;
@@ -56,6 +65,7 @@ public class User {
         notifications = copy.notifications;
         isShelter = copy.isShelter;
         programs = copy.programs;
+        volunteers = copy.volunteers;
     }
 
     public User(){}
@@ -164,5 +174,13 @@ public class User {
 
     public Preferences getPreferences() {
         return preferences;
+    }
+
+    public List<Volunteer> getVolunteers() {
+        return volunteers;
+    }
+
+    public void setVolunteers(List<Volunteer> volunteers) {
+        this.volunteers = volunteers;
     }
 }
