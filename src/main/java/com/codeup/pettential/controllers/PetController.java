@@ -76,8 +76,17 @@ public class PetController {
 
     @GetMapping("adopter/pets")
     public String allPets(Model model) {
+        User user1 = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long userId = user1.getId();
         model.addAttribute("pets", petDao.findAll());
+        model.addAttribute("user", userDao.findOne(userId));
         return "views/all_pets";
+    }
+
+    @PostMapping("/pet/delete/{id}")
+    public String deletePet(@PathVariable Long id) {
+        petDao.delete(id);
+        return "redirect:adopter/pets";
     }
 
 }
