@@ -9,7 +9,7 @@ html, body {
     margin: 0;
     padding: 0;
     background-image: url("../img/bg_1.png");
-    background-size: cover;
+    background-size: 100% 100%;
 }
 li a{
     color:#f4429b;
