@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head('Edit Program')"/>
+<head th:replace="partials :: head('Edit User')"/>
 <body>
 <nav th:replace="partials::navbar"/>
-<div class="container uk-flex">
+<div class="uk-container uk-flex">
 
     <form th:action="@{/editUser}" method="POST" class="uk-margin-auto uk-width-1-2 ">
         <h1 class="uk-margin-top">Edit User</h1>
@@ -36,6 +36,7 @@
     </form>
 </div>
 
-
+<footer th:replace="partials::footer"/>
+<div th:replace="partials::scripts"/>
 </body>
 </html>
