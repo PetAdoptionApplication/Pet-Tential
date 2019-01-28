@@ -5,11 +5,12 @@
 nav{
     box-shadow: 5px 5px rgba(0, 102, 204, .2);
 }
-html, body {
-    margin: 0;
-    padding: 0;
-    background-image: url("../img/bg_1.png");
-    background-size: 100% 100%;
+html {
+    background: url("../img/bg_1.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 li a{
     color:#f4429b;
