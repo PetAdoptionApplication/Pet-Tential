@@ -39,12 +39,16 @@
             <input id="weight" class="uk-input uk-form-width-medium uk-width-expand" type="text" placeholder="0"
                    name="weight" th:value="${oldPref.getWeight()}"/>
         </div>
-
-        <button type="submit" class="uk-margin-auto uk-button uk-button-default uk-button-small">Submit</button>
+        <div class="uk-flex uk-width-expand">
+            <button type="submit" class="uk-margin-auto uk-width-1-2 uk-button uk-button-default">Submit</button>
+        </div>
     </form>
 
 
 </div>
 
+
+<div th:replace="partials :: scripts" />
+<div th:replace="partials :: footer" />
 </body>
 </html>
