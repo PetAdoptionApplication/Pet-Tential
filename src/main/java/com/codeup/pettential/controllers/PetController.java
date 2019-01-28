@@ -54,13 +54,15 @@ public class PetController {
         }
         petDao.save(pet);
         List<Preferences> preferences  = (List<Preferences>) preferenceDao.findAll();
+        System.out.println(preferences.size());
         for (Preferences preference : preferences){
          if (preference.getBreed().contains(pet.getBreed()) || preference.getColor().contains(pet.getColor()) ||
                  preference.getSex().contains(pet.getSex()) || preference.getAge() == pet.getAge()
                         || preference.getWeight() == pet.getWeight()) {
                 User user2 = userDao.findOne(preference.getOwner().getId());
-                Twillio.sendMessage(user2.getNumber(), "A animal matching your preference has been added to the site. " +
+                Twillio.sendMessage(user2.getNumber().replaceAll("[\\s\\-()]", ""), "A animal matching your preference has been added to the site. " +
                         "Please log in to meet " + pet.getName() + ".");
+                break;
                 }
             }
         return "redirect:/home";
