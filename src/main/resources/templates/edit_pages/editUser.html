@@ -7,6 +7,7 @@
 
     <form th:action="@{/editUser}" method="POST" class="uk-margin-auto uk-width-1-2 ">
         <h1 class="uk-margin-top">Edit User</h1>
+        <p class="uk-text-center"><span th:if="${ProfileUpdate != null}" th:text="${ProfileUpdate}">No Results Found</span></p>
         <div class="uk-margin">
             <label for="name">Name</label>
             <input id="name" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:value="${user.name}" name="name"/>

@@ -52,7 +52,8 @@ public class VolunteersController {
     }
 
     @PostMapping("/volunteer/{id}")
-    public String volunteer(@PathVariable long id){
+    public String volunteer(@PathVariable long id) throws InterruptedException{
+        Thread.sleep(2000);
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user1 = userDao.findOne(user.getId());
         Volunteer volunteer = volDao.findOne(id);

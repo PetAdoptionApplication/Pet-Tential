@@ -52,39 +52,57 @@ public class SearchController {
 //    need to implement search by shelter for pets
     @PostMapping("/search")
     public String saveProgram(@RequestParam(name = "search") String search, Model model) {
-        List<Pet> petByBreed = petDao.findAllByBreed(search);
-        List<Pet> petByColor = petDao.findAllByColor(search);
-        List<Pet> petByName = petDao.findAllByName(search);
-        List<Pet> pets = new ArrayList<>();
-        List<Program> programs = new ArrayList<>();
-        List<Shelter> shelters = new ArrayList<>();
-        List<Program> programByName = programDao.findAllByName(search);
-        List<Program> programByType = programDao.findAllByType(search);
-        List<Program> programByTime = programDao.findAllByTime(search);
-        List<Program> programByPetType = programDao.findAllByPetType(search);
-        List<Shelter> shelterByName = shelterDao.findAllByName(search);
-        List<Shelter> shelterByLocation = shelterDao.findAllByLocation(search);
-        pets.addAll(petByBreed);
-        pets.addAll(petByColor);
-        pets.addAll(petByName);
-        programs.addAll(programByName);
-        programs.addAll(programByType);
-        programs.addAll(programByTime);
-        programs.addAll(programByPetType);
-        shelters.addAll(shelterByLocation);
-        shelters.addAll(shelterByName);
-        if (isNumeric(search)){
-            int searchNumber = Integer.parseInt(search);
-            List<Pet> petByAge = petDao.findAllByAge(searchNumber);
-            List<Pet> petByWeight = petDao.findAllByWeight(searchNumber);
-            List<Program> programByLength = programDao.findAllByLength(searchNumber);
-            pets.addAll(petByAge);
-            pets.addAll(petByWeight);
-            programs.addAll(programByLength);
+        List<Pet> petAll = (List<Pet>) petDao.findAll();
+        List<Shelter> shelterAll = (List<Shelter>) shelterDao.findAll();
+        List<Program> programsAll = (List<Program>) programDao.findAll();
+        List<Pet> petsSearch = new ArrayList<>();
+        List<Program> programsSearch = new ArrayList<>();
+        List<Shelter> sheltersSearch = new ArrayList<>();
+        List<Pet> petsSearchNumber = new ArrayList<>();
+        for (Pet pet : petAll){
+            if (pet.getName().toLowerCase().contains(search) || pet.getBreed().toLowerCase().contains(search) ||
+                    pet.getDescription().toLowerCase().contains(search) || pet.getSex().toLowerCase().contains(search) ||
+                    pet.getColor().toLowerCase().contains(search)){
+                petsSearch.add(pet);
+            }
         }
-        model.addAttribute("pets", pets);
-        model.addAttribute("programs", programs);
-        model.addAttribute("shelters", shelters);
+        for (Shelter shelter : shelterAll){
+            if (shelter.getName().toLowerCase().contains(search) || shelter.getLocation().toLowerCase().contains(search)){
+                sheltersSearch.add(shelter);
+            }
+        }
+        for (Program program : programsAll){
+            if (program.getName().toLowerCase().contains(search) || program.getPetType().toLowerCase().contains(search) ||
+                    program.getDescription().toLowerCase().contains(search) || program.getType().toLowerCase().contains(search)){
+                programsSearch.add(program);
+            }
+        }
+        if (isNumeric(search)){
+            int searchAsNumber = Integer.parseInt(search);
+            for (Pet pet : petAll){
+                if (pet.getAge() == searchAsNumber || pet.getWeight() == searchAsNumber){
+                    petsSearchNumber.add(pet);
+                }
+            }
+        }
+        for (Pet pet : petsSearchNumber){
+            if (!petsSearch.contains(pet)){
+                petsSearch.add(pet);
+            }
+        }
+
+        if (petsSearch.size() == 0){
+            model.addAttribute("noResultPet", "No Pets Found...");
+        }
+        if (programsSearch.size() == 0){
+            model.addAttribute("noResultProgram", "No Programs Found...");
+        }
+        if (sheltersSearch.size() == 0){
+            model.addAttribute("noResultShelter", "No Shelters Found...");
+        }
+        model.addAttribute("pets", petsSearch);
+        model.addAttribute("programs", programsSearch);
+        model.addAttribute("shelters", sheltersSearch);
         return "system/search";
     }
 }

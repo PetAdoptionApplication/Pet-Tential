@@ -31,12 +31,14 @@ public class PreferencesControllers {
     }
 
     @PostMapping ("/adopter/preferences")
-    public String savePreferences(@ModelAttribute Preferences preferences) {
+    public String savePreferences(@ModelAttribute Preferences preferences, Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         preferences.setOwner(user);
         preferencesDao.save(preferences);
         user.setPreferences(preferences);
-        return "redirect:/home";
+        model.addAttribute("oldPref", preferences);
+        model.addAttribute("savedPref", "Your preferences has been saved!");
+        return "edit_pages/preference-edit";
     }
 
 
@@ -50,7 +52,8 @@ public class PreferencesControllers {
     @PostMapping ("/adopter/preferences/edit/{id}")
     public String editPreferences(@PathVariable long id, @RequestParam(name = "breed") String breed,
                                   @RequestParam(name = "age") String age, @RequestParam(name = "color") String color,
-                                  @RequestParam(name = "sex") String sex, @RequestParam(name = "weight") String weight) {
+                                  @RequestParam(name = "sex") String sex, @RequestParam(name = "weight") String weight,
+                                  Model model) {
         Preferences preference = preferencesDao.findOne(id);
         preference.setBreed(breed);
         preference.setAge(Integer.parseInt(age));
@@ -58,7 +61,9 @@ public class PreferencesControllers {
         preference.setSex(sex);
         preference.setWeight(Integer.parseInt(weight));
         preferencesDao.save(preference);
-        return "redirect:/home";
+        model.addAttribute("oldPref", preference);
+        model.addAttribute("savedPref", "Your Preference has been saved!");
+        return "edit_pages/preference-edit";
     }
 
 }

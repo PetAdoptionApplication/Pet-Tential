@@ -5,22 +5,26 @@ import com.codeup.pettential.models.Shelter;
 import com.codeup.pettential.models.User;
 import com.codeup.pettential.repositories.ProgramRepository;
 import com.codeup.pettential.repositories.ShelterRepository;
+import com.codeup.pettential.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Controller
 public class ProgramController {
 
     private final ProgramRepository programDao;
     private final ShelterRepository shelterDao;
+    private final UserRepository userDao;
 
-    public ProgramController(ProgramRepository programDao, ShelterRepository shelterDao) {
+    public ProgramController(ProgramRepository programDao, ShelterRepository shelterDao, UserRepository userDao) {
         this.programDao = programDao;
         this.shelterDao = shelterDao;
+        this.userDao = userDao;
     }
 
     @GetMapping("shelter/createProgram")
@@ -40,6 +44,26 @@ public class ProgramController {
         return "redirect:/home";
     }
 
+    @PostMapping("signup/program/{id}")
+    public String signUpForProgram(@PathVariable long id) throws InterruptedException {
+        User user1 = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findOne(user1.getId());
+        Program program = programDao.findOne(id);
+        List<User> programUsers = program.getProgramUsers();
+        List<Program> users = user.getPrograms();
+        Thread.sleep(2000);
+        if (programUsers.contains(user)){
+            return "redirect:/home";
+        }
+        programUsers.add(user);
+        program.setProgramUsers(programUsers);
+        programDao.save(program);
+        users.add(program);
+        user.setPrograms(users);
+        userDao.save(user);
+        return "redirect:/home";
+    }
+
     @GetMapping("adopter/programs")
     public String getPrograms(Model model) {
         model.addAttribute("programs", programDao.findAll());
@@ -48,7 +72,10 @@ public class ProgramController {
 
     @GetMapping("adopter/program/{id}")
     public String getAllPrograms(@PathVariable long id, Model model) {
-        model.addAttribute("program", programDao.findOne(id));
+        Program program = programDao.findOne(id);
+        List<User> users = program.getProgramUsers();
+        model.addAttribute("users", users);
+        model.addAttribute("program", program);
         long shelterId = programDao.findOne(id).getShelter().getId();
         model.addAttribute("shelter", shelterDao.findOne(shelterId));
         return "views/program";
@@ -62,7 +89,8 @@ public class ProgramController {
     }
 
     @PostMapping("/editProgram")
-    public String saveEditProgram(@ModelAttribute Program program, @RequestParam(name = "id") String id) {
+    public String saveEditProgram(@ModelAttribute Program program, @RequestParam(name = "id") String id,
+                                  Model model) {
         Long thisId = Long.parseLong(id);
         Program editProgram = programDao.findOne(thisId);
         editProgram.setName(program.getName());
@@ -71,6 +99,9 @@ public class ProgramController {
         editProgram.setLength(program.getLength());
         editProgram.setDescription(program.getDescription());
         programDao.save(editProgram);
-        return "redirect:/home";
+        model.addAttribute("editProgram", "Your program has been edited");
+        model.addAttribute("id", id);
+        model.addAttribute("program", programDao.findOne(thisId));
+        return "edit_pages/editProgram";
     }
 }

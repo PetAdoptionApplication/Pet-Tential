@@ -37,7 +37,7 @@ public class User {
     @OneToMany
     private List<Pet> pets;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Program> programs;
 
     @OneToOne
