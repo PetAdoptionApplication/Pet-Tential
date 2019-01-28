@@ -31,11 +31,10 @@
                     <a class="nav-link" href="/logout">Logout</a>
                 </li>
                 <li sec:authorize="isAuthenticated()">
-                    <a class="nav-link" href="/editUser">Settings</a>
+                    <a class="nav-link" href="/editUser">Profile</a>
                 </li>
-                <li sec:authorize="isAuthenticated()">
-                    <a class="nav-link" th:if="${hasPreference}" th:href="'/adopter/preferences/edit/'+${userId}">Preferences</a>
-                    <a class="nav-link" th:if="${doesNotHavePreference}" href="/adopter/preferences">Preferences</a>
+                <li>
+                    <a class="nav-link" href="/aboutme">About</a>
                 </li>
                 <!--Logged out users see....-->
                 <li sec:authorize="!isAuthenticated()">
@@ -54,7 +53,6 @@
 <div th:fragment="footer">
     <footer class="footer uk-flex">
         <span class="uk-margin-auto">2019 Codeup. For Educational Purposes Only.</span>
-        <a href="/aboutme"> About </a>
     </footer>
 </div>
 
