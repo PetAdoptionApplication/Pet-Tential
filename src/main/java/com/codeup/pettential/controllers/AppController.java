@@ -47,10 +47,12 @@ public class AppController {
     public String acceptApp (@PathVariable Long id, @PathVariable Long id2){
         User user = userDao.findOne(id2);
         App app = appDao.findOne(id);
+        Pet pet = app.getPet();
         app.setApprovalStatus(true);
         Twillio.sendMessage(user.getNumber().replaceAll("[\\s\\-()]", ""), "Your adoption request for " +
                  app.getPet().getName() + " has been accepted! Please contact the shelter for " +
                 "more information");
+        pet.setName("deleted");
         return "redirect:/home";
     }
 
