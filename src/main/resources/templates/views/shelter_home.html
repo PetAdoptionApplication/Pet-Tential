@@ -28,68 +28,77 @@
 <!--Info-->
 <div class="uk-child-width-1-2@l uk-grid uk-grid-divider uk-child-width-1-2@s">
     <div class="uk-text-center">
-        <h4 class="uk-margin-auto"><u>Applications</u></h4>
-        <table class="uk-table uk-table-striped">
-            <tr>
-                <th class="uk-text-center">
-                    Pet Name
-                </th>
-                <th class="uk-text-center">
-                    User Name
-                </th>
-                <th class="uk-text-center">
-                    Accept
-                </th>
-                <th class="uk-text-center">
-                    Reject
-                </th>
-            </tr>
-            <div th:each="app : ${apps}">
-                <div th:if="${app.getApprovalStatus() != true}">
-                    <tr>
-                        <td th:text="${app.getPet().getName()}"></td>
-                        <td th:text="${app.getUser().getName()}"></td>
-                        <td>
-                            <form th:action="'/adopt/' + ${app.getId()} + '/accept/' + ${app.getUser().getId()}"
-                                  method="post">
-                                <button class="uk-button uk-button-default" onclick="UIkit.notification({message: 'Application Accepted', pos: 'top-center', status: 'success'})">Accept</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form th:action="'/adopt/' + ${app.getId()} + '/reject/' + ${app.getUser().getId()}"
-                                  method="post">
-                                <button class="uk-button uk-button-default" onclick="UIkit.notification({message: 'Application Rejected', pos: 'top-center', status: 'success'})">Reject</button>
-                            </form>
-                        </td>
-                    </tr>
-                </div>
-            </div>
-        </table>
-        <div>
-            <h4><u>Upcoming Volunteer Opportunities</u></h4>
+        <div class="uk-card uk-card-default uk-card-body uk-margin-left uk-box-shadow-xlarge">
+            <h4 class="uk-margin-auto"><u>Applications</u></h4>
             <table class="uk-table uk-table-striped">
                 <tr>
                     <th class="uk-text-center">
-                        Date
+                        Pet Name
                     </th>
                     <th class="uk-text-center">
-                        Time
+                        User Name
+                    </th>
+                    <th class="uk-text-center">
+                        Accept
+                    </th>
+                    <th class="uk-text-center">
+                        Reject
                     </th>
                 </tr>
-                <tr th:each="vol : ${vols}">
-                    <td>
-                        <a th:href="'/showVolunteers/' + ${vol.id}"><span th:text="${vol.date}"></span></a>
-                    </td>
-                    <td>
-                        <span th:text="${vol.time}"></span>
-                    </td>
-                </tr>
+                <div th:each="app : ${apps}">
+                    <div th:if="${app.getApprovalStatus() != true}">
+                        <tr>
+                            <td th:text="${app.getPet().getName()}"></td>
+                            <td th:text="${app.getUser().getName()}"></td>
+                            <td>
+                                <form th:action="'/adopt/' + ${app.getId()} + '/accept/' + ${app.getUser().getId()}"
+                                      method="post">
+                                    <button class="uk-button uk-button-default"
+                                            onclick="UIkit.notification({message: 'Application Accepted', pos: 'top-center', status: 'success'})">
+                                        Accept
+                                    </button>
+                                </form>
+                            </td>
+                            <td>
+                                <form th:action="'/adopt/' + ${app.getId()} + '/reject/' + ${app.getUser().getId()}"
+                                      method="post">
+                                    <button class="uk-button uk-button-default"
+                                            onclick="UIkit.notification({message: 'Application Rejected', pos: 'top-center', status: 'success'})">
+                                        Reject
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    </div>
+                </div>
             </table>
+            <div>
+                <h4><u>Upcoming Volunteer Opportunities</u></h4>
+                <table class="uk-table uk-table-striped">
+                    <tr>
+                        <th class="uk-text-center">
+                            Date
+                        </th>
+                        <th class="uk-text-center">
+                            Time
+                        </th>
+                    </tr>
+                    <tr th:each="vol : ${vols}">
+                        <td>
+                            <a th:href="'/showVolunteers/' + ${vol.id}"><span th:text="${vol.date}"></span></a>
+                        </td>
+                        <td>
+                            <span th:text="${vol.time}"></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
     <div class="uk-text-center">
-        <h4 class="uk-margin-auto"><u>Programs</u></h4>
-        <table class="uk-table uk-table-striped">
+        <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-box-shadow-xlarge">
+            <h4 class="uk-margin-auto"><u>Programs</u></h4>
+            <table class="uk-table uk-table-striped">
                 <tr>
                     <th class="uk-text-center">
                         Name
@@ -111,7 +120,8 @@
                     </td>
                     <td class="uk-vertical-align-middle" th:text="${program.description}"></td>
                 </tr>
-        </table>
+            </table>
+        </div>
     </div>
 </div>
 

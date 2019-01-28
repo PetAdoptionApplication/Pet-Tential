@@ -20,57 +20,61 @@
 <div class="uk-child-width-1-2@l uk-grid uk-grid-divider uk-child-width-1-2@s">
 
     <div class="uk-text-center">
+        <div class="uk-card uk-card-default uk-card-body uk-margin-left uk-box-shadow-xlarge">
         <h4 class="uk-margin-auto"><u>Programs in your area</u></h4>
-        <table class="uk-table uk-table-striped">
-            <tr>
-                <th class="uk-text-center">Name</th>
-                <th class="uk-text-center">Description</th>
-                <th class="uk-text-center">Length</th>
-                <th class="uk-text-center">Sign-up</th>
-            </tr>
-
-            <div th:each="program : ${programs}">
+            <table class="uk-table uk-table-striped">
                 <tr>
-                    <td th:text="${program.name}"></td>
-                    <td th:text="${program.description}"></td>
-                    <td th:text="${program.length}"></td>
-                    <td>
-                        <form th:action="@{'/signup/program/' + ${program.getId()}}" method="POST">
-                            <input class="uk-button uk-button-default" type="submit" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success'})"/>
-                        </form>
-                    </td>
+                    <th class="uk-text-center">Name</th>
+                    <th class="uk-text-center">Description</th>
+                    <th class="uk-text-center">Length</th>
+                    <th class="uk-text-center">Sign-up</th>
                 </tr>
-            </div>
-        </table>
-    </div>
-    <div class="uk-text-center">
-        <h4><u>Volunteer Opportunities</u></h4>
-        <table class="uk-table uk-table-striped">
-            <tr>
-                <th class="uk-text-center">Shelter Name</th>
-                <th class="uk-text-center">Date</th>
-                <th class="uk-text-center">Time</th>
-                <th class="uk-text-center">Register</th>
-            </tr>
-            <div th:each="volunteer : ${volunteers}">
+
+                <div th:each="program : ${programs}">
                     <tr>
+                        <td th:text="${program.name}"></td>
+                        <td th:text="${program.description}"></td>
+                        <td th:text="${program.length}"></td>
                         <td>
-                            <span th:text="${volunteer.getShelter().name}"></span>
-                        </td>
-                        <td>
-                            <span th:text="${volunteer.date}"></span>
-                        </td>
-                        <td>
-                            <span th:text="${volunteer.time}"></span>
-                        </td>
-                        <td>
-                            <form th:action="@{'/volunteer/' + ${volunteer.id}}" method="POST">
+                            <form th:action="@{'/signup/program/' + ${program.getId()}}" method="POST">
                                 <input class="uk-button uk-button-default" type="submit" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success'})"/>
                             </form>
                         </td>
                     </tr>
-            </div>
-        </table>
+                </div>
+            </table>
+        </div>
+    </div>
+    <div class="uk-text-center">
+        <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-box-shadow-xlarge">
+        <h4><u>Volunteer Opportunities</u></h4>
+            <table class="uk-table uk-table-striped">
+                <tr>
+                    <th class="uk-text-center">Shelter Name</th>
+                    <th class="uk-text-center">Date</th>
+                    <th class="uk-text-center">Time</th>
+                    <th class="uk-text-center">Register</th>
+                </tr>
+                <div th:each="volunteer : ${volunteers}">
+                        <tr>
+                            <td>
+                                <span th:text="${volunteer.getShelter().name}"></span>
+                            </td>
+                            <td>
+                                <span th:text="${volunteer.date}"></span>
+                            </td>
+                            <td>
+                                <span th:text="${volunteer.time}"></span>
+                            </td>
+                            <td>
+                                <form th:action="@{'/volunteer/' + ${volunteer.id}}" method="POST">
+                                    <input class="uk-button uk-button-default" type="submit" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success'})"/>
+                                </form>
+                            </td>
+                        </tr>
+                </div>
+            </table>
+        </div>
     </div>
 </div>
 
