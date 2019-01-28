@@ -38,9 +38,10 @@
     <label for="pet type">Breed type for program (Dog/cat/etc)</label>
     <input id="pet type" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{petType}" />
     </div>
-
-    <input type="hidden" th:value="${shelters.id}" name="shelter" />
-    <button type="submit">Submit</button>
+    <div class="uk-width-expand uk-flex">
+        <input type="hidden" th:value="${shelters.id}" name="shelter" />
+        <button class="uk-button uk-button-default uk-button-large uk-margin-auto uk-width-1-2" type="submit">Submit</button>
+    </div>
 </form>
 </div>
 
