@@ -15,6 +15,10 @@
                 <p class="uk-card-text" th:text="${program.time} + ':00 pm'"></p>
                 <p class="uk-card-text" th:text="${program.length} + ' hours'"></p>
                 <p class="uk-card-text" th:text="'Breed: ' + ${program.petType}"></p>
+                <p>People signed up for this program</p>
+                <div th:each="user : ${users}">
+                    <p class="uk-card-text" th:text="${user.name}"></p>
+                </div>
             </div>
         </div>
     </div>

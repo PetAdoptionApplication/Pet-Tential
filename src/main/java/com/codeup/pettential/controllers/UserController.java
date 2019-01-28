@@ -58,7 +58,8 @@ public class UserController {
     @PostMapping("/editUser")
     public String editUser(@RequestParam(name = "name") String name, @RequestParam(name = "address") String address,
                            @RequestParam(name = "username") String username, @RequestParam(name = "email") String email,
-                           @RequestParam(name = "number") String number, @RequestParam(name = "id") String id){
+                           @RequestParam(name = "number") String number, @RequestParam(name = "id") String id,
+                           Model model){
         Long idAsLong = Long.parseLong(id);
         User thisUser = userDao.findOne(idAsLong);
         thisUser.setName(name);
@@ -75,7 +76,11 @@ public class UserController {
             shelter.setEmail(email);
             shelterDao.save(shelter);
         }
-        return "redirect:/home";
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User thisUser1 = userDao.findOne(user.getId());
+        model.addAttribute("user", thisUser1);
+        model.addAttribute("ProfileUpdate", "Profile has been updated");
+        return "edit_pages/editUser";
     }
 
     @GetMapping("/home")

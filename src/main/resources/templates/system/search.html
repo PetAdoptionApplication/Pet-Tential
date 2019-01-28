@@ -27,6 +27,7 @@
         <div th:each="pet : ${pets}" class="uk-text-center">
             <a th:href="'/adopter/pet/' + ${pet.id}"><h4 class="uk-margin-auto" th:text="${pet.name}"></h4></a>
         </div>
+        <p class="uk-text-center"><span th:if="${noResultPet != null}" th:text="${noResultPet}">No Results Found</span></p>
     </div>
     <div>
         <div class="uk-text-center">
@@ -35,6 +36,7 @@
         <div th:each="program : ${programs}" class="uk-text-center">
             <a th:href="'adopter/program/' + ${program.id}"><h4 class="uk-margin-auto" th:text="${program.name}"></h4></a>
         </div>
+        <p class="uk-text-center"><span th:if="${noResultProgram != null}" th:text="${noResultProgram}">No Results Found</span></p>
     </div>
     <div>
         <div class="uk-text-center">
@@ -43,6 +45,7 @@
         <div th:each="shelter : ${shelters}" class="uk-text-center">
             <a th:href="'shelter/' + ${shelter.id}"><h4 class="uk-margin-auto" th:text="${shelter.name}"></h4></a>
         </div>
+        <p class="uk-text-center"><span th:if="${noResultShelter != null}" th:text="${noResultShelter}">No Results Found</span></p>
     </div>
 </div>
 

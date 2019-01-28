@@ -35,7 +35,9 @@
                     <td th:text="${program.description}"></td>
                     <td th:text="${program.length}"></td>
                     <td>
-                        <button class="uk-button uk-button-default" type="button" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success'})">Submit</button>
+                        <form th:action="@{'/signup/program/' + ${program.getId()}}" method="POST">
+                            <input class="uk-button uk-button-default" type="submit" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success'})"/>
+                        </form>
                     </td>
                 </tr>
             </div>
@@ -51,7 +53,6 @@
                 <th class="uk-text-center">Register</th>
             </tr>
             <div th:each="volunteer : ${volunteers}">
-                <form th:action="@{'/volunteer/' + ${volunteer.id}}" method="POST">
                     <tr>
                         <td>
                             <span th:text="${volunteer.getShelter().name}"></span>
@@ -63,12 +64,11 @@
                             <span th:text="${volunteer.time}"></span>
                         </td>
                         <td>
-
-                            <button class="uk-button uk-button-default" type="button" onclick="UIkit.notification({message: 'Thanks for Volunteering', pos: 'top-center', status: 'success'})">Sign-Up</button>
-
+                            <form th:action="@{'/volunteer/' + ${volunteer.id}}" method="POST">
+                                <input class="uk-button uk-button-default" type="submit" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success'})"/>
+                            </form>
                         </td>
                     </tr>
-                </form>
             </div>
         </table>
     </div>
