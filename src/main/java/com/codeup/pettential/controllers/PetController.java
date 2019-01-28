@@ -63,7 +63,7 @@ public class PetController {
                         "Please log in to meet " + pet.getName() + ".");
                 }
             }
-        return "redirect:/shelter/home";
+        return "redirect:/home";
     }
 
     @GetMapping("adopter/pet/{id}")

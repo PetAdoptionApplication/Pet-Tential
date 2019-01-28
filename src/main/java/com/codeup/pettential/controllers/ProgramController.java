@@ -51,7 +51,7 @@ public class ProgramController {
         Program program = programDao.findOne(id);
         List<User> programUsers = program.getProgramUsers();
         List<Program> users = user.getPrograms();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         if (programUsers.contains(user)){
             return "redirect:/home";
         }
