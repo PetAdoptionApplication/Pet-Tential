@@ -6,19 +6,19 @@
 
 <div class="uk-container">
     <div class="uk-grid" uk-grid="masonry:true">
-        <div class="uk-card">
+        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle">
             <div class="uk-card-body">
-                <h1 class="uk-card-title" th:text="${program.name}"></h1>
-                <h2 class="uk-card-text" th:text="'Location: ' + ${shelter.name}"></h2>
-                <p class="uk-card-text" th:text="${program.type}"></p>
-                <p class="uk-card-text" th:text="${program.description}"></p>
-                <p class="uk-card-text" th:text="${program.time} + ':00 pm'"></p>
-                <p class="uk-card-text" th:text="${program.length} + ' hours'"></p>
-                <p class="uk-card-text" th:text="'Breed: ' + ${program.petType}"></p>
+                <h1 class="uk-card-title uk-text-center" th:text="${program.name}"></h1>
+                <h2 class="uk-card-text uk-text-center" th:text="'Location: ' + ${shelter.name}"></h2>
+                <p class="uk-card-text uk-text-center" th:text="${program.type}"></p>
+                <p class="uk-card-text uk-text-center" th:text="${program.description}"></p>
+                <p class="uk-card-text uk-text-center" th:text="${program.time}"></p>
+                <p class="uk-card-text uk-text-center" th:text="${program.length} + ' hours'"></p>
+                <p class="uk-card-text uk-text-center" th:text="'Breed: ' + ${program.petType}"></p>
                 <p>Number of People Signed up: <span th:text="${users.size()}"></span></p>
-                <u><p class="uk-card-text">People signed up for this program</p></u>
+                <u><p class="uk-card-text uk-text-center">People signed up for this program</p></u>
                 <div th:each="user : ${users}">
-                    <p class="uk-card-text" th:text="${user.name}"></p>
+                    <p class="uk-card-text uk-text-center" th:text="${user.name}"></p>
                 </div>
             </div>
         </div>
