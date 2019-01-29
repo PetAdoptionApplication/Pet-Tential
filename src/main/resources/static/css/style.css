@@ -11,6 +11,8 @@ html {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    position: relative;
+    min-height: 100%;
 }
 li a{
     color:#f4429b;
@@ -30,4 +32,12 @@ body {
     left: 0px;
     right: 0px;
     margin-bottom: 0px;
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+    overflow: hidden;
+
 }

@@ -47,10 +47,12 @@ public class AppController {
     public String acceptApp (@PathVariable Long id, @PathVariable Long id2){
         User user = userDao.findOne(id2);
         App app = appDao.findOne(id);
+        Pet pet = app.getPet();
         app.setApprovalStatus(true);
         Twillio.sendMessage(user.getNumber().replaceAll("[\\s\\-()]", ""), "Your adoption request for " +
                  app.getPet().getName() + " has been accepted! Please contact the shelter for " +
                 "more information");
+        pet.setName("deleted");
         return "redirect:/home";
     }
 
@@ -61,7 +63,7 @@ public class AppController {
         User user = userDao.findOne(id2);
         app.setApprovalStatus(true);
         Twillio.sendMessage(user.getNumber().replaceAll("[\\s\\-()]", ""), "Sorry, your adoption request" +
-                "for " + app.getPet().getName() + " been denied. Please visit our site to see more opportunities!!");
+                " for " + app.getPet().getName() + " been denied. Please visit our site to see more opportunities!!");
         return "redirect:/home";
     }
 }
