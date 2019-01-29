@@ -11,7 +11,7 @@ INSERT INTO pet (age, breed, color, description, name, picture, sex, weight, she
 VALUES (3, 'German Shepherd', 'brown/black', 'great with kids', 'Axel', 'https://localnewsonly.com/wp-content/uploads/2018/12/dog-adoption-1.jpg', 'Male', 45, 1),
 (1, 'Labrador', 'brown', 'loyal, affectionate', 'Bella', 'https://localnewsonly.com/wp-content/uploads/2018/12/dog-adoption-1.jpg','Female', 35, 1),
 (5, 'Maltese', 'white', 'territorial, loving', 'Chloe', 'https://localnewsonly.com/wp-content/uploads/2018/12/dog-adoption-1.jpg', 'Female', 12, 1),
-(8, 'Yorkie', 'brown', 'loving, attention seeker', 'buddy', 'https://localnewsonly.com/wp-content/uploads/2018/12/dog-adoption-1.jpg', 'Male', 15, 1),
+(8, 'Yorkie', 'brown', 'loving, attention seeker', 'Buddy', 'https://localnewsonly.com/wp-content/uploads/2018/12/dog-adoption-1.jpg', 'Male', 15, 1),
 (2, 'Great Dane', 'black', 'playful', 'Max', 'https://localnewsonly.com/wp-content/uploads/2018/12/dog-adoption-1.jpg', 'Male', 30, 1);
 
 INSERT INTO program (description, length, name, pet_type, time, type, shelter_id)

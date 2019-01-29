@@ -1,6 +1,7 @@
 package com.codeup.pettential.repositories;
 
 import com.codeup.pettential.models.Program;
+import com.codeup.pettential.models.Shelter;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface ProgramRepository extends CrudRepository <Program, Long> {
         List<Program> findAllByLength(int length);
         List<Program> findAllByTime(String time);
         List<Program> findAllByPetType(String petType);
+        List<Program> findAllByShelter(Shelter shelter);
 }

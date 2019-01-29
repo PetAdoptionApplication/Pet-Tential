@@ -45,13 +45,22 @@ public class SearchController {
     }
 
     @GetMapping("search")
-    public String createProgram() {
+    public String createProgram(Model model) {
+        model.addAttribute("noResultPet", "Search Results Displayed Here");
+        model.addAttribute("noResultProgram","Search Results Displayed Here");
+        model.addAttribute("noResultShelter", "Search Results Displayed Here");
         return "system/search";
     }
 
 //    need to implement search by shelter for pets
     @PostMapping("/search")
     public String saveProgram(@RequestParam(name = "search") String search, Model model) {
+        if (search.equals("")){
+            model.addAttribute("noResultPet", "No Pets Found...");
+            model.addAttribute("noResultProgram", "No Programs Found...");
+            model.addAttribute("noResultShelter", "No Shelters Found...");
+            return "system/search";
+        }
         List<Pet> petAll = (List<Pet>) petDao.findAll();
         List<Shelter> shelterAll = (List<Shelter>) shelterDao.findAll();
         List<Program> programsAll = (List<Program>) programDao.findAll();
@@ -63,7 +72,9 @@ public class SearchController {
             if (pet.getName().toLowerCase().contains(search) || pet.getBreed().toLowerCase().contains(search) ||
                     pet.getDescription().toLowerCase().contains(search) || pet.getSex().toLowerCase().contains(search) ||
                     pet.getColor().toLowerCase().contains(search)){
-                petsSearch.add(pet);
+                if (!pet.getName().toLowerCase().equals("deleted")){
+                    petsSearch.add(pet);
+                }
             }
         }
         for (Shelter shelter : shelterAll){

@@ -1,7 +1,10 @@
 package com.codeup.pettential.controllers;
 
+import com.codeup.pettential.models.Pet;
+import com.codeup.pettential.models.Program;
 import com.codeup.pettential.models.Shelter;
 import com.codeup.pettential.models.User;
+import com.codeup.pettential.repositories.PetRepository;
 import com.codeup.pettential.repositories.ProgramRepository;
 import com.codeup.pettential.repositories.ShelterRepository;
 import com.codeup.pettential.repositories.UserRepository;
@@ -10,17 +13,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class ShelterController {
 
     private final ShelterRepository shelterDao;
     private final UserRepository userDao;
     private final ProgramRepository programDao;
+    private final PetRepository petDao;
 
-    public ShelterController(ShelterRepository shelterDao, UserRepository userDao, ProgramRepository programDao) {
+    public ShelterController(ShelterRepository shelterDao, UserRepository userDao, ProgramRepository programDao, PetRepository petDao) {
         this.shelterDao = shelterDao;
         this.userDao = userDao;
         this.programDao = programDao;
+        this.petDao = petDao;
     }
 
     @GetMapping ("adopter/{id}")
@@ -32,9 +40,17 @@ public class ShelterController {
     @GetMapping("shelter/{id}")
     public String findShelter(@PathVariable long id, Model model) {
         Shelter currentShelter = shelterDao.findOne(id);
+        List<Pet> pets = petDao.findAllByShelter(currentShelter);
+        List<Pet> pets1 = new ArrayList<>();
+        for (Pet pet : pets){
+            if (!pet.getName().equals("deleted")){
+                pets1.add(pet);
+            }
+        }
+        List<Program> programs = programDao.findAllByShelter(currentShelter);
         model.addAttribute("shelter", currentShelter);
-        model.addAttribute("pets", currentShelter.getPets());
-        model.addAttribute("programs", currentShelter.getPrograms());
+        model.addAttribute("pets", pets1);
+        model.addAttribute("programs", programs);
         return "views/shelter_view";
     }
 
