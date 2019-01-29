@@ -88,7 +88,7 @@
                             <a th:href="'/showVolunteers/' + ${vol.id}"><span th:text="${vol.date}"></span></a>
                         </td>
                         <td>
-                            <span th:text="${vol.time}"></span>
+                            <span th:text="${vol.time} + ':00 PM'"></span>
                         </td>
                     </tr>
                 </table>
