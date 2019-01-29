@@ -8,39 +8,39 @@
 
 <nav th:replace="partials :: navbar"/>
 <div class="container uk-flex">
-    <form class="uk-margin-auto uk-width-1-2" th:action="'/adopter/preferences/edit/' + ${oldPref.getId()}" method="post">
+    <form class="uk-margin-auto uk-width-1-3" th:action="'/adopter/preferences/edit/' + ${oldPref.getId()}" method="post">
 
         <h1>Edit your preference</h1>
         <p class="uk-text-center"><span th:if="${savedPref != null}" th:text="${savedPref}">No Results Found</span></p>
         <div class="uk-margin">
             <label for="breed">Breed</label>
-            <input id="breed" class="uk-input uk-form-width-medium uk-width-expand" type="text"
+            <input id="breed" class="uk-input uk-form-width-small uk-width-expand" type="text"
                    name="breed" th:value="${oldPref.getBreed()}"/>
         </div>
         <div class="uk-margin">
             <label for="age">Age</label>
-            <input id="age" class="uk-input uk-form-width-medium uk-width-expand" type="text" placeholder="0"
+            <input id="age" class="uk-input uk-form-width-small uk-width-expand" type="text" placeholder="0"
                    name="age" th:value="${oldPref.getAge()}"/>
         </div>
         <div class="uk-margin">
             <label for="color">Color</label>
-            <input id="color" class="uk-input uk-form-width-medium uk-width-expand" type="text"
+            <input id="color" class="uk-input uk-form-width-small uk-width-expand" type="text"
                    name="color" th:value="${oldPref.getColor()}"/>
         </div>
         <div class="uk-margin">
             <label for="sex">Sex</label>
-            <select id="sex" class="uk-input uk-form-width-medium uk-width-expand" name="sex" th:value="${oldPref.getSex()}">
+            <select id="sex" class="uk-input uk-form-width-small uk-width-expand" name="sex" th:value="${oldPref.getSex()}">
                 <option value="male">Male</option>
                 <option value="female">Female</option>
             </select>
         </div>
         <div class="uk-margin">
             <label for="weight">Weight</label>
-            <input id="weight" class="uk-input uk-form-width-medium uk-width-expand" type="text" placeholder="0"
+            <input id="weight" class="uk-input uk-form-width-small uk-width-expand" type="text" placeholder="0"
                    name="weight" th:value="${oldPref.getWeight()}"/>
         </div>
         <div class="uk-flex uk-width-expand">
-            <button type="submit" class="uk-margin-auto uk-width-1-2 uk-button uk-button-default">Submit</button>
+            <button type="submit" class="uk-button uk-button-primary">Submit</button>
         </div>
     </form>
 
