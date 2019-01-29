@@ -24,10 +24,13 @@
     </nav>
 </div>
 
-<div class="uk-flex">
+<div class="uk-text-center">
+    <h1 class="uk-margin-top uk-margin-auto">List Of Volunteers</h1>
+</div>
+<div class="uk-flex uk-text-center">
 
-    <h1 class="uk-margin-top">List Of Volunteers</h1>
-    <div class="uk-child-width-1-2@m uk-grid" uk-grid="masonry:true">
+
+    <div class="uk-child-width-1-2@m uk-grid uk-width-expand uk-margin-auto">
         <div th:each="user : ${users}">
 
             <div class="uk-card">
