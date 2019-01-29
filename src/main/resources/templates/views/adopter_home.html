@@ -7,10 +7,10 @@
     <div class="uk-grid uk-text-center uk-width-1-1">
         <div class="uk-child-width-expand uk-margin-auto">
 
-            <button class="uk-button uk-button-default"><a href="/search">Search pets/shelters/programs</a></button>
+            <button class="uk-button uk-button-default uk-animation-slide-left"><a href="/search">Search pets/shelters/programs</a></button>
         </div>
         <div class="uk-child-width-expand uk-margin-auto">
-            <button class="uk-button uk-button-default"><a href="/adopter/preferences">Preferences</a></button>
+            <button class="uk-button uk-button-default uk-animation-slide-right"><a href="/adopter/preferences">Preferences</a></button>
         </div>
     </div>
 </div>
@@ -20,7 +20,7 @@
 <div class="uk-child-width-1-2@l uk-grid uk-grid-divider uk-child-width-1-2@s">
 
     <div class="uk-text-center">
-        <div class="uk-card uk-card-default uk-card-body uk-margin-left uk-box-shadow-xlarge">
+        <div class="uk-card uk-card-default uk-card-body uk-margin-left uk-box-shadow-xlarge uk-animation-slide-left">
         <h4 class="uk-margin-auto"><u>Programs in your area</u></h4>
             <table class="uk-table uk-table-striped">
                 <tr>
@@ -46,7 +46,7 @@
         </div>
     </div>
     <div class="uk-text-center">
-        <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-box-shadow-xlarge">
+        <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-box-shadow-xlarge uk-animation-slide-right">
         <h4><u>Volunteer Opportunities</u></h4>
             <table class="uk-table uk-table-striped">
                 <tr>
@@ -79,7 +79,7 @@
 </div>
 
 
-<footer th:replace="partials :: footer"/>
 <div th:replace="partials :: scripts"/>
 </body>
+<footer th:replace="partials :: footer"/>
 </html>

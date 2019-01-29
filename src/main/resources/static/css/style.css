@@ -26,19 +26,17 @@ body {
 }
 
 .footer {
+    position: relative;
+    height: 50px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+
     position: absolute;
     left: 0;
     bottom: 0;
     height: 30px;
     width: 100%;
     overflow: hidden;
-}
-
-.center-screen {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    min-height: 100vh;
 }
