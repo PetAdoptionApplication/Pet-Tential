@@ -9,9 +9,9 @@
 <nav th:replace="partials :: navbar"/>
 </div>
 <div class="container uk-flex">
-<form th:action="@{/sign-up}" method="POST" class="uk-margin-auto uk-width-1-2 " th:object="${user}">
-    <div th:if="${error != null}">
-        <span th:text="${error}">Static summary</span>
+<form th:action="@{/sign-up}" method="POST" class="uk-margin-auto uk-width-1-3" th:object="${user}">
+    <div>
+        <span th:if="${error != null}" th:text="${error}">Static summary</span>
     </div>
     <h1 class="uk-margin-top">Create an account</h1>
     <div class="uk-margin">
