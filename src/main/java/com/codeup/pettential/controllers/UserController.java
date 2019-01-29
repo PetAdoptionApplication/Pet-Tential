@@ -3,6 +3,7 @@ package com.codeup.pettential.controllers;
 import com.codeup.pettential.models.*;
 
 import com.codeup.pettential.repositories.*;
+import com.codeup.pettential.services.ProgramServices;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,9 +24,10 @@ public class UserController {
     private UserRepository userDao;
     private PreferencesRepository preferenceDao;
     private VolunteerRepository volDao;
+    private final ProgramServices programServices;
 
     public UserController(Users users, PasswordEncoder passwordEncoder, ShelterRepository shelterDao, ProgramRepository programDao, AppRepository appDao, UserRepository userDao,
-                          PreferencesRepository preferenceDao, VolunteerRepository volDao) {
+                          PreferencesRepository preferenceDao, VolunteerRepository volDao, ProgramServices programServices) {
         this.users = users;
         this.passwordEncoder = passwordEncoder;
         this.shelterDao = shelterDao;
@@ -34,6 +36,7 @@ public class UserController {
         this.userDao = userDao;
         this.preferenceDao = preferenceDao;
         this.volDao = volDao;
+        this.programServices = programServices;
     }
 
     @GetMapping("/")
@@ -120,6 +123,7 @@ public class UserController {
             User user1 = userDao.findOne(user.getId());
             List<Volunteer> volunteers = (List<Volunteer>) volDao.findAll();
             List<Program> programs = (List<Program>) programDao.findAll();
+            model.addAttribute("unsignedPrograms", programServices.getUnsignedPrograms());
             model.addAttribute("user", user1);
             model.addAttribute("volunteers", volunteers);
             model.addAttribute("programs", programs);
