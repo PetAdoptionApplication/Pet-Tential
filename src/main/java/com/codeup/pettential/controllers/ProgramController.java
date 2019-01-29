@@ -50,7 +50,7 @@ public class ProgramController {
         User user = userDao.findOne(user1.getId());
         Program program = programDao.findOne(id);
         List<User> programUsers = program.getProgramUsers();
-        List<Program> users = user.getPrograms();
+        List<Program> usersPrograms = user.getPrograms();
         Thread.sleep(1000);
         if (programUsers.contains(user)){
             return "redirect:/home";
@@ -58,8 +58,8 @@ public class ProgramController {
         programUsers.add(user);
         program.setProgramUsers(programUsers);
         programDao.save(program);
-        users.add(program);
-        user.setPrograms(users);
+        usersPrograms.add(program);
+        user.setPrograms(usersPrograms);
         userDao.save(user);
         return "redirect:/home";
     }
