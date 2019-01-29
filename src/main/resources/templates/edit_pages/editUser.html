@@ -5,8 +5,13 @@
 <nav th:replace="partials::navbar"/>
 <div class="uk-container uk-flex">
 
+
+    <form th:action="@{/editUser}" method="POST" class="uk-margin-auto uk-width-1-3">
+        <h1 class="uk-margin-top">Edit User</h1>
+
     <form th:action="@{/editUser}" method="POST" class="uk-margin-auto uk-width-1-2 ">
         <h1 class="uk-margin-top">Edit Profile Info</h1>
+
         <p class="uk-text-center"><span th:if="${ProfileUpdate != null}" th:text="${ProfileUpdate}">No Results Found</span></p>
         <div>
             <label for="name">Name</label>
