@@ -12,16 +12,16 @@
 
     <div class="uk-child-width-1-2@m uk-grid" uk-grid="masonry:true">
         <div th:each="pet : ${pets}" th:if="${pet.name.equals('deleted') == false}">
-            <div class="uk-card uk-card-hover">
+            <div class="uk-card uk-card-default">
                 <div class="uk-card-body">
                     <a th:href="'/adopter/pet/' + ${pet.id}"><img th:src="${pet.picture}" class="uk-card-media-top" alt="Pet Image"/></a>
-                    <div class="uk-margin">
+                    <div class="uk-margin uk-text-center">
                         <div class="uk-card-media-top uk-width-auto">
-                            <label for="name">Name</label>
+                            <label for="name"><strong><u>Name</u></strong></label>
                             <p id="name" th:text="${pet.name}"></p>
                         </div>
                         <div class="uk-card-media-top uk-width-auto">
-                            <label for="description">Description</label>
+                            <label for="description"><strong><u>Description</u></strong></label>
                             <p id="description" th:text="${pet.description}"></p>
                             <div th:if="${user.isShelter}">
                                 <form th:action="'/pet/delete/' + ${pet.id}" method="POST">
