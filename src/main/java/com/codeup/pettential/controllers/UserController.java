@@ -123,10 +123,9 @@ public class UserController {
             User user1 = userDao.findOne(user.getId());
             List<Volunteer> volunteers = (List<Volunteer>) volDao.findAll();
             List<Program> programs = (List<Program>) programDao.findAll();
-            model.addAttribute("unsignedPrograms", programServices.getUnsignedPrograms());
             model.addAttribute("user", user1);
             model.addAttribute("volunteers", volunteers);
-            model.addAttribute("programs", programs);
+            model.addAttribute("programs", user.getPrograms());
             return "views/adopter_home";
         }
     }
