@@ -52,7 +52,7 @@ public class Program {
         this.description = description;
         this.length = length;
         this.time = time;
-        this.petType = petType;
+        this.petType = PetType;
     }
 
     public String getType() {
