@@ -10,8 +10,8 @@
 </div>
 <div class="container uk-flex">
 <form th:action="@{/sign-up}" method="POST" class="uk-margin-auto uk-width-1-2 " th:object="${user}">
-    <div>
-        <span th:if="${error != null}" th:text="${error}">Static summary</span>
+    <div th:if="${error != null}">
+        <span th:text="${error}">Static summary</span>
     </div>
     <h1 class="uk-margin-top">Create an account</h1>
     <div class="uk-margin">
@@ -64,7 +64,7 @@
     <label for="shelter"> Are you a shelter? </label>
     <input type="checkbox" class="uk-checkbox-primary uk-margin-small-left" id="shelter" th:field="*{isShelter}"/>
     </div>
-    <div class="uk-width-expand uk-flex">
+    <div class="uk-width-expand uk-flex uk-margin-top">
         <button class="uk-button uk-button-primary" value="Sign me up!" type="submit">Submit</button>
     </div>
 </form>
