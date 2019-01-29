@@ -89,12 +89,18 @@ public class UserController {
             return "redirect:/login";
         }
 
-        model.addAttribute("programs", programDao.findAll());
         model.addAttribute("app", appDao.findAll());
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         User user = userDao.findByUsername(username);
+        long userId = user.getId();
+
+        List<Program> usersPrograms = user.getPrograms(); //Grabbed the programs user signed up for....
+        model.addAttribute("usersPrograms", usersPrograms);
+        //TODO: Grab programs that the user did NOT sign up for....
+        model.addAttribute("otherPrograms", otherPrograms);
+
         Preferences preferences = user.getPreferences();
         boolean hasPreference = false;
         boolean doesNotHavePreference = false;
@@ -105,7 +111,7 @@ public class UserController {
         }
         model.addAttribute("hasPreference", hasPreference);
         model.addAttribute("doesNotHavePreference", doesNotHavePreference);
-        model.addAttribute("userId", user.getId());
+        model.addAttribute("userId", userId);
 
         if (user.getIsShelter()) {
             Shelter thisShelter = shelterDao.findByUser(user);
