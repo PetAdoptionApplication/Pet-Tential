@@ -37,7 +37,7 @@
                         <td th:text="${program.length}"></td>
                         <td>
                             <form th:action="@{'/signup/program/' + ${program.getId()}}" method="POST">
-                                <input class="uk-button uk-button-default" type="submit" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success'})"/>
+                                <input class="uk-button uk-button-default program-signup" type="submit" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success'})"/>
                             </form>
                         </td>
                     </tr>
@@ -81,9 +81,16 @@
 
 <footer th:replace="partials :: footer"/>
 <div th:replace="partials :: scripts"/>
-<script>
+<script src="/js/jquery.js">
     "use strict";
 
+    $(".program-signup").on("click", function (e) {
+        var url = $(this).attr("href");
+      $.ajax({
+          type: "POST",
+          url: url
+      })
+    })
 </script>
 </body>
 </html>
