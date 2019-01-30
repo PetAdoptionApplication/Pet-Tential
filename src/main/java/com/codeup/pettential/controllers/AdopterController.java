@@ -37,7 +37,7 @@ public class AdopterController {
     }
 
 
-    public void signUpForProgram(long id) {
+    private void signUpForProgram(long id) {
         User user1 = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findOne(user1.getId());
         Program program = programDao.findOne(id);
@@ -52,7 +52,7 @@ public class AdopterController {
     }
 
 
-    public void volunteer(long id){
+    private void volunteer(long id){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user1 = userDao.findOne(user.getId());
         Volunteer volunteer = volDao.findOne(id);
