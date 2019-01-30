@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -87,8 +88,8 @@ public class UserController {
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() == "anonymousUser"){
             return "redirect:/login";
         }
-
-        model.addAttribute("programs", programDao.findAll());
+        List<Program> programs = (List<Program>) programDao.findAll();
+        model.addAttribute("programs", programs);
         model.addAttribute("app", appDao.findAll());
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -111,14 +112,28 @@ public class UserController {
             Shelter thisShelter = shelterDao.findByUser(user);
             List<App> appForThisShelter = appDao.findAllByShelter(thisShelter);
             List<Volunteer> volsForThisShelter = volDao.findAllByShelter(thisShelter);
+            List<Program> programsForThisShelter = programDao.findAllByShelter(thisShelter);
             model.addAttribute("apps", appForThisShelter);
             model.addAttribute("vols", volsForThisShelter);
-            model.addAttribute("programs", thisShelter.getPrograms());
+            model.addAttribute("programs", programsForThisShelter);
             return "views/shelter_home";
         }else {
             User user1 = userDao.findOne(user.getId());
             List<Volunteer> volunteers = (List<Volunteer>) volDao.findAll();
-            List<Program> programs = (List<Program>) programDao.findAll();
+            List<Volunteer> volunteersForThisUser = new ArrayList<>();
+            List<Program> programsForThisUser = new ArrayList<>();
+            for (Volunteer volunteer : volunteers){
+                if (volunteer.getVolunteerUsers().contains(user1)){
+                    volunteersForThisUser.add(volunteer);
+                }
+            }
+            for (Program program : programs){
+                if (program.getProgramUsers().contains(user1)){
+                    programsForThisUser.add(program);
+                }
+            }
+            model.addAttribute("progs", programsForThisUser);
+            model.addAttribute("vols", volunteersForThisUser);
             model.addAttribute("user", user1);
             model.addAttribute("volunteers", volunteers);
             return "views/adopter_home";
