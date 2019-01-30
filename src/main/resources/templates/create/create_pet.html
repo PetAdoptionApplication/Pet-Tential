@@ -48,26 +48,47 @@
         </div>
 
         <div>
-            <label for="picture">Picture</label>
-            <input id="picture" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{picture}" />
+            <label>Picture</label><br/>
+            <button id="filestack" onclick="change()" type="button" class="uk-button uk-button-secondary">Add a Picture</button>
+            <input type="hidden" id="fileStackUrl" th:field="*{picture}" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" />
+            <br/>
         </div>
 
         <div>
             <label for="description">Description</label>
             <input id="description" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{description}" />
         </div>
-        <!--<div>-->
-            <!--<label for="user">User</label>-->
-            <!--<input id="user" class="uk-input uk-form-width-medium uk-width-expand uk-margin-bottom" type="text" th:field="*{user}" />-->
-        <!--</div>-->
+
         <div class="uk-width-expand uk-flex">
-            <button class="uk-button uk-button-primary" onclick="UIkit.notification({message: 'Submit successful...', status: 'success'})">Submit</button>
+            <button class="uk-button uk-button-primary" onclick="UIkit.notification({message: 'Submit successful...', status: 'success'})" id="submit">Submit</button>
         </div>
     </form>
 </div>
 
 <div th:replace="partials :: scripts" />
 <div th:replace="partials :: footer" />
-
+<script src="//static.filestackapi.com/filestack-js/1.x.x/filestack.min.js"></script>
+<script th:inline="javascript">
+    var url = "";
+    var fileStack = document.getElementById("filestack");
+    fileStack.addEventListener('click', function () {
+        const apikey = 'AZpH4QD4CQTyWCvqtlovwz';
+        const client = filestack.init(apikey);
+        const options = {
+            maxFiles: 20,
+            uploadInBackground: false,
+            onOpen: () => console.log('opened!'),
+            onUploadDone: (res) => url = res.filesUploaded[0].url,
+        };
+        console.log(url);
+        client.picker(options).open();
+    });
+    document.getElementById("submit").addEventListener("click", function () {
+        document.getElementById("fileStackUrl").value = url;
+    });
+    let change = () => {
+        document.getElementById("filestack").innerText ="Change Picture";
+    }
+</script>
 </body>
 </html>
