@@ -7,11 +7,12 @@ import com.codeup.pettential.repositories.ProgramRepository;
 import com.codeup.pettential.repositories.UserRepository;
 import com.codeup.pettential.repositories.VolunteerRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
+@Controller
 public class AdopterController {
 
     private final UserRepository userDao;
@@ -25,10 +26,21 @@ public class AdopterController {
     }
 
     @PostMapping("/home")
-    public void homePostMap (){
-
-
-
+    public void homePostMap (String type, long id){
+        if (type.equals("program")){
+            try {
+                signUpForProgram(id);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        if (type.equals("volunteer")){
+            try {
+                volunteer(id);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
