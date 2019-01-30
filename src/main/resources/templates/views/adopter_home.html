@@ -36,7 +36,12 @@
                         <td th:text="${program.description}"></td>
                         <td th:text="${program.length}"></td>
                         <td>
+                            <div th:if="${progs.contains(program)}">
+                                <input disabled="disabled" data-th-attr="programId = ${program.id}" type="submit" class="uk-button uk-button-default program-signup" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success'})"/>
+                            </div>
+                            <div th:unless="${progs.contains(program)}">
                                 <input data-th-attr="programId = ${program.id}" type="submit" class="uk-button uk-button-default program-signup" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success'})"/>
+                            </div>
                         </td>
                     </tr>
                 </div>
@@ -65,9 +70,16 @@
                                 <span th:text="${volunteer.time}"></span>
                             </td>
                             <td>
-                                <form>
-                                    <input class="uk-button uk-button-default volunteer-signup" data-th-attr="volId = ${volunteer.id}" type="submit" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success'})"/>
-                                </form>
+                                <div th:if="${vols.contains(volunteer)}">
+                                    <form>
+                                        <input disabled="disabled" class="uk-button uk-button-default volunteer-signup" data-th-attr="volId = ${volunteer.id}" type="submit" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success'})"/>
+                                    </form>
+                                </div>
+                                <div th:unless="${vols.contains(volunteer)}">
+                                    <form>
+                                        <input class="uk-button uk-button-default volunteer-signup" data-th-attr="volId = ${volunteer.id}" type="submit" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success'})"/>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                 </div>
