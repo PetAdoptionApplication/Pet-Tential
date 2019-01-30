@@ -45,13 +45,12 @@ public class ProgramController {
     }
 
     @PostMapping("signup/program/{id}")
-    public String signUpForProgram(@PathVariable long id) throws InterruptedException {
+    public String signUpForProgram(@PathVariable long id){
         User user1 = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findOne(user1.getId());
         Program program = programDao.findOne(id);
         List<User> programUsers = program.getProgramUsers();
         List<Program> users = user.getPrograms();
-        Thread.sleep(1000);
         if (programUsers.contains(user)){
             return "redirect:/home";
         }

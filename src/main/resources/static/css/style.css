@@ -40,3 +40,8 @@ body {
     width: 100%;
     overflow: hidden;
 }
+
+.set-width{
+    width: 500px;
+    height: 269px;
+}
