@@ -9,11 +9,12 @@
 
 
 <div class="uk-container">
-       <div class="uk-width-expand">
+       <div class="uk-width-expand uk-text-center">
            <h3 th:text="${shelter.name}"></h3>
            <label for="located"> Located at.... </label>
-           <div id="map"></div>
+           <div class="uk-align-center uk-text-center" id="map"></div>
            <h3 th:text="${shelter.location}" id="located"></h3>
+           <hr/>
        </div>
 
 
@@ -24,11 +25,8 @@
           <h3> Pets Available </h3>
             <div th:each="pet : ${pets}">
                 <div class="uk-card">
-                    <div class="uk-card-media-top">
-                        <img th:src="${pet.picture}"/>
-                    </div>
                     <div class="uk-card-body uk-width-expand">
-                        <h4><a th:href="'/adopter/pet/' + pet.id"> <span th:text="${pet.name}"></span> </a> </h4>
+                        <h4><a th:href="@{'/adopter/pet/' + ${pet.id}}"> <span th:text="${pet.name}"></span> </a> </h4>
                     </div>
                 </div>
             </div>
@@ -41,14 +39,13 @@
             <div th:each="program : ${programs}">
                 <div class="uk-card">
                     <div class="uk-card-body uk-width-expand">
-                        <h4><a th:href="'/adopter/program/' + program.id"> <span th:text="${program.name}"></span> </a> </h4>
+                        <h4><a th:href="@{'/adopter/program/' + ${program.id}}"> <span th:text="${program.name}"></span> </a> </h4>
                     </div>
                 </div>
             </div>
           </div>
 
   </div>
-    <iframe src="https://calendar.google.com/calendar/b/2/embed?title=List%20of%20Events&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=kcdu3013jq0shm8mc1fo8r9034%40group.calendar.google.com&amp;color=%23333333&amp;ctz=America%2FChicago" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 </div>
 
 <footer th:replace="partials::footer"/>

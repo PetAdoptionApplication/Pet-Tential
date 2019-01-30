@@ -9,16 +9,16 @@
     <!--Buttons-->
     <div class="uk-grid uk-text-center uk-width-1-1">
         <div class="uk-child-width-expand uk-margin-auto">
-            <button class="uk-button uk-button-default"><a href="/shelter/createProgram">Create a Program</a></button>
+            <button class="uk-button uk-button-default uk-animation-slide-left"><a href="/shelter/createProgram">Create a Program</a></button>
         </div>
         <div class="uk-child-width-expand uk-margin-auto">
-            <button class="uk-button uk-button-default"><a href="/adopter/pets">Pet Management</a></button>
+            <button class="uk-button uk-button-default uk-animation-slide-left"><a href="/adopter/pets">Pet Management</a></button>
         </div>
         <div class="uk-child-width-expand uk-margin-auto">
-            <button class="uk-button uk-button-default"><a href="/create/pet">Add Pet</a></button>
+            <button class="uk-button uk-button-default uk-animation-slide-right"><a href="/create/pet">Add Pet</a></button>
         </div>
         <div class="uk-child-width-expand uk-margin-auto">
-            <button class="uk-button uk-button-default"><a href="/getvolunteer">New Volunteer Oppurtunity</a></button>
+            <button class="uk-button uk-button-default uk-animation-slide-right"><a href="/getvolunteer">New Volunteer Oppurtunity</a></button>
         </div>
     </div>
 </div>
@@ -28,7 +28,7 @@
 <!--Info-->
 <div class="uk-child-width-1-2@l uk-grid uk-grid-divider uk-child-width-1-2@s">
     <div class="uk-text-center">
-        <div class="uk-card uk-card-default uk-card-body uk-margin-left uk-box-shadow-xlarge">
+        <div class="uk-card uk-card-default uk-card-body uk-margin-left uk-box-shadow-xlarge uk-animation-fade">
             <h4 class="uk-margin-auto"><u>Applications</u></h4>
             <table class="uk-table uk-table-striped">
                 <tr>
@@ -88,7 +88,7 @@
                             <a th:href="'/showVolunteers/' + ${vol.id}"><span th:text="${vol.date}"></span></a>
                         </td>
                         <td>
-                            <span th:text="${vol.time}"></span>
+                            <span th:text="${vol.time} + ':00'"></span>
                         </td>
                     </tr>
                 </table>
@@ -96,7 +96,7 @@
         </div>
     </div>
     <div class="uk-text-center">
-        <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-box-shadow-xlarge">
+        <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-box-shadow-xlarge uk-animation-fade">
             <h4 class="uk-margin-auto"><u>Programs</u></h4>
             <table class="uk-table uk-table-striped">
                 <tr>
@@ -124,9 +124,6 @@
         </div>
     </div>
 </div>
-
-<hr/>
-
 
 <hr/>
 <footer th:replace="partials :: footer"/>

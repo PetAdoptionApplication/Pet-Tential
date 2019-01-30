@@ -26,6 +26,13 @@ body {
 }
 
 .footer {
+    position: relative;
+    height: 50px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+
     position: absolute;
     left: 0;
     bottom: 0;

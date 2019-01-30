@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace = "partials :: head('Pets')"/>
+<head th:replace = "partials :: head('Volunteer List')"/>
 <body>
 
 <div class="container uk-margin-bottom">
@@ -24,22 +24,26 @@
     </nav>
 </div>
 
-<div class="uk-container">
-    <h1 class="uk-margin-top">List Of Volunteers</h1>
+<div class="uk-text-center">
+    <h1 class="uk-margin-top uk-margin-auto">List Of Volunteers</h1>
+</div>
+<div class="uk-flex uk-text-center">
 
-    <div class="uk-child-width-1-2@m uk-grid" uk-grid="masonry:true">
+
+    <div class="uk-child-width-1-2@m uk-grid uk-width-expand uk-margin-auto">
         <div th:each="user : ${users}">
 
-            <div class="uk-card uk-card-hover">
-                <div class="uk-card-body">
+            <div class="uk-card">
+                <div class="uk-card-body uk-card-default uk-text-center">
+                    <strong><u><label for="name">Name:</label></u></strong>
                     <p th:text="${user.getName()}" class="uk-card-media-top"/>
                     <div class="uk-margin">
                         <div class="uk-card-media-top uk-width-auto">
-                            <label for="name">Email</label>
+                            <strong><u><label for="name">Email</label></u></strong>
                             <p id="name" th:text="${user.getEmail()}"></p>
                         </div>
                         <div class="uk-card-media-top uk-width-auto">
-                            <label for="description">Phone Number</label>
+                            <strong><u><label for="description">Phone Number</label></u></strong>
                             <p id="description" th:text="${user.getNumber()}"></p>
                         </div>
                     </div>
