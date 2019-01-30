@@ -15,13 +15,29 @@
         left: 75vw;
     }
 
+    .nav-overlay {
+        position: fixed;
+        z-index: 9999;
+        width: 100vw;
+    }
+
 </style>
 </head>
 <body>
 
-<a href="/home"><img th:src="@{/img/pettential_1.png}" style="width: 300px; height: 300px" class="image-overlay"/></a>
+<div class="uk-hidden@m nav-overlay">
+    <nav style="background-color: #CCCCFF" class="uk-navbar-container" uk-navbar="mode: click">
+        <ul class="uk-navbar-nav uk-navbar-center">
+            <li><a class="nav-link" href="/sign-up">Register</a></li>
+            <li class="uk-navbar-item uk-logo" >Pet-tential</li>
+            <li><a class="nav-link" href="/login">Login</a></li>
+        </ul>
+    </nav>
+</div>
 
-    <div class="uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; width: 100vw; background-image: url('/img/landing1.jpg');">
+<a href="/home"><img th:src="@{/img/pettential_1.png}" style="width: 300px; height: 300px" class="image-overlay uk-visible@m"/></a>
+
+    <div class="uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; width: 100vw; background-image: url('/img/landing7.jpg');">
 
         <h1 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5">Adopt with ease.</h1>
 
@@ -45,9 +61,9 @@
 
     </div>
 
-    <div class="uk-height-large uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; width: 100vw; background-image: url('/img/landing6.jpg');">
+    <div class="uk-height-large uk-background-cover uk-light uk-flex uk-flex-top" style="height: 100vh; width: 100vw; background-image: url('/img/landing8.jpg');">
 
-        <button class="uk-button uk-button-default uk-button-medium uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5"><a href="/sign-up">Register today!</a></button>
+        <button class="uk-button uk-button-default uk-button-medium uk-width-1-2@s uk-text-center uk-margin-auto uk-margin-auto-vertical" uk-parallax="opacity: 0,1; y: 100,0; viewport: 0.5"><a href="/sign-up">Register today!</a></button>
 
     </div>
 
