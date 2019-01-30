@@ -51,24 +51,6 @@ public class VolunteersController {
         return "redirect:/home";
     }
 
-    @PostMapping("/volunteer/{id}")
-    public String volunteer(@PathVariable long id) throws InterruptedException{
-        Thread.sleep(1000);
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user1 = userDao.findOne(user.getId());
-        Volunteer volunteer = volDao.findOne(id);
-        List<User> volunteers = volunteer.getVolunteerUsers();
-        List<Volunteer> oppurtunity = user1.getVolunteers();
-        if (volunteers.contains(user1)){
-            return "redirect:/home";
-        }
-        volunteers.add(user1);
-        oppurtunity.add(volunteer);
-        volunteer.setVolunteerUsers(volunteers);
-        volDao.save(volunteer);
-        userDao.save(user1);
-        return "redirect:/home";
-    }
 
     @GetMapping("/showVolunteers/{id}")
     public String showVols(Model model, @PathVariable long id){
