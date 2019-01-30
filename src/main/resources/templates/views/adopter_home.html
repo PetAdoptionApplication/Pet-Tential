@@ -66,7 +66,7 @@
                             </td>
                             <td>
                                 <form>
-                                    <input class="uk-button uk-button-default volunteer-signup" data-th-attr="programId = ${volunteer.id}" type="submit" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success'})"/>
+                                    <input class="uk-button uk-button-default volunteer-signup" data-th-attr="volId = ${volunteer.id}" type="submit" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success'})"/>
                                 </form>
                             </td>
                         </tr>
@@ -103,7 +103,7 @@
         $.post({
             url: "/home",
             data: {
-                "id" : progId,
+                "id" : volId,
                 "type" : "volunteer"
             }
 
