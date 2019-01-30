@@ -26,31 +26,23 @@ public class AdopterController {
     }
 
     @PostMapping("/home")
-    public void homePostMap (String type, long id){
+    public String homePostMap (String type, long id){
         if (type.equals("program")){
-            try {
-                signUpForProgram(id);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            signUpForProgram(id);
         }
         if (type.equals("volunteer")){
-            try {
-                volunteer(id);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            volunteer(id);
         }
+        return "redirect:/home";
     }
 
 
-    public void signUpForProgram(long id) throws InterruptedException {
+    public void signUpForProgram(long id) {
         User user1 = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findOne(user1.getId());
         Program program = programDao.findOne(id);
         List<User> programUsers = program.getProgramUsers();
         List<Program> usersPrograms = user.getPrograms();
-        Thread.sleep(1000);
         programUsers.add(user);
         program.setProgramUsers(programUsers);
         programDao.save(program);
@@ -60,8 +52,7 @@ public class AdopterController {
     }
 
 
-    public void volunteer(long id) throws InterruptedException{
-        Thread.sleep(1000);
+    public void volunteer(long id){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user1 = userDao.findOne(user.getId());
         Volunteer volunteer = volDao.findOne(id);
