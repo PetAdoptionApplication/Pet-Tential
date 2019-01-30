@@ -15,12 +15,12 @@
 
 <body>
 <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar uk-margin-bottom">
-<nav th:fragment="navbar"  style="background-color: #CCCCFF" class="uk-navbar-container uk-margin" uk-navbar="mode: click">
-    <div class="uk-navbar-center">
+<nav th:fragment="navbar"  style="background-color: #CCCCFF" class="uk-navbar-container uk-margin uk-text-center" uk-navbar="mode: click">
+    <div class="uk-navbar-center uk-margin-auto">
         <div><div>
             <ul class="uk-navbar-nav">
-                <li><a class="nav-link" href="/home">Home</a></li>
-                <li><a href="/adopter/pets">View all pets</a></li>
+                <li><a class="nav-link" href="/home"><span uk-icon="icon: home" class="uk-margin-small-right"></span>Home</a></li>
+                <li><a href="/adopter/pets"><span uk-icon="icon: search" class="uk-margin-small-right"></span>View all pets</a></li>
             </ul>
         </div></div>
         <a class="uk-navbar-item uk-logo" href="/">Pet-tential</a>
@@ -28,17 +28,17 @@
             <ul class="uk-navbar-nav">
                 <!--Logged in users see....-->
                 <li sec:authorize="isAuthenticated()">
-                    <a class="nav-link" href="/logout">Logout</a>
+                    <a class="nav-link" href="/logout"><span uk-icon="icon: sign-out" class="uk-margin-small-right"></span>Logout</a>
                 </li>
                 <li sec:authorize="isAuthenticated()">
-                    <a class="nav-link" href="/editUser">Profile</a>
+                    <a class="nav-link" href="/editUser"><span uk-icon="icon: user" class="uk-margin-small-right"></span>Profile</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/aboutme">About</a>
+                    <a class="nav-link" href="/aboutme"><span uk-icon="icon: users" class="uk-margin-small-right"></span>About</a>
                 </li>
                 <!--Logged out users see....-->
                 <li sec:authorize="!isAuthenticated()">
-                    <a class="nav-link" href="/login">Login</a>
+                    <a class="nav-link" href="/login"><span uk-icon="icon: sign-in" class="uk-margin-small-right"></span>Login</a>
                 </li>
                 <li sec:authorize="!isAuthenticated()">
                     <a class="nav-link" href="/sign-up">Register</a>
