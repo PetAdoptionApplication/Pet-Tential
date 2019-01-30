@@ -51,7 +51,6 @@ public class VolunteersController {
         return "redirect:/home";
     }
 
-
     @GetMapping("/showVolunteers/{id}")
     public String showVols(Model model, @PathVariable long id){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

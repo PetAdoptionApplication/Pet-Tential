@@ -10,13 +10,13 @@
             <div class="uk-width-1-2@m uk-margin-auto">
                 <img th:src="${pet.picture}" alt="Picture of Pet"/>
             </div>
-            <p><strong><u>Breed: </u></strong><span th:text="${pet.breed}" /></p>
-            <p><strong><u>Shelter: </u></strong><span th:text="${shelter.name}"/></p>
-            <p><strong><u>Age (in years): </u></strong><span th:text="${pet.age}" /></p>
-            <p><strong><u>Color: </u></strong><span th:text="${pet.color}" /></p>
-            <p><strong><u>Description: </u></strong><span th:text="${pet.description}" /></p>
-            <p><strong><u>Sex: </u></strong><span th:text="${pet.sex}" /></p>
-            <p><strong><u>Weight (in pounds): </u></strong><span th:text="${pet.weight}" /></p>
+            <p><strong><u>Breed</u>: </strong><span th:text="${pet.breed}" /></p>
+            <p><strong><u>Shelter</u>: </strong><span th:text="${shelter.name}"/></p>
+            <p><strong><u>Age (in years)</u>: </strong><span th:text="${pet.age}" /></p>
+            <p><strong><u>Color</u>: </strong><span th:text="${pet.color}" /></p>
+            <p><strong><u>Description</u>: </strong><span th:text="${pet.description}" /></p>
+            <p><strong><u>Sex</u>: </strong><span th:text="${pet.sex}" /></p>
+            <p><strong><u>Weight (in pounds)</u>: </strong><span th:text="${pet.weight}" /></p>
           <form th:action="@{'/adopt/pet/' + ${pet.getId()}}" method="POST" th:if="${user.getIsShelter() == false}">
               <button type="submit" class="uk-button uk-button-default">Put in a application for this pet!</button>
           </form>
