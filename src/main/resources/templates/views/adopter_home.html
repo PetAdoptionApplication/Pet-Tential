@@ -43,22 +43,6 @@
                     </tr>
                 </div>
             </table>
-            <h4 class="uk-margin-auto"><u>Programs you signed up for</u></h4>
-            <table class="uk-table uk-table-striped">
-                <tr>
-                    <th class="uk-text-center">Name</th>
-                    <th class="uk-text-center">Description</th>
-                    <th class="uk-text-center">Length</th>
-                </tr>
-
-                <div th:each="unsignedProg : ${unsignedProgs}">
-                    <tr>
-                        <td th:text="${unsignedProg.name}"></td>
-                        <td th:text="${unsignedProg.description}"></td>
-                        <td th:text="${unsignedProg.length}"></td>
-                    </tr>
-                </div>
-            </table>
         </div>
     </div>
     <div class="uk-text-center">

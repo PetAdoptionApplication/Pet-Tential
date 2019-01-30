@@ -6,7 +6,6 @@ import com.codeup.pettential.models.User;
 import com.codeup.pettential.repositories.ProgramRepository;
 import com.codeup.pettential.repositories.ShelterRepository;
 import com.codeup.pettential.repositories.UserRepository;
-import com.codeup.pettential.services.ProgramServices;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,13 +20,11 @@ public class ProgramController {
     private final ProgramRepository programDao;
     private final ShelterRepository shelterDao;
     private final UserRepository userDao;
-    private final ProgramServices programServices;
 
-    public ProgramController(ProgramRepository programDao, ShelterRepository shelterDao, UserRepository userDao, ProgramServices programServices) {
+    public ProgramController(ProgramRepository programDao, ShelterRepository shelterDao, UserRepository userDao) {
         this.programDao = programDao;
         this.shelterDao = shelterDao;
         this.userDao = userDao;
-        this.programServices = programServices;
     }
 
     @GetMapping("shelter/createProgram")
@@ -48,7 +45,7 @@ public class ProgramController {
     }
 
     @PostMapping("signup/program/{id}")
-    public String signUpForProgram(@PathVariable long id, Model model) throws InterruptedException {
+    public String signUpForProgram(@PathVariable long id) throws InterruptedException {
         User user1 = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userDao.findOne(user1.getId());
         Program program = programDao.findOne(id);
@@ -64,12 +61,7 @@ public class ProgramController {
         usersPrograms.add(program);
         user.setPrograms(usersPrograms);
         userDao.save(user);
-        for(Program thisProgram : programDao.findAll()){
-            if (!usersPrograms.contains(thisProgram)){
-                programServices.addToUnsignedProgs(program);
-            }
-        }
-        model.addAttribute("unsignedProgs", programServices.getUnsignedPrograms());
+
         return "redirect:/home";
     }
 

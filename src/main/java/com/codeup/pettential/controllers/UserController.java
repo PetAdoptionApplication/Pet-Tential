@@ -3,7 +3,6 @@ package com.codeup.pettential.controllers;
 import com.codeup.pettential.models.*;
 
 import com.codeup.pettential.repositories.*;
-import com.codeup.pettential.services.ProgramServices;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -24,10 +22,9 @@ public class UserController {
     private UserRepository userDao;
     private PreferencesRepository preferenceDao;
     private VolunteerRepository volDao;
-    private final ProgramServices programServices;
 
     public UserController(Users users, PasswordEncoder passwordEncoder, ShelterRepository shelterDao, ProgramRepository programDao, AppRepository appDao, UserRepository userDao,
-                          PreferencesRepository preferenceDao, VolunteerRepository volDao, ProgramServices programServices) {
+                          PreferencesRepository preferenceDao, VolunteerRepository volDao) {
         this.users = users;
         this.passwordEncoder = passwordEncoder;
         this.shelterDao = shelterDao;
@@ -36,7 +33,6 @@ public class UserController {
         this.userDao = userDao;
         this.preferenceDao = preferenceDao;
         this.volDao = volDao;
-        this.programServices = programServices;
     }
 
     @GetMapping("/")
