@@ -69,11 +69,6 @@
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.filestack</groupId>
-			<artifactId>filestack-java</artifactId>
-			<version>0.9.0</version>
-		</dependency>
 	</dependencies>
 
 	<build>
