@@ -4,6 +4,7 @@ import com.codeup.pettential.models.Program;
 import com.codeup.pettential.models.Shelter;
 import org.springframework.data.repository.CrudRepository;
 
+import javax.persistence.Query;
 import java.util.List;
 
 public interface ProgramRepository extends CrudRepository <Program, Long> {

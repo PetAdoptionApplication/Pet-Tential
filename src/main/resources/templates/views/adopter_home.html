@@ -36,9 +36,7 @@
                         <td th:text="${program.description}"></td>
                         <td th:text="${program.length}"></td>
                         <td>
-                            <form th:action="@{'/signup/program/' + ${program.getId()}}" method="POST">
-                                <input class="uk-button uk-button-default" type="submit" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success'})"/>
-                            </form>
+                                <input data-th-attr="programId = ${program.id}" type="submit" class="uk-button uk-button-default program-signup" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success'})"/>
                         </td>
                     </tr>
                 </div>
@@ -67,8 +65,8 @@
                                 <span th:text="${volunteer.time}"></span>
                             </td>
                             <td>
-                                <form th:action="@{'/volunteer/' + ${volunteer.id}}" method="POST">
-                                    <input class="uk-button uk-button-default" type="submit" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success'})"/>
+                                <form>
+                                    <input class="uk-button uk-button-default volunteer-signup" data-th-attr="volId = ${volunteer.id}" type="submit" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success'})"/>
                                 </form>
                             </td>
                         </tr>
@@ -80,6 +78,40 @@
 
 
 <div th:replace="partials :: scripts"/>
-</body>
+<script th:src="@{js/jquery.js}"></script>
+<script th:inline="javascript">
+    "use strict";
+
+    // For Programs
+    $(".program-signup").on("click", function (e) {
+        var progId = $(this).attr("programId");
+      $.post({
+          url: "/home",
+          data: {
+              "id" : progId,
+              "type" : "program"
+          }
+
+      });
+      $(this).attr("value", "Submitted");
+      $(this).attr("disabled", true);
+    })
+
+    // For Volunteer
+    $(".volunteer-signup").on("click", function (e) {
+        var volId = $(this).attr("volId");
+        $.post({
+            url: "/home",
+            data: {
+                "id" : volId,
+                "type" : "volunteer"
+            }
+
+        });
+        $(this).attr("value", "Submitted");
+        $(this).attr("disabled", true);
+    })
+</script>
 <footer th:replace="partials :: footer"/>
+</body>
 </html>

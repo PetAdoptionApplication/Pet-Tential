@@ -44,25 +44,6 @@ public class ProgramController {
         return "redirect:/home";
     }
 
-    @PostMapping("signup/program/{id}")
-    public String signUpForProgram(@PathVariable long id){
-        User user1 = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userDao.findOne(user1.getId());
-        Program program = programDao.findOne(id);
-        List<User> programUsers = program.getProgramUsers();
-        List<Program> users = user.getPrograms();
-        if (programUsers.contains(user)){
-            return "redirect:/home";
-        }
-        programUsers.add(user);
-        program.setProgramUsers(programUsers);
-        programDao.save(program);
-        users.add(program);
-        user.setPrograms(users);
-        userDao.save(user);
-        return "redirect:/home";
-    }
-
     @GetMapping("adopter/programs")
     public String getPrograms(Model model) {
         model.addAttribute("programs", programDao.findAll());

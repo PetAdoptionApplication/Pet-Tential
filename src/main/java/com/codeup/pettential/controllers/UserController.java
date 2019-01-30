@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -103,6 +102,7 @@ public class UserController {
         } else {
             hasPreference = true;
         }
+
         model.addAttribute("hasPreference", hasPreference);
         model.addAttribute("doesNotHavePreference", doesNotHavePreference);
         model.addAttribute("userId", user.getId());
@@ -113,7 +113,7 @@ public class UserController {
             List<Volunteer> volsForThisShelter = volDao.findAllByShelter(thisShelter);
             model.addAttribute("apps", appForThisShelter);
             model.addAttribute("vols", volsForThisShelter);
-            model.addAttribute("programs", programDao.findAll());
+            model.addAttribute("programs", thisShelter.getPrograms());
             return "views/shelter_home";
         }else {
             User user1 = userDao.findOne(user.getId());
@@ -121,7 +121,6 @@ public class UserController {
             List<Program> programs = (List<Program>) programDao.findAll();
             model.addAttribute("user", user1);
             model.addAttribute("volunteers", volunteers);
-            model.addAttribute("programs", programs);
             return "views/adopter_home";
         }
     }
