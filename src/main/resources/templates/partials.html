@@ -39,7 +39,8 @@
                 <!--Logged out users see....-->
                 <li sec:authorize="!isAuthenticated()">
                     <a class="nav-link" href="/sign-up">Register</a>
-                </li> 
+                </li>
+                <li>
                     <a class="nav-link" href="/login" style="color: dimgrey"><span uk-icon="icon: sign-in" class="uk-margin-small-right"></span>Login</a>
                 </li>
                 <li sec:authorize="isAuthenticated()">
