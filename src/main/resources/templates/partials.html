@@ -19,29 +19,29 @@
     <div class="uk-navbar-center uk-margin-auto">
         <div><div>
             <ul class="uk-navbar-nav">
-                <li><a class="nav-link" href="/home"><span uk-icon="icon: home" class="uk-margin-small-right"></span>Home</a></li>
-                <li><a href="/adopter/pets"><span uk-icon="icon: search" class="uk-margin-small-right"></span>View all pets</a></li>
+                <li><a class="nav-link" style="color: dimgrey" href="/home"><span uk-icon="icon: home" class="uk-margin-small-right"></span>Home</a></li>
+                <li><a href="/adopter/pets" style="color: dimgrey"><span uk-icon="icon: search" class="uk-margin-small-right"></span>View all pets</a></li>
             </ul>
         </div></div>
-        <a class="uk-navbar-item uk-logo" href="/">Pet-tential</a>
+        <a class="uk-navbar-item uk-logo" style="color: black" href="/">Pet-tential</a>
         <div class="uk-navbar-right"><div>
             <ul class="uk-navbar-nav">
                 <!--Logged in users see....-->
                 <li sec:authorize="isAuthenticated()">
-                    <a class="nav-link" href="/logout"><span uk-icon="icon: sign-out" class="uk-margin-small-right"></span>Logout</a>
+                    <a class="nav-link" href="/editUser" style="color: dimgrey"><span uk-icon="icon: user" class="uk-margin-small-right"></span>Profile</a>
                 </li>
-                <li sec:authorize="isAuthenticated()">
-                    <a class="nav-link" href="/editUser"><span uk-icon="icon: user" class="uk-margin-small-right"></span>Profile</a>
+                <li sec:authorize="!isAuthenticated()">
+                    <a class="nav-link" style="color: dimgrey" href="/sign-up">Register</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/aboutme"><span uk-icon="icon: users" class="uk-margin-small-right"></span>About</a>
+                    <a class="nav-link" href="/aboutme" style="color: dimgrey"><span uk-icon="icon: users" class="uk-margin-small-right"></span>About</a>
                 </li>
                 <!--Logged out users see....-->
                 <li sec:authorize="!isAuthenticated()">
-                    <a class="nav-link" href="/login"><span uk-icon="icon: sign-in" class="uk-margin-small-right"></span>Login</a>
+                    <a class="nav-link" href="/login" style="color: dimgrey"><span uk-icon="icon: sign-in" class="uk-margin-small-right"></span>Login</a>
                 </li>
-                <li sec:authorize="!isAuthenticated()">
-                    <a class="nav-link" href="/sign-up">Register</a>
+                <li sec:authorize="isAuthenticated()">
+                    <a class="nav-link" href="/logout" style="color: dimgrey"><span uk-icon="icon: sign-out" class="uk-margin-small-right"></span>Logout</a>
                 </li>
             </ul>
         </div></div>
