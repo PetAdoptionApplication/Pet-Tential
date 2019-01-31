@@ -11,7 +11,7 @@
     <form class="uk-margin-auto uk-width-1-3" th:action="'/adopter/preferences/edit/' + ${oldPref.getId()}" method="post">
 
         <h1>Edit your preference</h1>
-        <p class="uk-text-center"><span th:if="${savedPref != null}" th:text="${savedPref}">No Results Found</span></p>
+        <p class="uk-text-center" style="color: purple"><span th:if="${savedPref != null}" th:text="${savedPref}">No Results Found</span></p>
         <div class="uk-margin">
             <label for="breed">Breed</label>
             <input id="breed" class="uk-input uk-form-width-medium uk-width-expand" type="text"
