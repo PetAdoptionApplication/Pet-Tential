@@ -148,14 +148,6 @@ public class UserController {
             model.addAttribute("error", "All Fields Must be filled in");
             return "system/sign-up";
         }
-        if (user.getPassword().length() < 8){
-            model.addAttribute("error", "Password Must Be 8 characters in length");
-            return "system/sign-up";
-        }
-        if (!user.getPassword().equals(confPass)){
-            model.addAttribute("error", "Passwords do not match");
-            return "system/sign-up";
-        }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         String address = user.getAddress();
