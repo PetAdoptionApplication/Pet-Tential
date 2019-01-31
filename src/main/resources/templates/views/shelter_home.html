@@ -53,8 +53,8 @@
                             <td>
                                 <form th:action="'/adopt/' + ${app.getId()} + '/accept/' + ${app.getUser().getId()}"
                                       method="post">
-                                    <button class="uk-button uk-button-primary"
-                                            onclick="UIkit.notification({message: 'Application Accepted', pos: 'top-center', status: 'success'})">
+                                    <button class="uk-button-primary uk-button-default"
+                                            onclick="UIkit.notification({message: 'Application Accepted', pos: 'top-center', status: 'success', timeout: 2000})">
                                         Accept
                                     </button>
                                 </form>
@@ -62,8 +62,8 @@
                             <td>
                                 <form th:action="'/adopt/' + ${app.getId()} + '/reject/' + ${app.getUser().getId()}"
                                       method="post">
-                                    <button class="uk-button uk-button-primary"
-                                            onclick="UIkit.notification({message: 'Application Rejected', pos: 'top-center', status: 'success'})">
+                                    <button class="uk-button-primary uk-button-default"
+                                            onclick="UIkit.notification({message: 'Application Rejected', pos: 'top-center', status: 'success', timeout: 2000})">
                                         Reject
                                     </button>
                                 </form>
