@@ -30,9 +30,6 @@
                 <li sec:authorize="isAuthenticated()">
                     <a class="nav-link" href="/editUser" style="color: dimgrey"><span uk-icon="icon: user" class="uk-margin-small-right"></span>Profile</a>
                 </li>
-                <li sec:authorize="!isAuthenticated()">
-                    <a class="nav-link" style="color: dimgrey" href="/sign-up">Register</a>
-                </li>
                 <li>
                     <a class="nav-link" href="/aboutme" style="color: dimgrey"><span uk-icon="icon: users" class="uk-margin-small-right"></span>About</a>
                 </li>
@@ -40,7 +37,7 @@
                 <li sec:authorize="!isAuthenticated()">
                     <a class="nav-link" href="/sign-up">Register</a>
                 </li>
-                <li>
+                <li sec:authorize="!isAuthenticated()">
                     <a class="nav-link" href="/login" style="color: dimgrey"><span uk-icon="icon: sign-in" class="uk-margin-small-right"></span>Login</a>
                 </li>
                 <li sec:authorize="isAuthenticated()">
