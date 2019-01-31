@@ -67,7 +67,7 @@
                                 <span th:text="${volunteer.date}"></span>
                             </td>
                             <td>
-                                <span th:text="${volunteer.time}"></span>
+                                <span th:text="${volunteer.time} + ':00 PM'"></span>
                             </td>
                             <td>
                                 <div th:if="${vols.contains(volunteer)}">
