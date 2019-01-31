@@ -28,9 +28,6 @@
             <ul class="uk-navbar-nav">
                 <!--Logged in users see....-->
                 <li sec:authorize="isAuthenticated()">
-                    <a class="nav-link" href="/logout">Logout</a>
-                </li>
-                <li sec:authorize="isAuthenticated()">
                     <a class="nav-link" href="/editUser">Profile</a>
                 </li>
                 <li>
@@ -38,10 +35,13 @@
                 </li>
                 <!--Logged out users see....-->
                 <li sec:authorize="!isAuthenticated()">
-                    <a class="nav-link" href="/login">Login</a>
+                    <a class="nav-link" href="/sign-up">Register</a>
                 </li>
                 <li sec:authorize="!isAuthenticated()">
-                    <a class="nav-link" href="/sign-up">Register</a>
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li sec:authorize="isAuthenticated()">
+                    <a class="nav-link" href="/logout">Logout</a>
                 </li>
             </ul>
         </div></div>
