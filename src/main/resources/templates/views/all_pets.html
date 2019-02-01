@@ -8,7 +8,7 @@
 </div>
 
 <div class="uk-container">
-<h1 class="uk-margin-top">List of Pets</h1>
+<h1 class="uk-margin-top">Available Pets</h1>
 
     <div class="uk-child-width-1-2@m uk-grid" uk-grid="masonry:true">
         <div th:each="pet : ${pets}" th:if="${pet.name.equals('deleted') == false}">
