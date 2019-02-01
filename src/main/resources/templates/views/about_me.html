@@ -4,8 +4,9 @@
 <body>
 <nav th:replace="partials::navbar"/>
 
-<div class="uk-container uk-grid uk-flex uk-margin-auto">
-
+<div class="uk-container">
+<h1 class="uk-margin-top">Available Developers</h1>
+    <div class="uk-container uk-grid uk-flex uk-margin-auto">
     <!--Ryan-->
     <div class="uk-card uk-card-default uk-width-1-4 uk-padding-small uk-animation-slide-left">
         <div class="uk-card-media-top uk-text-center">
@@ -57,7 +58,7 @@
             <img class="uk-margin-auto" src="/img/about_me/juan_face.jpg" alt="Juan's Face"/>
         </div>
         <div class="uk-card-body uk-margin-auto">
-            <h3 class="uk-card-title uk-text-center"> Juan De La Rose </h3>
+            <h3 class="uk-card-title uk-text-center"> Juan De La Rosa </h3>
             <ul style="list-style-type: none">
                 <li><span class="uk-margin-small-right" uk-icon="linkedin"></span><a href="https://www.linkedin.com/in/juan-de-la-rosa/" target="_blank"> LinkedIn </a></li>
                 <li><span class="uk-margin-small-right" uk-icon="github"></span><a href="https://github.com/juandelarosa1224" target="_blank"> GitHub </a></li>
@@ -68,7 +69,7 @@
 
 
 </div>
-
+</div>
 <div th:replace="partials::scripts"/>
 </body>
 <footer th:replace="partials::footer"/>
