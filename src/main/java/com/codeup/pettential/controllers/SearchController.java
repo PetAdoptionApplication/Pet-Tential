@@ -55,6 +55,7 @@ public class SearchController {
 //    need to implement search by shelter for pets
     @PostMapping("/search")
     public String saveProgram(@RequestParam(name = "search") String search, Model model) {
+        String searchLower = search.toLowerCase();
         if (search.equals("")){
             model.addAttribute("noResultPet", "No Pets Found...");
             model.addAttribute("noResultProgram", "No Programs Found...");
@@ -69,22 +70,22 @@ public class SearchController {
         List<Shelter> sheltersSearch = new ArrayList<>();
         List<Pet> petsSearchNumber = new ArrayList<>();
         for (Pet pet : petAll){
-            if (pet.getName().toLowerCase().contains(search) || pet.getBreed().toLowerCase().contains(search) ||
-                    pet.getDescription().toLowerCase().contains(search) || pet.getSex().toLowerCase().contains(search) ||
-                    pet.getColor().toLowerCase().contains(search)){
+            if (pet.getName().toLowerCase().contains(searchLower) || pet.getBreed().toLowerCase().contains(searchLower) ||
+                    pet.getDescription().toLowerCase().contains(searchLower) || pet.getSex().toLowerCase().contains(searchLower) ||
+                    pet.getColor().toLowerCase().contains(searchLower)){
                 if (!pet.getName().toLowerCase().equals("deleted")){
                     petsSearch.add(pet);
                 }
             }
         }
         for (Shelter shelter : shelterAll){
-            if (shelter.getName().toLowerCase().contains(search) || shelter.getLocation().toLowerCase().contains(search)){
+            if (shelter.getName().toLowerCase().contains(searchLower) || shelter.getLocation().toLowerCase().contains(searchLower)){
                 sheltersSearch.add(shelter);
             }
         }
         for (Program program : programsAll){
-            if (program.getName().toLowerCase().contains(search) || program.getPetType().toLowerCase().contains(search) ||
-                    program.getDescription().toLowerCase().contains(search) || program.getType().toLowerCase().contains(search)){
+            if (program.getName().toLowerCase().contains(searchLower) || program.getPetType().toLowerCase().contains(searchLower) ||
+                    program.getDescription().toLowerCase().contains(searchLower) || program.getType().toLowerCase().contains(searchLower)){
                 programsSearch.add(program);
             }
         }
