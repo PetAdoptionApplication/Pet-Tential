@@ -10,7 +10,7 @@
                 <h2 class="uk-card-text uk-text-center" th:text="'Location: ' + ${shelter.name}"></h2>
                 <p class="uk-card-text uk-text-center" th:text="${program.type}"></p>
                 <p class="uk-card-text uk-text-center" th:text="${program.description}"></p>
-                <p class="uk-card-text uk-text-center" th:text="${program.time} + ':00'"></p>
+                <p class="uk-card-text uk-text-center" th:text="${program.time}"></p>
                 <p class="uk-card-text uk-text-center" th:text="${program.length} + ' hours'"></p>
                 <p class="uk-card-text uk-text-center" th:text="'Breed: ' + ${program.petType}"></p>
                 <p>Number of People Signed up: <span th:text="${users.size()}"></span></p>
