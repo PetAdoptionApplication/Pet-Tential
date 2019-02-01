@@ -45,3 +45,7 @@ body {
     width: 500px;
     height: 269px;
 }
+.uk-button-success{
+    background-color: green;
+    color: white;
+}
