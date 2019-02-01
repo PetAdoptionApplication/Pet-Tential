@@ -6,46 +6,42 @@
 <nav th:replace="partials::navbar"/>
 
 
-
-
 <div class="uk-container">
-       <div class="uk-width-expand uk-text-center">
-           <h3 th:text="${shelter.name}"></h3>
-           <label for="located"> Located at.... </label>
-           <div class="uk-align-center uk-text-center" id="map"></div>
-           <h3 th:text="${shelter.location}" id="located"></h3>
-           <hr/>
-       </div>
+    <div class="uk-width-expand uk-text-center">
+        <h3 th:text="${shelter.name}"></h3>
+        <label for="located"> Located at.... </label>
+        <div class="uk-align-center uk-text-center" id="map"></div>
+        <h3 th:text="${shelter.location}" id="located"></h3>
+        <hr/>
+    </div>
 
 
-
-  <div class="uk-grid uk-grid-divider">
+    <div class="uk-child-width-1-2 uk-grid uk-grid-divider">
 
         <div class="uk-width-1-2@m">
-          <h3> Pets Available </h3>
+            <h3> Pets Available </h3>
             <div th:each="pet : ${pets}">
-                <div class="uk-card">
-                    <div class="uk-card-body uk-width-expand">
-                        <h4><a th:href="@{'/adopter/pet/' + ${pet.id}}"> <span th:text="${pet.name}"></span> </a> </h4>
-                    </div>
+                <div class="uk-card uk-card-body uk-card-default uk-width-1-2 uk-float-left">
+                    <h4><a th:href="@{'/adopter/pet/' + ${pet.id}}"> <span class="uk-card-title"
+                                                                           th:text="${pet.name}"></span> </a></h4>
+                    <p th:text="${pet.description}"></p>
                 </div>
             </div>
         </div>
 
 
-
-          <div class="uk-width-1-2@m">
-              <h3> Programs </h3>
+        <div class="uk-width-1-2@m">
+            <h3> Programs </h3>
             <div th:each="program : ${programs}">
-                <div class="uk-card">
-                    <div class="uk-card-body uk-width-expand">
-                        <h4><a th:href="@{'/adopter/program/' + ${program.id}}"> <span th:text="${program.name}"></span> </a> </h4>
-                    </div>
+                <div class="uk-card uk-card-body uk-card-default uk-width-1-2 uk-float-left">
+                    <h4><a th:href="@{'/adopter/program/' + ${program.id}}"> <span th:text="${program.name}"></span>
+                    </a></h4>
+                    <p th:text="${program.description}"></p>
                 </div>
             </div>
-          </div>
+        </div>
 
-  </div>
+    </div>
 </div>
 
 <footer th:replace="partials::footer"/>
@@ -57,6 +53,7 @@
     let markerLat;
     let markerLong;
     let markerLatandLong;
+
     function initMap() {
         geocoder = new google.maps.Geocoder();
         map = new google.maps.Map(document.getElementById('map'), {
@@ -70,7 +67,7 @@
                 markerLong = results[0].geometry.location.lng();
                 console.log(markerLat);
                 console.log(markerLong);
-                startingCoordinates = { lat : results[0].geometry.location.lat, lng : results[0].geometry.location.lat};
+                startingCoordinates = {lat: results[0].geometry.location.lat, lng: results[0].geometry.location.lat};
                 markCord = {lat: markerLat, lng: markerLong};
                 var marker = new google.maps.Marker({position: markCord, map: map});
             } else {
@@ -79,7 +76,8 @@
         });
     }
 </script>
-<div th:inline="text" ></div>
-<script async="async" defer="defer"  th:src="@{https://maps.googleapis.com/maps/api/js(key=AIzaSyBhrTcCYA3CCFKHGsdILlnuPlWqnsNJU_Q,callback=initMap)}"/>
+<div th:inline="text"></div>
+<script async="async" defer="defer"
+        th:src="@{https://maps.googleapis.com/maps/api/js(key=AIzaSyBhrTcCYA3CCFKHGsdILlnuPlWqnsNJU_Q,callback=initMap)}"/>
 </body>
 </html>
