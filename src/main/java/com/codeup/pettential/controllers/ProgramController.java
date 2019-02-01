@@ -11,7 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 @Controller
@@ -39,6 +45,12 @@ public class ProgramController {
     @PostMapping("/shelter/createProgram")
     public String saveProgram(@ModelAttribute Program program, @RequestParam(name = "shelter") Long shelter) {
         Shelter shelter1 = shelterDao.findOne(shelter);
+        if(! program.getTime().toLowerCase().substring(program.getTime().length() - 2).equals("am") ||
+                ! program.getTime().toLowerCase().substring(program.getTime().length() - 2).equals("pm") ){
+            String time = program.getTime();
+            time = time + "pm";
+            program.setTime(time);
+        }
         program.setShelter(shelter1);
         programDao.save(program);
         return "redirect:/home";
