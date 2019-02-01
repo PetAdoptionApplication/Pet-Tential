@@ -3,15 +3,15 @@
 <head th:replace = "partials :: head('Home')" />
 <body>
 <nav th:replace="partials::navbar"/>
-<div class="uk-grid uk-margin-auto">
-    <div class="uk-grid uk-text-center uk-width-1-1">
-        <div class="uk-child-width-expand uk-margin-auto">
-
-            <a href="/search"><button class="uk-button uk-button-primary uk-animation-slide-left">Search pets/shelters/programs</button></a>
-        </div>
-        <div class="uk-child-width-expand uk-margin-auto">
-            <a href="/adopter/preferences"><button class="uk-button uk-button-primary uk-animation-slide-right">Preferences</button></a>
-        </div>
+<div class="uk-flex uk-flex-center">
+    <div class="uk-margin-auto">
+        <a href="/search"><button class="uk-button uk-button-primary uk-animation-slide-left">Search</button></a>
+    </div>
+    <div class="uk-margin-auto">
+        <a href="/editUser"><button class="uk-button uk-button-primary uk-animation-slide-right">Profile</button></a>
+    </div>
+    <div class="uk-margin-auto">
+        <a href="/adopter/preferences"><button class="uk-button uk-button-primary uk-animation-slide-right">Preferences</button></a>
     </div>
 </div>
 
@@ -20,7 +20,7 @@
 <div class="uk-child-width-1-2@l uk-grid uk-grid-divider uk-child-width-1-2@s">
 
     <div class="uk-text-center">
-        <div class="uk-card uk-card-default uk-card-body uk-margin-left uk-box-shadow-xlarge uk-animation-slide-left">
+        <div class="uk-card uk-card-default uk-card-body uk-margin-auto uk-box-shadow-xlarge uk-animation-slide-left">
         <h4 class="uk-margin-auto"><u>Programs in your area</u></h4>
             <table class="uk-table uk-table-striped">
                 <tr>
@@ -34,7 +34,12 @@
                     <tr>
                         <td th:text="${program.name}"></td>
                         <td th:text="${program.description}"></td>
-                        <td th:text="${program.length}"></td>
+                        <td th:if="${program.length > 1}">
+                            <span th:text="${program.length} + ' hours'"></span>
+                        </td>
+                        <td th:if="${program.length == 1}">
+                            <span th:text="${program.length} + ' hour'"></span>
+                        </td>
                         <td>
                             <div th:if="${progs.contains(program)}">
                                 <input disabled="disabled" data-th-attr="programId = ${program.id}" type="submit" value="SUBMITTED" class="uk-button uk-button-primary program-signup" onclick="UIkit.notification({message: 'Signed Up To Program...', pos: 'top-center', status: 'success', timeout: 2000})"/>
