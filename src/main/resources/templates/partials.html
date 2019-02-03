@@ -16,29 +16,43 @@
 <body>
 <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar uk-margin-bottom">
 <nav th:fragment="navbar"  style="background-color: #CCCCFF" class="uk-navbar-container uk-margin" uk-navbar="mode: click">
+
     <div class="uk-navbar-center">
 
         <div class="uk-navbar-center-left"><div>
             <ul class="uk-navbar-nav">
-                <li sec:authorize="!isAuthenticated()">
+                <li class="uk-hidden@s">
+                    <a href="#">Menu</a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li sec:authorize="!isAuthenticated()"><a class="uk-link" href="/sign-up">Register</a></li>
+                            <li><a href="/home">Home</a></li>
+                            <li><a href="/adopter/pets">View all pets</a></li>
+                            <li><a href="/aboutme">View all developers</a></li>
+                            <li sec:authorize="!isAuthenticated()"><a href="/login">Login</a></li>
+                            <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li sec:authorize="!isAuthenticated()" class="uk-visible@s">
                     <a class="nav-link" href="/sign-up" style="color: dimgrey">Register</a>
                 </li>
-                <li><a class="nav-link" style="color: dimgrey" href="/home"><span uk-icon="icon: home" class="uk-margin-small-right"></span>Home</a></li>
-                <li><a href="/adopter/pets" style="color: dimgrey"><span uk-icon="icon: search" class="uk-margin-small-right"></span>View all pets</a></li>
+                <li class="uk-visible@s"><a class="nav-link" style="color: dimgrey" href="/home"><span uk-icon="icon: home" class="uk-margin-small-right"></span>Home</a></li>
+                <li class="uk-visible@s"><a href="/adopter/pets" style="color: dimgrey"><span uk-icon="icon: search" class="uk-margin-small-right"></span>View all pets</a></li>
             </ul>
         </div></div>
         <a class="uk-navbar-item uk-logo" style="color: black" href="/">Pet-tential</a>
         <div class="uk-navbar-center-right"><div>
             <ul class="uk-navbar-nav">
                 <!--Logged in users see....-->
-                <li>
+                <li class="uk-visible@s">
                     <a class="nav-link" href="/aboutme" style="color: dimgrey"><span uk-icon="icon: users" class="uk-margin-small-right"></span>View all Developers</a>
                 </li>
                 <!--Logged out users see....-->
-                <li sec:authorize="!isAuthenticated()">
+                <li sec:authorize="!isAuthenticated()" class="uk-visible@s">
                     <a class="nav-link" href="/login" style="color: dimgrey"><span uk-icon="icon: sign-in" class="uk-margin-small-right"></span>Login</a>
                 </li>
-                <li sec:authorize="isAuthenticated()">
+                <li sec:authorize="isAuthenticated()" class="uk-visible@s">
                     <a class="nav-link" href="/logout" style="color: dimgrey"><span uk-icon="icon: sign-out" class="uk-margin-small-right"></span>Logout</a>
                 </li>
             </ul>
