@@ -5,7 +5,17 @@
 
 <nav th:replace="partials :: navbar"/>
 
-<div class="uk-grid uk-margin-auto">
+
+<div class="uk-text-center uk-hidden@s">
+    <div class="uk-width-medium uk-margin-auto uk-margin-bottom uk-hidden@s"><a href="/shelter/createProgram"><button class="uk-button uk-button-primary">Create a Program</button></a></div>
+    <div class="uk-width-medium uk-margin-auto uk-margin-bottom uk-hidden@s"><a href="/adopter/pets"><button class="uk-button uk-button-primary">Pet Management</button></a></div>
+    <div class="uk-width-medium uk-margin-auto uk-margin-bottom uk-hidden@s"><a href="/editUser"><button class="uk-button uk-button-primary">Profile</button></a></div>
+    <div class="uk-width-medium uk-margin-auto uk-margin-bottom uk-hidden@s"><a href="/create/pet"><button class="uk-button uk-button-primary">Add Pet</button></a></div>
+    <div class="uk-width-medium uk-margin-auto uk-margin-bottom uk-hidden@s"><a href="/getvolunteer"><button class="uk-button uk-button-primary">New Volunteer Opportunity</button></a></div>
+</div>
+
+
+<div class="uk-grid uk-margin-auto uk-visible@m">
     <!--Buttons-->
     <div class="uk-grid uk-text-center uk-width-1-1">
         <div class="uk-child-width-expand uk-margin-auto">
@@ -26,10 +36,10 @@
     </div>
 </div>
 
-<hr/>
+<hr class="uk-visible@m"/>
 
 <!--Info-->
-<div class="uk-child-width-1-2@l uk-grid uk-grid-divider uk-child-width-1-2@s">
+<div class="uk-child-width-1-2@l uk-grid uk-grid-divider uk-child-width-1-2@s uk-visible@m">
     <div class="uk-text-center">
         <div class="uk-card uk-card-default uk-card-body uk-margin-left uk-box-shadow-xlarge uk-animation-fade">
             <h4 class="uk-margin-auto"><u>Applications</u></h4>
