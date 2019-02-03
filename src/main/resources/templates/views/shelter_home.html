@@ -46,7 +46,7 @@
                     </th>
                 </tr>
                 <div th:each="app : ${apps}">
-                    <div th:if="${app.getApprovalStatus() != true}">
+                    <div th:if="${app.getApprovalStatus() != true && !app.getPet().getName.equals('deleted')}">
                         <tr>
                             <td th:text="${app.getPet().getName()}"></td>
                             <td th:text="${app.getUser().getName()}"></td>
