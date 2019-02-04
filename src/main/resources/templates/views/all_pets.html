@@ -14,7 +14,7 @@
         <div th:each="pet : ${pets}" th:if="${pet.name.equals('deleted') == false}">
             <div class="uk-card uk-card-default">
                 <div class="uk-card-body">
-                    <a th:href="'/adopter/pet/' + ${pet.id}"><div th:style="'background: url(' + ${pet.picture} + '); background-size: cover;'" class="uk-card-media-top set-width" alt="Pet Image"></div></a>
+                    <a th:href="'/adopter/pet/' + ${pet.id}"><div th:style="'background: url(' + ${pet.picture} + '); background-size: 100% 100%;'" class="uk-card-media-top set-width" alt="Pet Image"></div></a>
                     <div class="uk-margin uk-text-center">
                         <div class="uk-card-media-top uk-width-auto">
                             <label for="name"><strong><u>Name</u></strong></label>
