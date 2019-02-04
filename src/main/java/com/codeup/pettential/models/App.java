@@ -21,6 +21,17 @@ public class App {
     @OneToOne
     private Shelter shelter;
 
+    public App() {
+
+    }
+
+    public App(Boolean approvalStatus, User user, Pet pet, Shelter shelter) {
+        this.approvalStatus = approvalStatus;
+        this.user = user;
+        this.pet = pet;
+        this.shelter = shelter;
+    }
+
     public long getId() {
         return id;
     }
