@@ -49,3 +49,9 @@ body {
     background-color: green;
     color: white;
 }
+
+#map{
+    border-width: 1em;
+    border-style: double;
+    border-color: #a4a4db;
+}

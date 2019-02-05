@@ -8,15 +8,14 @@
 
 <div class="uk-container">
     <div class="uk-width-expand uk-text-center">
-        <h3 th:text="${shelter.name}"></h3>
-        <label for="located"> Located at.... </label>
+        <h2 th:text="${shelter.name}"></h2>
         <div class="uk-align-center uk-text-center" id="map"></div>
+        <label for="located"> Located at.... </label>
         <h3 th:text="${shelter.location}" id="located"></h3>
-        <hr/>
     </div>
 
 
-    <div class="uk-child-width-1-2 uk-grid uk-grid-divider">
+    <div class="uk-child-width-1-2 uk-grid uk-padding">
 
         <div class="uk-width-1-2@m">
             <h3> Pets Available </h3>
