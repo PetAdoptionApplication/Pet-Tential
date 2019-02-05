@@ -21,9 +21,8 @@
             <h3> Pets Available </h3>
             <div th:each="pet : ${pets}">
                 <div class="uk-card uk-card-body uk-card-default uk-width-1-2 uk-float-left">
-                    <h4><a th:href="@{'/adopter/pet/' + ${pet.id}}"> <span class="uk-card-title"
-                                                                           th:text="${pet.name}"></span> </a></h4>
-                    <p th:text="${pet.description}"></p>
+                    <h4 class="overflow"><a th:href="@{'/adopter/pet/' + ${pet.id}}"> <span class="uk-card-title" th:text="${pet.name}"></span> </a></h4>
+                    <p class="overflow" th:text="${pet.description}"></p>
                 </div>
             </div>
         </div>
@@ -33,9 +32,9 @@
             <h3> Programs </h3>
             <div th:each="program : ${programs}">
                 <div class="uk-card uk-card-body uk-card-default uk-width-1-2 uk-float-left">
-                    <h4><a th:href="@{'/adopter/program/' + ${program.id}}"> <span th:text="${program.name}"></span>
+                    <h4 class="overflow"><a th:href="@{'/adopter/program/' + ${program.id}}"> <span th:text="${program.name}"></span>
                     </a></h4>
-                    <p th:text="${program.description}"></p>
+                    <p class="overflow" th:text="${program.description}"></p>
                 </div>
             </div>
         </div>
