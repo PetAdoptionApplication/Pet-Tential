@@ -46,12 +46,12 @@
 <footer th:replace="partials::footer"/>
 <div th:replace="partials::scripts"/>
 <script th:inline="javascript">
-    let shelter = /*[[${shelter}]]*/ "";
-    let map;
-    let geocoder;
-    let markerLat;
-    let markerLong;
-    let markerLatandLong;
+    var shelter = /*[[${shelter}]]*/ "";
+    var map;
+    var geocoder;
+    var markerLat;
+    var markerLong;
+    var markerLatandLong;
 
     function initMap() {
         geocoder = new google.maps.Geocoder();
