@@ -14,6 +14,7 @@
     <div class="uk-width-medium uk-margin-auto uk-margin-bottom uk-hidden@s"><a href="/getvolunteer"><button class="uk-button uk-button-primary">New Volunteer Opportunity</button></a></div>
 </div>
 
+<div></div>
 
 <div class="uk-grid uk-margin-auto uk-visible@m">
     <!--Buttons-->
@@ -36,10 +37,9 @@
     </div>
 </div>
 
-<hr class="uk-visible@m"/>
 
 <!--Info-->
-<div class="uk-child-width-1-2@l uk-grid uk-grid-divider uk-child-width-1-2@s uk-visible@m">
+<div class="uk-child-width-1-2@l uk-grid uk-child-width-1-2@s uk-visible@m">
     <div class="uk-text-center">
         <div class="uk-card uk-card-default uk-card-body uk-margin-left uk-box-shadow-xlarge uk-animation-fade">
             <h4 class="uk-margin-auto"><u>Applications</u></h4>
@@ -61,10 +61,10 @@
                 <div th:each="app : ${apps}">
                     <div th:if="${app.getApprovalStatus() != true}">
                         <tr>
-                            <td th:text="${app.getPet().getName()}"></td>
-                            <td th:text="${app.getUser().getName()}"></td>
+                            <td th:text="${app.pet.name}"></td>
+                            <td th:text="${app.user.name}"></td>
                             <td>
-                                <form th:action="'/adopt/' + ${app.getId()} + '/accept/' + ${app.getUser().getId()}"
+                                <form th:action="'/adopt/' + ${app.id} + '/accept/' + ${app.user.id}"
                                       method="post">
                                     <button class="uk-button-success uk-width-1-1 uk-button-small"
                                             onclick="UIkit.notification({message: 'Application Accepted', pos: 'top-center', status: 'success', timeout: 2000})">
@@ -73,7 +73,7 @@
                                 </form>
                             </td>
                             <td>
-                                <form th:action="'/adopt/' + ${app.getId()} + '/reject/' + ${app.getUser().getId()}"
+                                <form th:action="'/adopt/' + ${app.id} + '/reject/' + ${app.user.id}"
                                       method="post">
                                     <button class="uk-button-danger uk-width-1-1 uk-button-small"
                                             onclick="UIkit.notification({message: 'Application Rejected', pos: 'top-center', status: 'danger', timeout: 2000})">
@@ -138,7 +138,7 @@
     </div>
 </div>
 
-<hr/>
+
 <footer th:replace="partials :: footer"/>
 
 <div th:replace="partials :: scripts"/>

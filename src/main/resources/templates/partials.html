@@ -35,10 +35,10 @@
                     </div>
                 </li>
                 <li sec:authorize="!isAuthenticated()" class="uk-visible@s">
-                    <a class="nav-link" href="/sign-up" style="color: dimgrey">Register</a>
+                    <a class="nav-link" href="/sign-up" style="color: black"><img class="uk-margin-small-right" src="https://img.icons8.com/material/24/000000/add-user-male.png" />Register</a>
                 </li>
-                <li class="uk-visible@s"><a class="nav-link" style="color: dimgrey" href="/home"><span uk-icon="icon: home" class="uk-margin-small-right"></span>Home</a></li>
-                <li class="uk-visible@s"><a href="/adopter/pets" style="color: dimgrey"><span uk-icon="icon: search" class="uk-margin-small-right"></span>View all pets</a></li>
+                <li class="uk-visible@s"><a class="nav-link" style="color: black" href="/home"><img src="https://img.icons8.com/material/24/000000/home-page.png" />Home</a></li>
+                <li class="uk-visible@s"><a href="/adopter/pets" style="color: black"><img src="https://img.icons8.com/material/24/000000/search.png" />View all pets</a></li>
             </ul>
         </div></div>
         <a class="uk-navbar-item uk-logo" style="color: black" href="/">Pet-tential</a>
@@ -46,14 +46,14 @@
             <ul class="uk-navbar-nav">
                 <!--Logged in users see....-->
                 <li class="uk-visible@s">
-                    <a class="nav-link" href="/aboutme" style="color: dimgrey"><span uk-icon="icon: users" class="uk-margin-small-right"></span>View all Developers</a>
+                    <a class="nav-link" href="/aboutme" style="color: black"><img class="uk-margin-small-right" src="https://img.icons8.com/material/24/000000/user-group-man-man.png" />View all Developers</a>
                 </li>
                 <!--Logged out users see....-->
                 <li sec:authorize="!isAuthenticated()" class="uk-visible@s">
-                    <a class="nav-link" href="/login" style="color: dimgrey"><span uk-icon="icon: sign-in" class="uk-margin-small-right"></span>Login</a>
+                    <a class="nav-link" href="/login" style="color: black"><img class="uk-margin-small-right" src="https://img.icons8.com/material/24/000000/import.png" />Login</a>
                 </li>
                 <li sec:authorize="isAuthenticated()" class="uk-visible@s">
-                    <a class="nav-link" href="/logout" style="color: dimgrey"><span uk-icon="icon: sign-out" class="uk-margin-small-right"></span>Logout</a>
+                    <a class="nav-link" href="/logout" style="color: black"><img class="uk-margin-small-right" src="https://img.icons8.com/material/24/000000/export.png" />Logout</a>
                 </li>
             </ul>
         </div></div>
@@ -72,6 +72,8 @@
 <div th:fragment="scripts">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit-icons.min.js"></script>
+    <script src="uikit/dist/js/uikit-icons.min.js"></script>
+
 </div>
 
 </body>
