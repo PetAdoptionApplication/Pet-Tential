@@ -60,7 +60,7 @@ body {
 
 .overflow {
     width: 190px;
-    white-space: nowrap;
+    wuk-margin-righthite-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
