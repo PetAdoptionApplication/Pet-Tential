@@ -10,15 +10,15 @@
 <div class="uk-container">
 <h1 class="uk-margin-top">Available Pets</h1>
 
-    <div class="uk-child-width-1-2@m uk-grid" uk-grid="masonry:true">
+    <div class="uk-child-width-1-1 uk-child-width-1-2@l uk-grid" uk-grid="masonry:true">
         <div th:each="pet : ${pets}" th:if="${pet.name.equals('deleted') == false}">
             <div class="uk-card uk-card-default">
                 <div class="uk-card-body">
-                    <a th:href="'/adopter/pet/' + ${pet.id}"><div th:style="'background: url(' + ${pet.picture} + '); background-size: 100% 100%;'" class="uk-card-media-top set-width" alt="Pet Image"></div></a>
+                    <a th:href="'/adopter/pet/' + ${pet.id}" class="uk-container-center"><div th:style="'background: url(' + ${pet.picture} + ') no-repeat center; background-size: 100% 100%; background-position: center;'" class="uk-card-media-top set-width uk-margin-auto" alt="Pet Image"></div></a>
                     <div class="uk-margin uk-text-center">
                         <div class="uk-card-media-top uk-width-auto">
                             <label for="name"><strong><u>Name</u></strong></label>
-                            <p id="name" th:text="${pet.name}"></p>
+                            <p id="name"><a th:href="'/adopter/pet/' + ${pet.id}" th:text="${pet.name}"></a></p>
                         </div>
                         <div class="uk-card-media-top uk-width-auto">
                             <label for="description"><strong><u>Description</u></strong></label>

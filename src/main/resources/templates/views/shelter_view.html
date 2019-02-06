@@ -15,7 +15,7 @@
     </div>
 
 
-    <div class="uk-child-width-1-2 uk-grid uk-padding">
+    <div class="uk-child-width-1-1 uk-child-width-1-2@l uk-grid uk-padding" uk-grid="masonry:true">
 
         <div class="uk-width-1-2@m">
             <h3> Pets Available </h3>
@@ -45,12 +45,12 @@
 <footer th:replace="partials::footer"/>
 <div th:replace="partials::scripts"/>
 <script th:inline="javascript">
-    let shelter = /*[[${shelter}]]*/ "";
-    let map;
-    let geocoder;
-    let markerLat;
-    let markerLong;
-    let markerLatandLong;
+    var shelter = /*[[${shelter}]]*/ "";
+    var map;
+    var geocoder;
+    var markerLat;
+    var markerLong;
+    var markerLatandLong;
 
     function initMap() {
         geocoder = new google.maps.Geocoder();

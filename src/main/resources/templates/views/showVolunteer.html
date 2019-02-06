@@ -8,13 +8,13 @@
 <div class="uk-text-center">
     <h1 class="uk-margin-top uk-margin-auto">List Of Volunteers</h1>
 </div>
-<div class="uk-flex uk-text-center">
+<div class="uk-flex uk-text-center uk-container">
 
 
-    <div class="uk-child-width-1-2@m uk-grid uk-width-expand uk-margin-auto">
+    <div class="uk-child-width-1-2@l uk-grid uk-width-expand uk-margin-auto">
         <div th:each="user : ${users}">
 
-            <div class="uk-card">
+            <div class="uk-card uk-margin-small uk-margin-auto uk-margin-medium-bottom">
                 <div class="uk-card-body uk-card-default uk-text-center">
                     <strong><u><label for="name">Name:</label></u></strong>
                     <p th:text="${user.getName()}" class="uk-card-media-top"/>

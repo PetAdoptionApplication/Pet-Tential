@@ -5,8 +5,8 @@
 
 <body>
 <nav th:replace="partials :: navbar"/>
-<div class="uk-flex">
-    <div class="uk-card uk-card-default uk-card-body uk-margin-auto">
+<div class="uk-flex uk-grid">
+    <div class="uk-card uk-card-default uk-card-body uk-margin-auto uk-container-center uk-width-1-2">
         <form th:action="@{/login}" method="post">
             <h1 class="uk-margin-top">Login</h1>
             <div th:if="${param.error}">

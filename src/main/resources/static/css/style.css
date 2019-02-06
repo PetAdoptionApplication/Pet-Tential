@@ -58,6 +58,13 @@ body {
     max-width: 100px;
 }
 
+
+#map{
+    width: 100%;
+    border-width: 1em;
+    border-style: double;
+    border-color: #a4a4db;
+
 .overflow {
     width: 190px;
     white-space: nowrap;
