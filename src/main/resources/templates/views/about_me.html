@@ -3,18 +3,21 @@
 <head th:replace="partials::head('About Us')"/>
 <body>
 <nav th:replace="partials::navbar"/>
-<h1 class="uk-margin-top">Available Developers</h1>
+
+
+<div class="uk-container uk-margin-auto">
+    <h1 class="uk-margin-top">Available Developers</h1>
 <div class="uk-grid-match uk-grid">
 
     <!--Ryan-->
-        <div class="uk-width-1-4@m">
-            <div class="uk-card uk-card-default uk-padding-small uk-animation-slide-left">
+        <div class="uk-width-1-4@l uk-margin-medium-bottom">
+            <div class="uk-card uk-card-default uk-animation-slide-left">
                 <div class="uk-card-media-top uk-text-center">
                     <img class="uk-margin-auto" src="/img/about_me/ryan_face.jpg" alt="Ryan's Face"/>
                 </div>
                 <div class="uk-card-body uk-margin-auto">
                     <h3 class="uk-card-title uk-text-center"> Ryan Houpt </h3>
-                    <ul style="list-style-type: none">
+                    <ul style="list-style-type: none"  class="uk-text-center uk-text-left@l">
                         <li><span class="uk-margin-small-right" uk-icon="linkedin"></span><a href="https://www.linkedin.com/in/ryan-houpt/" target="_blank"> LinkedIn </a></li>
                         <li><span class="uk-margin-small-right" uk-icon="github"></span><a href="https://github.com/ryan-houpt" target="_blank"> GitHub </a></li>
                         <li><span class="uk-margin-small-right" uk-icon="user"></span><a href="https://alumni.codeup.com/students/561" target="_blank"> Codeup Profile </a></li>
@@ -24,14 +27,14 @@
         </div>
 
     <!--Kyla-->
-    <div class="uk-width-1-4@m">
-        <div class="uk-card uk-card-default uk-padding-small uk-animation-slide-left">
+    <div class="uk-width-1-4@l uk-margin-medium-bottom">
+        <div class="uk-card uk-card-default uk-animation-slide-left">
             <div class="uk-card-media-top uk-text-center">
                 <img class="uk-margin-auto" src="/img/about_me/kyla_face.jpg" alt="Kyla's Face"/>
             </div>
             <div class="uk-card-body uk-margin-auto">
                 <h3 class="uk-card-title uk-text-center"> Kyla Allen </h3>
-                <ul style="list-style-type: none">
+                <ul style="list-style-type: none"  class="uk-text-center uk-text-left@l">
                     <li><span class="uk-margin-small-right" uk-icon="linkedin"></span><a href="https://www.linkedin.com/in/kyla-allen/" target="_blank"> LinkedIn </a></li>
                     <li><span class="uk-margin-small-right" uk-icon="github"></span><a href="https://github.com/Kyla-Allen" target="_blank"> GitHub </a></li>
                     <li><span class="uk-margin-small-right" uk-icon="user"></span><a href="https://alumni.codeup.com/students/552" target="_blank"> Codeup Profile </a></li>
@@ -41,14 +44,14 @@
     </div>
 
     <!--KC-->
-    <div class="uk-width-1-4@m">
-        <div class="uk-card uk-card-default uk-padding-small uk-animation-slide-right">
+    <div class="uk-width-1-4@l uk-margin-medium-bottom">
+        <div class="uk-card uk-card-default uk-animation-slide-right">
             <div class="uk-card-media-top uk-text-center">
                 <img class="uk-margin-auto" src="/img/about_me/kc_face.jpg" alt="KC's Face"/>
             </div>
             <div class="uk-card-body uk-margin-auto">
                 <h3 class="uk-card-title uk-text-center"> Kenneth McInturf </h3>
-                <ul style="list-style-type: none">
+                <ul style="list-style-type: none"  class="uk-text-center uk-text-left@l">
                     <li><span class="uk-margin-small-right" uk-icon="linkedin"></span><a href="https://www.linkedin.com/in/kenneth-mcinturf/" target="_blank"> LinkedIn </a></li>
                     <li><span class="uk-margin-small-right" uk-icon="github"></span><a href="https://github.com/kennethmcinturf" target="_blank"> GitHub </a></li>
                     <li><span class="uk-margin-small-right" uk-icon="user"></span><a href="https://alumni.codeup.com/students/559" target="_blank"> Codeup Profile </a></li>
@@ -57,14 +60,14 @@
         </div>
     </div>
     <!--Juan-->
-    <div class="uk-width-1-4@m">
-        <div class="uk-card uk-card-default uk-padding-small uk-animation-slide-right">
+    <div class="uk-width-1-4@l uk-margin-medium-bottom">
+        <div class="uk-card uk-card-default uk-animation-slide-right">
             <div class="uk-card-media-top uk-text-center">
                 <img class="uk-margin-auto" src="/img/about_me/juan_face.jpg" alt="Juan's Face"/>
             </div>
             <div class="uk-card-body uk-margin-auto">
                 <h3 class="uk-card-title uk-text-center"> Juan De La Rosa </h3>
-                <ul style="list-style-type: none">
+                <ul style="list-style-type: none"  class="uk-text-center uk-text-left@l">
                     <li><span class="uk-margin-small-right" uk-icon="linkedin"></span><a href="https://www.linkedin.com/in/juan-de-la-rosa/" target="_blank"> LinkedIn </a></li>
                     <li><span class="uk-margin-small-right" uk-icon="github"></span><a href="https://github.com/juandelarosa1224" target="_blank"> GitHub </a></li>
                     <li><span class="uk-margin-small-right" uk-icon="user"></span><a href="https://alumni.codeup.com/students/568" target="_blank"> Codeup Profile </a></li>
@@ -74,6 +77,7 @@
     </div>
 
 
+</div>
 </div>
 <div th:replace="partials::scripts"/>
 </body>
