@@ -2,18 +2,16 @@
 
 Pet-Tential is a full stack web application that allows Shelters and potential adopters a better means to connect. With this we hope to drastically increase adoption rates for shelters and hopefully find furrever homes for our furry buddies.
 
-## To-Do's
+## Features
 
-- [] Registration
-- [] Create pet ads
-- [] Add and edit Programs
-- [] Twilio Notifications
-- [] Add and edit Pet preferences
-- [] Sign up for programs
-- [] Approve or deny applications
-- [] Search by location
+- Paralax Homepage to keep up with todays modern themes
 
-## Extras
+![Screenshot](https://github.com/PetAdoptionApplication/Pet-Tential/blob/master/src/main/resources/static/img/Homepage.png)
 
-- [] Email notifications
-- [] Payment via Square
+- Browse a variety of pets with ease on your home computer or on mobile!
+
+![Screenshot](https://github.com/PetAdoptionApplication/Pet-Tential/blob/master/src/main/resources/static/img/Pets.png)
+
+- As a shelter, manage all available pets, volunteer opportunities, and training programs!
+
+![Screenshot](https://github.com/PetAdoptionApplication/Pet-Tential/blob/master/src/main/resources/static/img/Shelter.png)
