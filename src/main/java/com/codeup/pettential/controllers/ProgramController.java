@@ -45,12 +45,9 @@ public class ProgramController {
     @PostMapping("/shelter/createProgram")
     public String saveProgram(@ModelAttribute Program program, @RequestParam(name = "shelter") Long shelter) {
         Shelter shelter1 = shelterDao.findOne(shelter);
-        if(! program.getTime().toLowerCase().substring(program.getTime().length() - 2).equals("am") ||
-                ! program.getTime().toLowerCase().substring(program.getTime().length() - 2).equals("pm") ){
-            String time = program.getTime();
-            time = time + "pm";
-            program.setTime(time);
-        }
+        String time = program.getTime();
+        time = time + "pm";
+        program.setTime(time);
         program.setShelter(shelter1);
         programDao.save(program);
         return "redirect:/home";

@@ -1,6 +1,9 @@
 #map {
     width: 800px;
     height: 400px;
+    border-width: 1em;
+    border-style: double;
+    border-color: #a4a4db;
 }
 nav{
     box-shadow: 5px 5px rgba(0, 102, 204, .2);
@@ -55,9 +58,16 @@ body {
     max-width: 100px;
 }
 
+
 #map{
     width: 100%;
     border-width: 1em;
     border-style: double;
     border-color: #a4a4db;
+
+.overflow {
+    width: 190px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
