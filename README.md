@@ -4,11 +4,11 @@ Pet-Tential is a full stack web application that allows Shelters and potential a
 
 ## Features
 
-- Paralax Homepage to keep up with todays modern themes
+- Save time by creating preferences. This way anytime a pet becomes available that matches your choices you will instantly be notified via text message!
 
 ![Screenshot](https://github.com/PetAdoptionApplication/Pet-Tential/blob/master/src/main/resources/static/img/Homepage.png)
 
-- Browse a variety of pets with ease on your home computer or on mobile!
+- Just want to browse? View an entire list of pets available at each unique shelter.
 
 ![Screenshot](https://github.com/PetAdoptionApplication/Pet-Tential/blob/master/src/main/resources/static/img/Pets.png)
 
